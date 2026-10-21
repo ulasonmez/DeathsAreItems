@@ -32,3 +32,7 @@ forge*changelog.txt
 # Python cache
 __pycache__/
 *.pyc
+
+# Local PDF inspection and verification logs
+tmp/
+src/generated/resources/.cache/

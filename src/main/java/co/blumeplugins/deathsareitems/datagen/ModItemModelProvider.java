@@ -1,6 +1,7 @@
 package co.blumeplugins.deathsareitems.datagen;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
+import co.blumeplugins.deathsareitems.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -12,8 +13,8 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        // Example: generate a simple item/generated model for the example item.
-        // simpleItem(ModItems.EXAMPLE_ITEM);
+        withExistingParent(ModItems.FALL_DAMAGE_BOOTS.getId().getPath(), mcLoc("item/generated"))
+                .texture("layer0", mcLoc("item/golden_boots"));
     }
 
     // private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

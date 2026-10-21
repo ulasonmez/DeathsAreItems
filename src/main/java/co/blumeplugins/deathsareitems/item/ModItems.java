@@ -1,6 +1,7 @@
 package co.blumeplugins.deathsareitems.item;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
+import co.blumeplugins.deathsareitems.item.custom.FallDamageBootsItem;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -11,9 +12,8 @@ public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
             DeferredRegister.create(ForgeRegistries.ITEMS, DeathsAreItems.MOD_ID);
 
-    // Example item registration. Add more items below following the same pattern.
-    // public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item",
-    //         () -> new Item(new Item.Properties()));
+    public static final RegistryObject<Item> FALL_DAMAGE_BOOTS = ITEMS.register("fall_damage_boots",
+            FallDamageBootsItem::new);
 
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

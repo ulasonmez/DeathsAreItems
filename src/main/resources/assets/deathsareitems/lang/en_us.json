@@ -1,8 +1,18 @@
 {
-  "//item.deathsareitems.example_item": "Example Item",
-
-  "//block.deathsareitems.example_block": "Example Block",
-
-  "creativetab.deathsareitems_tab": "DeathsAreItems Tab",
+  "item.deathsareitems.fall_damage_boots": "Fall Damage Boots",
+  "reward.deathsareitems.long_trip": "Long Trip",
+  "reward.deathsareitems.slippery_banana_peel": "Slippery Banana Peel",
+  "entity.deathsareitems.reward_chest": "Death Reward Chest",
+  "entity.deathsareitems.launched_block": "Launched Block",
+  "creativetab.deathsareitems_tab": "Deaths Are Items",
+  "tooltip.deathsareitems.fall_damage_boots": "Falling is harmless when the blocks are the ones getting hurt.",
+  "tooltip.deathsareitems.fall_damage_boots.cushion": "3x3 cushions cycle: Water, Slime, Hay, then repeat.",
+  "tooltip.deathsareitems.fall_damage_boots.next_cushion": "Next cushion: %s",
+  "tooltip.deathsareitems.fall_damage_boots.sneak": "Sneak on impact to send nearby blocks flying!",
+  "toast.deathsareitems.title": "Death into treasure!",
+  "toast.deathsareitems.description": "Choose your reward",
+  "message.deathsareitems.need_space": "Your reward is ready. Move to an open area for the three chests.",
+  "message.deathsareitems.not_yours": "This reward belongs to another player.",
+  "message.deathsareitems.preview_only": "%s is a preview. Choose Fall Damage Boots.",
   "message.deathsareitems.globalconfig_message": "You are not allowed to join this server. Please visit www.blumeplugins.co"
 }

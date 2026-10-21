@@ -1,0 +1,18 @@
+{
+  "item.deathsareitems.fall_damage_boots": "Düşüş Hasarı Botları",
+  "reward.deathsareitems.long_trip": "Long Trip",
+  "reward.deathsareitems.slippery_banana_peel": "Slippery Banana Peel",
+  "entity.deathsareitems.reward_chest": "Ölüm Ödülü Sandığı",
+  "entity.deathsareitems.launched_block": "Fırlatılan Blok",
+  "creativetab.deathsareitems_tab": "Ölümler Eşyaya Dönüşür",
+  "tooltip.deathsareitems.fall_damage_boots": "Canı yanan bloklar olunca düşmek zararsızdır.",
+  "tooltip.deathsareitems.fall_damage_boots.cushion": "3x3 minder sırası: su, slime, saman; sonra tekrar su.",
+  "tooltip.deathsareitems.fall_damage_boots.next_cushion": "Sıradaki minder: %s",
+  "tooltip.deathsareitems.fall_damage_boots.sneak": "İnerken eğil: çevrendeki bloklar havaya fırlasın!",
+  "toast.deathsareitems.title": "Ölümden ödüle!",
+  "toast.deathsareitems.description": "Ödülünü seç",
+  "message.deathsareitems.need_space": "Ödülün hazır. Üç sandık için açık bir alana geç.",
+  "message.deathsareitems.not_yours": "Bu ödül başka bir oyuncuya ait.",
+  "message.deathsareitems.preview_only": "%s yalnızca önizlemedir. Düşüş Hasarı Botları'nı seç.",
+  "message.deathsareitems.globalconfig_message": "Bu sunucuya katılma izniniz yok. Lütfen www.blumeplugins.co adresini ziyaret edin."
+}
