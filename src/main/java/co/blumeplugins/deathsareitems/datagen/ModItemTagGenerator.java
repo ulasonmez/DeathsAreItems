@@ -1,6 +1,6 @@
-package co.blumeplugins.blumemod.datagen;
+package co.blumeplugins.deathsareitems.datagen;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -14,7 +14,7 @@ public class ModItemTagGenerator extends ItemTagsProvider {
     public ModItemTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
                                CompletableFuture<TagLookup<Block>> blockTags,
                                @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, blockTags, BlumeMod.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, blockTags, DeathsAreItems.MOD_ID, existingFileHelper);
     }
 
     @Override

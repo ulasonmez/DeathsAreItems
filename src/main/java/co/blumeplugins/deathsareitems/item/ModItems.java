@@ -1,6 +1,6 @@
-package co.blumeplugins.blumemod.item;
+package co.blumeplugins.deathsareitems.item;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -9,7 +9,7 @@ import net.minecraftforge.registries.RegistryObject;
 
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, BlumeMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, DeathsAreItems.MOD_ID);
 
     // Example item registration. Add more items below following the same pattern.
     // public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item",

@@ -1,7 +1,7 @@
-package co.blumeplugins.blumemod.block;
+package co.blumeplugins.deathsareitems.block;
 
-import co.blumeplugins.blumemod.BlumeMod;
-import co.blumeplugins.blumemod.item.ModItems;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
+import co.blumeplugins.deathsareitems.item.ModItems;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, BlumeMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, DeathsAreItems.MOD_ID);
 
     // Example block registration. Use registerBlock so a BlockItem is created automatically.
     // public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block",

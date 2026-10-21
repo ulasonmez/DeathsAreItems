@@ -1,4 +1,4 @@
-package co.blumeplugins.blumemod.datagen;
+package co.blumeplugins.deathsareitems.datagen;
 
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.FinishedRecipe;

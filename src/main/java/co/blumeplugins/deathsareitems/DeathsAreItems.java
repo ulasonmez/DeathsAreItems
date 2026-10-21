@@ -1,11 +1,11 @@
-package co.blumeplugins.blumemod;
+package co.blumeplugins.deathsareitems;
 
-import co.blumeplugins.blumemod.block.ModBlocks;
-import co.blumeplugins.blumemod.block.entity.ModBlockEntities;
-import co.blumeplugins.blumemod.entity.ModEntities;
-import co.blumeplugins.blumemod.item.ModCreativeModTabs;
-import co.blumeplugins.blumemod.item.ModItems;
-import co.blumeplugins.blumemod.sound.ModSounds;
+import co.blumeplugins.deathsareitems.block.ModBlocks;
+import co.blumeplugins.deathsareitems.block.entity.ModBlockEntities;
+import co.blumeplugins.deathsareitems.entity.ModEntities;
+import co.blumeplugins.deathsareitems.item.ModCreativeModTabs;
+import co.blumeplugins.deathsareitems.item.ModItems;
+import co.blumeplugins.deathsareitems.sound.ModSounds;
 import com.mojang.logging.LogUtils;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -13,12 +13,12 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(BlumeMod.MOD_ID)
-public class BlumeMod {
-    public static final String MOD_ID = "blumemod";
+@Mod(DeathsAreItems.MOD_ID)
+public class DeathsAreItems {
+    public static final String MOD_ID = "deathsareitems";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public BlumeMod() {
+    public DeathsAreItems() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         // Register all DeferredRegisters to the mod event bus
@@ -39,3 +39,4 @@ public class BlumeMod {
         }
     }
 }
+

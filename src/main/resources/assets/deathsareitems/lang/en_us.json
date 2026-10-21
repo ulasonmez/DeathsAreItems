@@ -1,0 +1,8 @@
+{
+  "//item.deathsareitems.example_item": "Example Item",
+
+  "//block.deathsareitems.example_block": "Example Block",
+
+  "creativetab.deathsareitems_tab": "DeathsAreItems Tab",
+  "message.deathsareitems.globalconfig_message": "You are not allowed to join this server. Please visit www.blumeplugins.co"
+}

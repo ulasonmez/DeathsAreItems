@@ -1,6 +1,6 @@
-package co.blumeplugins.blumemod.datagen;
+package co.blumeplugins.deathsareitems.datagen;
 
-import co.blumeplugins.blumemod.block.ModBlocks;
+import co.blumeplugins.deathsareitems.block.ModBlocks;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.loot.BlockLootSubProvider;
 import net.minecraft.data.loot.LootTableProvider;

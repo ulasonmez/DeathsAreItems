@@ -1,6 +1,6 @@
-package co.blumeplugins.blumemod.entity;
+package co.blumeplugins.deathsareitems.entity;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.world.entity.EntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -8,7 +8,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =
-            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, BlumeMod.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, DeathsAreItems.MOD_ID);
 
     // Example entity registration:
     // public static final RegistryObject<EntityType<MyEntity>> MY_ENTITY =

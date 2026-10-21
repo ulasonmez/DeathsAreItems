@@ -1,6 +1,6 @@
-package co.blumeplugins.blumemod.datagen;
+package co.blumeplugins.deathsareitems.datagen;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.common.data.BlockTagsProvider;
@@ -12,7 +12,7 @@ import java.util.concurrent.CompletableFuture;
 public class ModBlockTagGenerator extends BlockTagsProvider {
     public ModBlockTagGenerator(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider,
                                 @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, BlumeMod.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, DeathsAreItems.MOD_ID, existingFileHelper);
     }
 
     @Override

@@ -1,13 +1,13 @@
-package co.blumeplugins.blumemod.datagen;
+package co.blumeplugins.deathsareitems.datagen;
 
-import co.blumeplugins.blumemod.BlumeMod;
+import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ModItemModelProvider extends ItemModelProvider {
     public ModItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, BlumeMod.MOD_ID, existingFileHelper);
+        super(output, DeathsAreItems.MOD_ID, existingFileHelper);
     }
 
     @Override
@@ -19,6 +19,6 @@ public class ModItemModelProvider extends ItemModelProvider {
     // private ItemModelBuilder simpleItem(RegistryObject<Item> item) {
     //     return withExistingParent(item.getId().getPath(),
     //             new ResourceLocation("item/generated"))
-    //             .texture("layer0", new ResourceLocation(TemplateForgeMod.MOD_ID, "item/" + item.getId().getPath()));
+    //             .texture("layer0", new ResourceLocation(DeathsAreItems.MOD_ID, "item/" + item.getId().getPath()));
     // }
 }
