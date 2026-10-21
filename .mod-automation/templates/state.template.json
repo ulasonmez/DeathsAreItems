@@ -1,0 +1,12 @@
+{
+  "job_id": null,
+  "prompt_pack_sha256": null,
+  "next_prompt_index": 0,
+  "total_prompts": 0,
+  "completed_prompts": [],
+  "current_stage": null,
+  "last_status": null,
+  "last_commit": null,
+  "created_at": null,
+  "updated_at": null
+}

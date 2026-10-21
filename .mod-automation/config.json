@@ -1,0 +1,37 @@
+{
+  "inbox_prompt_pack": ".mod-automation/runtime/PROMPT_PACK.md",
+  "project_state": ".mod-automation/runtime/PROJECT_STATE.md",
+  "jobs_directory": ".mod-automation/jobs",
+  "global_contract": ".mod-automation/GLOBAL_CONTRACT.md",
+  "checkpoint_prompt": ".mod-automation/CHECKPOINT_PROMPT.md",
+  "project_state_template": ".mod-automation/templates/PROJECT_STATE.template.md",
+  "state_template": ".mod-automation/templates/state.template.json",
+  "fresh_session_per_prompt": true,
+  "fresh_session_for_checkpoint": true,
+  "commit_after_each_implementation_prompt": true,
+  "push_after_each_commit": true,
+  "skip_commit_for_prompt_1_audit": true,
+  "branch_policy": "current_branch",
+  "antigravity_timeout": "90m",
+  "default_execution_profile": "MEDIUM",
+  "checkpoint_execution_profile": "LOW",
+  "execution_profiles": {
+    "LOW": {
+      "model": null,
+      "effort": "low",
+      "timeout": "45m"
+    },
+    "MEDIUM": {
+      "model": null,
+      "effort": "medium",
+      "timeout": "90m"
+    },
+    "HIGH": {
+      "model": null,
+      "effort": "high",
+      "timeout": "120m"
+    }
+  },
+  "project_state_warning_bytes": 15360,
+  "project_state_strong_warning_bytes": 25600
+}

@@ -1,0 +1,8 @@
+{
+  "//item.blumemod.example_item": "Example Item",
+
+  "//block.blumemod.example_block": "Example Block",
+
+  "creativetab.blumemod_tab": "Blume Mod Tab",
+  "message.blumemod.globalconfig_message": "You are not allowed to join this server. Please visit www.blumeplugins.co"
+}
