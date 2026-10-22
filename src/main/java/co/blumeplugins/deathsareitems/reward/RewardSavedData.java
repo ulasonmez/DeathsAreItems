@@ -23,6 +23,15 @@ import java.util.UUID;
 public final class RewardSavedData extends SavedData {
     public final Map<UUID, Offer> offers = new LinkedHashMap<>();
     public final List<Grant> grants = new ArrayList<>();
+    public final Map<UUID, java.util.Set<ResourceLocation>> discovered = new LinkedHashMap<>();
+    public final java.util.Set<UUID> rejected = new java.util.HashSet<>();
+
+    public boolean discover(UUID owner, ResourceLocation death) {
+        boolean fresh = discovered.computeIfAbsent(owner, key -> new java.util.HashSet<>()).add(death);
+        if (fresh) setDirty();
+        return fresh;
+    }
+    public boolean hasDiscovered(UUID owner, ResourceLocation death) { return discovered.getOrDefault(owner, java.util.Set.of()).contains(death); }
 
     public static RewardSavedData get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(RewardSavedData::load,
@@ -31,6 +40,18 @@ public final class RewardSavedData extends SavedData {
 
     public static RewardSavedData load(CompoundTag tag) {
         RewardSavedData data = new RewardSavedData();
+        for (Tag entry : tag.getList("Discovered", Tag.TAG_COMPOUND)) {
+            CompoundTag value = (CompoundTag)entry;
+            if (!value.hasUUID("Owner")) continue;
+            for (Tag death : value.getList("Deaths", Tag.TAG_STRING)) {
+                ResourceLocation id = ResourceLocation.tryParse(death.getAsString());
+                if (id != null) data.discover(value.getUUID("Owner"), id);
+            }
+        }
+        for (Tag entry : tag.getList("Rejected", Tag.TAG_COMPOUND)) {
+            CompoundTag value = (CompoundTag)entry;
+            if (value.hasUUID("Owner")) data.rejected.add(value.getUUID("Owner"));
+        }
         for (Tag entry : tag.getList("Offers", Tag.TAG_COMPOUND)) {
             CompoundTag value = (CompoundTag) entry;
             ResourceLocation reward = ResourceLocation.tryParse(value.getString("Reward"));
@@ -58,6 +79,14 @@ public final class RewardSavedData extends SavedData {
 
     @Override
     public CompoundTag save(CompoundTag tag) {
+        ListTag discoveries = new ListTag(), rejects = new ListTag();
+        discovered.forEach((owner, deaths) -> {
+            CompoundTag value = new CompoundTag(); value.putUUID("Owner", owner); ListTag ids = new ListTag();
+            deaths.forEach(death -> ids.add(net.minecraft.nbt.StringTag.valueOf(death.toString())));
+            value.put("Deaths", ids); discoveries.add(value);
+        });
+        rejected.forEach(owner -> { CompoundTag value = new CompoundTag(); value.putUUID("Owner", owner); rejects.add(value); });
+        tag.put("Discovered", discoveries); tag.put("Rejected", rejects);
         ListTag savedOffers = new ListTag();
         offers.values().forEach(offer -> {
             CompoundTag value = new CompoundTag();
@@ -96,6 +125,7 @@ public final class RewardSavedData extends SavedData {
         public long spawnedAt;
         public int delay = RewardTimings.RESPAWN_DELAY;
         public boolean spawned;
+        public boolean announced;
         public final List<UUID> chests = new ArrayList<>();
         public final List<PlacedChest> placedChests = new ArrayList<>();
 

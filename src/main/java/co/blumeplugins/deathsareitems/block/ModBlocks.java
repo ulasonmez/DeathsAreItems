@@ -16,6 +16,10 @@ import java.util.function.Supplier;
 public class ModBlocks {
     public static final DeferredRegister<Block> BLOCKS =
             DeferredRegister.create(ForgeRegistries.BLOCKS, DeathsAreItems.MOD_ID);
+    public static final RegistryObject<Block> FRAGILE_SAND = BLOCKS.register("fragile_sand", () ->
+            new co.blumeplugins.deathsareitems.block.custom.FragileSedimentBlock(BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.SAND)));
+    public static final RegistryObject<Block> FRAGILE_GRAVEL = BLOCKS.register("fragile_gravel", () ->
+            new co.blumeplugins.deathsareitems.block.custom.FragileSedimentBlock(BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.GRAVEL)));
 
     // Example block registration. Use registerBlock so a BlockItem is created automatically.
     // public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block",

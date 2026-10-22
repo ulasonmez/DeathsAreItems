@@ -2,7 +2,7 @@ package co.blumeplugins.deathsareitems.reward;
 
 /** Shared by server interaction validation and client rendering. All values are ticks. */
 public final class RewardTimings {
-    public static final int RESPAWN_DELAY = longer(12);
+    public static final int RESPAWN_DELAY = 70;
     public static final int RISE = longer(40);
     public static final int SETTLE_START = longer(50);
     public static final int SLOT_DELAY = longer(16);

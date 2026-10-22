@@ -210,7 +210,9 @@ public final class FallBootsAbility {
             LaunchedBlockEntity debris = LaunchedBlockEntity.create(level, launch.pos, launch.state,
                     dx * .13 + (level.random.nextDouble() - .5) * .08,
                     .68 + level.random.nextDouble() * .3, dz * .13 + (level.random.nextDouble() - .5) * .08);
-            if (level.addFreshEntity(debris)) level.setBlock(launch.pos, Blocks.AIR.defaultBlockState(), 3);
+            // A visual block must correspond to exactly one successfully removed world block.
+            if (!level.setBlock(launch.pos, Blocks.AIR.defaultBlockState(), 3)) continue;
+            if (!level.addFreshEntity(debris)) level.setBlock(launch.pos, launch.state, 3);
         }
     }
 

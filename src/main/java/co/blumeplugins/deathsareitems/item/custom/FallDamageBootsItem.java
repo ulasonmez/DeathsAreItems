@@ -1,7 +1,5 @@
 package co.blumeplugins.deathsareitems.item.custom;
 
-import co.blumeplugins.deathsareitems.ability.CushionCycle;
-import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterials;
@@ -29,9 +27,6 @@ public final class FallDamageBootsItem extends ArmorItem {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> lines, TooltipFlag flag) {
-        lines.add(Component.translatable("tooltip.deathsareitems.fall_damage_boots").withStyle(ChatFormatting.GRAY));
-        lines.add(Component.translatable("tooltip.deathsareitems.fall_damage_boots.cushion").withStyle(ChatFormatting.AQUA));
-        lines.add(Component.translatable("tooltip.deathsareitems.fall_damage_boots.next_cushion", CushionCycle.next(stack).getName()).withStyle(ChatFormatting.GRAY));
-        lines.add(Component.translatable("tooltip.deathsareitems.fall_damage_boots.sneak").withStyle(ChatFormatting.GOLD));
+        co.blumeplugins.deathsareitems.item.TooltipText.append(lines, "tooltip.deathsareitems.fall_damage_boots");
     }
 }

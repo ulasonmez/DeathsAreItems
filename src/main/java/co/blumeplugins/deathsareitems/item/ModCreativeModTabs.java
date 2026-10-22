@@ -17,7 +17,7 @@ public class ModCreativeModTabs {
                     .icon(() -> ModItems.FALL_DAMAGE_BOOTS.get().getDefaultInstance())
                     .title(Component.translatable("creativetab.deathsareitems_tab"))
                     .displayItems((parameters, output) -> {
-                        output.accept(ModItems.FALL_DAMAGE_BOOTS.get());
+                        ModItems.ITEMS.getEntries().forEach(item -> output.accept(item.get()));
                     })
                     .build());
 

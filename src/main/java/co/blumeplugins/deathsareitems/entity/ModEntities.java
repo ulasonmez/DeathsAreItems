@@ -3,6 +3,7 @@ package co.blumeplugins.deathsareitems.entity;
 import co.blumeplugins.deathsareitems.DeathsAreItems;
 import co.blumeplugins.deathsareitems.entity.custom.RewardChestEntity;
 import co.blumeplugins.deathsareitems.entity.custom.LaunchedBlockEntity;
+import co.blumeplugins.deathsareitems.entity.custom.MaskTridentEntity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -20,6 +21,10 @@ public class ModEntities {
     public static final RegistryObject<EntityType<LaunchedBlockEntity>> LAUNCHED_BLOCK = ENTITY_TYPES.register("launched_block",
             () -> EntityType.Builder.<LaunchedBlockEntity>of(LaunchedBlockEntity::new, MobCategory.MISC)
                     .sized(.8F, .8F).clientTrackingRange(10).updateInterval(1).build("launched_block"));
+
+    public static final RegistryObject<EntityType<MaskTridentEntity>> MASK_TRIDENT = ENTITY_TYPES.register("mask_trident",
+            () -> EntityType.Builder.<MaskTridentEntity>of(MaskTridentEntity::new, MobCategory.MISC)
+                    .sized(.25F, .25F).clientTrackingRange(12).updateInterval(1).build("mask_trident"));
 
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

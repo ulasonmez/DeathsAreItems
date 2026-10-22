@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "deathsareitems:forced_drown",
+    "deathsareitems:forced_suffocate",
+    "deathsareitems:lots_of_anvils"
+  ]
+}

@@ -47,15 +47,21 @@ public final class RewardManager {
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public static void onDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
-            DeathRewards.forDeath(event.getSource()).ifPresentOrElse(definition -> offer(player, definition), () -> {
-                RewardSavedData data = RewardSavedData.get(player.server);
-                RewardSavedData.Offer previous = data.offers.remove(player.getUUID());
-                if (previous != null) {
-                    removeChests(player.server, previous);
-                    data.setDirty();
-                }
-            });
+            RewardSavedData data = RewardSavedData.get(player.server);
+            RewardDefinition definition = DeathRewards.forDeath(event.getSource()).orElse(null);
+            if (definition != null && data.discover(player.getUUID(), definition.id())) {
+                data.rejected.remove(player.getUUID()); offer(player, definition);
+            } else {
+                data.rejected.add(player.getUUID()); data.setDirty();
+                clearOffer(player);
+            }
         }
+    }
+
+    public static void clearOffer(ServerPlayer player) {
+        RewardSavedData data = RewardSavedData.get(player.server);
+        var previous = data.offers.remove(player.getUUID());
+        if (previous != null) { removeChests(player.server, previous); data.setDirty(); }
     }
 
     public static void offer(ServerPlayer player, RewardDefinition definition) {
@@ -68,7 +74,14 @@ public final class RewardManager {
 
     @SubscribeEvent
     public static void onRespawn(PlayerEvent.PlayerRespawnEvent event) {
-        if (!event.isEndConquered() && event.getEntity() instanceof ServerPlayer player) resetPresentation(player);
+        if (!event.isEndConquered() && event.getEntity() instanceof ServerPlayer player) {
+            resetPresentation(player);
+            RewardSavedData data = RewardSavedData.get(player.server);
+            if (data.rejected.remove(player.getUUID())) {
+                co.blumeplugins.deathsareitems.ability.AbilityMessages.show(player, Component.translatable("message.deathsareitems.different_death")
+                        .withStyle(net.minecraft.ChatFormatting.RED), 100); data.setDirty();
+            }
+        }
     }
 
     @SubscribeEvent
@@ -94,6 +107,7 @@ public final class RewardManager {
             offer.generation = UUID.randomUUID();
             offer.spawned = false;
             offer.delay = RewardTimings.RESPAWN_DELAY;
+            offer.announced = false;
             data.setDirty();
         }
     }
@@ -107,6 +121,14 @@ public final class RewardManager {
         for (RewardSavedData.Offer offer : new ArrayList<>(data.offers.values())) {
             ServerPlayer player = server.getPlayerList().getPlayer(offer.owner);
             if (player == null || !player.isAlive() || player.isSpectator()) continue;
+            if (!offer.announced) {
+                offer.announced = true;
+                player.serverLevel().sendParticles(ModParticles.CONFETTI.get(), player.getX(), player.getY() + 1, player.getZ(), 130, .65, .5, .65, .3);
+                RewardDefinition announced = DeathRewards.get(offer.reward);
+                ItemStack icon = announced == null ? ItemStack.EMPTY : announced.options().stream().filter(RewardOption::selectable)
+                        .findFirst().map(RewardOption::createReward).orElse(ItemStack.EMPTY);
+                ModNetwork.celebrate(player, icon);
+            }
             if (!offer.spawned && --offer.delay <= 0) spawnPresentation(player, offer);
             else if (offer.spawned && server.overworld().getGameTime() % 40 == 0) {
                 Entity chest = offer.chests.isEmpty() ? null : player.serverLevel().getEntity(offer.chests.get(0));
@@ -118,7 +140,8 @@ public final class RewardManager {
         while (iterator.hasNext()) {
             RewardSavedData.Grant grant = iterator.next();
             ServerPlayer player = server.getPlayerList().getPlayer(grant.owner());
-            if (player == null || !player.isAlive() || server.overworld().getGameTime() < grant.due()) continue;
+            if (player == null || !player.isAlive()
+                    || server.overworld().getGameTime() < grant.due()) continue;
             ItemStack stack = grant.stack().copy();
             if (!player.getInventory().add(stack)) {
                 net.minecraft.world.entity.item.ItemEntity dropped = player.drop(stack, false);
@@ -174,8 +197,6 @@ public final class RewardManager {
         }
         offer.spawned = true;
         RewardSavedData.get(player.server).setDirty();
-        level.sendParticles(ModParticles.CONFETTI.get(), player.getX(), player.getY() + 1, player.getZ(), 130, .65, .5, .65, .3);
-        ModNetwork.celebrate(player);
     }
 
     /** Three block-aligned positions, three blocks from the centered respawn anchor. */
@@ -239,7 +260,13 @@ public final class RewardManager {
     private static void magicParticles(ServerLevel level, Vec3 pos, int count) {
         level.sendParticles(GOLD, pos.x, pos.y + .45, pos.z, count, .6, .5, .6, .015);
         level.sendParticles(GREEN, pos.x, pos.y + .3, pos.z, count, .55, .35, .55, .015);
+        if (count > 1) smoke(level, pos, Math.max(2, count / 2));
         if (count > 1) level.sendParticles(ParticleTypes.ENTITY_EFFECT, pos.x, pos.y + .1, pos.z, 0, .6, .9, .05, 1);
+    }
+
+    private static void smoke(ServerLevel level, Vec3 pos, int count) {
+        level.sendParticles(ModParticles.GOLD_SMOKE.get(), pos.x, pos.y + .4, pos.z, count, .55, .4, .55, .12);
+        level.sendParticles(ModParticles.GREEN_SMOKE.get(), pos.x, pos.y + .4, pos.z, count, .55, .4, .55, .12);
     }
 
     public static boolean select(Player candidate, RewardChestEntity chest) {
@@ -277,7 +304,7 @@ public final class RewardManager {
         data.setDirty();
         removeChests(player.server, offer);
         ModNetwork.reveal(player, reward);
-        player.serverLevel().sendParticles(ModParticles.CONFETTI.get(), pos.getX() + .5, pos.getY() + .5, pos.getZ() + .5, 65, .4, .4, .4, .18);
+        smoke(player.serverLevel(), Vec3.atCenterOf(pos), 40);
         return true;
     }
 

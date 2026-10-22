@@ -162,22 +162,27 @@ public final class DeathRewardsGameTests {
     }
 
     @GameTest(template = "test_arena")
-    public static void onlyFallDeathsCreateOffers(GameTestHelper helper) {
+    public static void unsupportedAndRepeatedDeathsDoNotCreateOffers(GameTestHelper helper) {
         ServerPlayer player = player(helper);
         RewardSavedData data = RewardSavedData.get(helper.getLevel().getServer());
         try {
             for (DamageSource source : List.of(player.damageSources().generic(), player.damageSources().lava(),
-                    player.damageSources().drown(), player.damageSources().inFire(), player.damageSources().flyIntoWall(),
+                    player.damageSources().inFire(), player.damageSources().flyIntoWall(),
                     player.damageSources().magic(), player.damageSources().stalagmite())) {
-                RewardManager.onDeath(new LivingDeathEvent(player, player.damageSources().fall()));
-                helper.assertTrue(data.offers.containsKey(player.getUUID()), "A fall death must create an offer");
+                RewardManager.offer(player, DeathRewards.get(DeathRewards.FALL));
                 helper.assertTrue(DeathRewards.forDeath(source).isEmpty(), "Other damage must not fall back to boots");
                 RewardManager.onDeath(new LivingDeathEvent(player, source));
                 helper.assertTrue(!data.offers.containsKey(player.getUUID()), "Other deaths must clear any stale offer");
             }
+            data.discovered.remove(player.getUUID());
+            RewardManager.onDeath(new LivingDeathEvent(player, player.damageSources().fall()));
+            helper.assertTrue(data.offers.containsKey(player.getUUID()), "First fall death creates an offer");
+            RewardManager.onDeath(new LivingDeathEvent(player, player.damageSources().fall()));
+            helper.assertTrue(!data.offers.containsKey(player.getUUID()) && data.rejected.contains(player.getUUID()), "Repeated death creates only a rejection notice");
             helper.succeed();
         } finally {
             data.offers.remove(player.getUUID());
+            data.discovered.remove(player.getUUID()); data.rejected.remove(player.getUUID());
             data.setDirty();
         }
     }
