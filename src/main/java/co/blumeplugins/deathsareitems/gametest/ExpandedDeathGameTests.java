@@ -29,8 +29,8 @@ public final class ExpandedDeathGameTests {
         ServerPlayer p=FakePlayerFactory.get(h.getLevel(),new GameProfile(UUID.randomUUID(),"expanded-test"));
         p.setGameMode(GameType.SURVIVAL); p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(5,2,5)))); return p;
     }
-    @GameTest(template="test_arena") public static void sevenDeathsHaveOneSelectableReward(GameTestHelper h) {
-        h.assertTrue(DeathRewards.ids().size()==7,"Seven death types must be registered");
+    @GameTest(template="test_arena") public static void fourteenDeathsHaveOneSelectableReward(GameTestHelper h) {
+        h.assertTrue(DeathRewards.ids().size()==14,"Fourteen death types must be registered");
         Set<Item> items=new HashSet<>();
         for(var id:DeathRewards.ids()) {
             var definition=DeathRewards.get(id);
@@ -79,32 +79,20 @@ public final class ExpandedDeathGameTests {
         p.getFoodData().setFoodLevel(15); HungerAbility.foodTick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
         h.assertTrue(p.getFoodData().getFoodLevel()==18 && p.getPersistentData().getInt(HungerAbility.RESERVE)==0,"Only available reserve may be restored"); h.succeed();
     }
-    @GameTest(template="test_arena") public static void maskBuffsOnlyWorkInWaterAndStopImmediatelyOnLand(GameTestHelper h) {
-        var p=player(h); p.setItemSlot(EquipmentSlot.HEAD,new ItemStack(ModItems.DROWNING_MASK.get()));
+    @GameTest(template="test_arena") public static void maskGrantsInfiniteLevelOneOnLandAndRestoresPotions(GameTestHelper h) {
+        var p=player(h);
+        p.addEffect(new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.WATER_BREATHING,6000));
+        p.setItemSlot(EquipmentSlot.HEAD,new ItemStack(ModItems.DROWNING_MASK.get()));
         var effects=List.of(net.minecraft.world.effect.MobEffects.CONDUIT_POWER,net.minecraft.world.effect.MobEffects.DOLPHINS_GRACE,net.minecraft.world.effect.MobEffects.WATER_BREATHING);
         DeathAbilities.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
-        h.assertTrue(effects.stream().noneMatch(p::hasEffect),"Wearing a dry mask must not accelerate mining or grant water buffs");
-        BlockPos water=p.blockPosition();
-        h.getLevel().setBlock(water,Blocks.WATER.defaultBlockState(),3);
-        h.getLevel().setBlock(water.above(),Blocks.WATER.defaultBlockState(),3);
-        p.baseTick();
-        h.assertTrue(p.isInWater(),"Test player is inside actual water");
-        DeathAbilities.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
-        h.assertTrue(effects.stream().allMatch(effect->p.hasEffect(effect) && p.getEffect(effect).getAmplifier()==2),"Water immediately activates all three level III mask buffs");
-        p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(7,2,7)))); p.baseTick();
-        h.assertTrue(!p.isInWater(),"Test player has left the water");
-        DeathAbilities.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
-        h.assertTrue(effects.stream().noneMatch(p::hasEffect),"Mask buffs disappear on the first dry tick instead of speeding up land mining");
-        var potion=new net.minecraft.world.effect.MobEffectInstance(net.minecraft.world.effect.MobEffects.WATER_BREATHING,6000);
-        p.addEffect(potion);
-        p.setPos(Vec3.atBottomCenterOf(water)); p.baseTick();
-        DeathAbilities.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
+        h.assertTrue(effects.stream().allMatch(effect->p.hasEffect(effect) && p.getEffect(effect).getAmplifier()==0
+                && p.getEffect(effect).isInfiniteDuration()),"All three level-I effects are infinite, even on dry land");
         p.setItemSlot(EquipmentSlot.HEAD,ItemStack.EMPTY);
         DeathAbilities.tick(new TickEvent.PlayerTickEvent(TickEvent.Phase.END,p));
         h.assertTrue(p.hasEffect(net.minecraft.world.effect.MobEffects.WATER_BREATHING) && p.getEffect(net.minecraft.world.effect.MobEffects.WATER_BREATHING).getDuration()>5000,
-                "Taking off the mask preserves independently acquired water breathing");
+                "Taking off the mask restores displaced independent water breathing");
         h.assertTrue(!p.hasEffect(net.minecraft.world.effect.MobEffects.CONDUIT_POWER) && !p.hasEffect(net.minecraft.world.effect.MobEffects.DOLPHINS_GRACE),
-                "Taking off the mask immediately removes its own buffs even underwater");
+                "Removing the mask immediately removes its own buffs");
         h.succeed();
     }
     @GameTest(template="test_arena") public static void placingLastBlockCannotStartAMaskCharge(GameTestHelper h) {
@@ -137,7 +125,7 @@ public final class ExpandedDeathGameTests {
         h.setBlock(3,2,3,Blocks.STONE); p.setGameMode(GameType.ADVENTURE);
         h.assertTrue(!BoulderAbility.mark(p,pos) && !AnvilSwarmAbility.start(p,pos,null),"Adventure players cannot change terrain"); h.succeed();
     }
-    private static ServerPlayer online(GameTestHelper h) {
+    static ServerPlayer online(GameTestHelper h) {
         ServerPlayer p=new ServerPlayer(h.getLevel().getServer(),h.getLevel(),new GameProfile(UUID.randomUUID(),"ability-test"));
         var connection=new net.minecraft.network.Connection(net.minecraft.network.protocol.PacketFlow.SERVERBOUND);
         new io.netty.channel.embedded.EmbeddedChannel(new io.netty.channel.ChannelInitializer<io.netty.channel.Channel>() {

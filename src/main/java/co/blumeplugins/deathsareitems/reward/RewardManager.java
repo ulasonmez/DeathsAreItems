@@ -48,7 +48,10 @@ public final class RewardManager {
     public static void onDeath(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player) {
             RewardSavedData data = RewardSavedData.get(player.server);
-            RewardDefinition definition = DeathRewards.forDeath(event.getSource()).orElse(null);
+            if (co.blumeplugins.deathsareitems.ability.EndHardcore.active(player)) {
+                clearOffer(player); data.rejected.remove(player.getUUID()); data.setDirty(); return;
+            }
+            RewardDefinition definition = DeathRewards.forDeath(player, event.getSource()).orElse(null);
             if (definition != null && data.discover(player.getUUID(), definition.id())) {
                 data.rejected.remove(player.getUUID()); offer(player, definition);
             } else {
@@ -249,10 +252,13 @@ public final class RewardManager {
             level.sendParticles(new BlockParticleOption(ParticleTypes.BLOCK, Blocks.DIRT.defaultBlockState()), chest.getX(), chest.getY() + .08, chest.getZ(), 8, .5, .05, .5, .12);
             level.playSound(null, chest.blockPosition(), SoundEvents.GRAVEL_STEP, SoundSource.BLOCKS, .38F, .7F + age * .012F);
         }
-        if ((age < settle && age % 3 == 0) || (age >= settle && age % 25 == 0)) magicParticles(level, chest.position(), age < settle ? 4 : 1);
+        if (age < RewardTimings.RISE && age % 3 == 0) magicParticles(level, chest.position(), 4);
+        if (chest.isSettled() && age % 12 == 0) smoke(level, chest.position(), 2);
+        int lidOpensAt = RewardTimings.SETTLE_START + chest.slot() * RewardTimings.SLOT_DELAY;
+        if (age == lidOpensAt) level.playSound(null, chest.blockPosition(), SoundEvents.CHEST_OPEN,
+                SoundSource.BLOCKS, .8F, .85F + chest.slot() * .13F);
         if (age == settle) {
-            magicParticles(level, chest.position(), 22);
-            level.playSound(null, chest.blockPosition(), SoundEvents.CHEST_OPEN, SoundSource.BLOCKS, .8F, .85F + chest.slot() * .13F);
+            smoke(level, chest.position(), 12);
             level.playSound(null, chest.blockPosition(), SoundEvents.EXPERIENCE_ORB_PICKUP, SoundSource.PLAYERS, .45F, 1F + chest.slot() * .18F);
         }
     }
@@ -260,8 +266,6 @@ public final class RewardManager {
     private static void magicParticles(ServerLevel level, Vec3 pos, int count) {
         level.sendParticles(GOLD, pos.x, pos.y + .45, pos.z, count, .6, .5, .6, .015);
         level.sendParticles(GREEN, pos.x, pos.y + .3, pos.z, count, .55, .35, .55, .015);
-        if (count > 1) smoke(level, pos, Math.max(2, count / 2));
-        if (count > 1) level.sendParticles(ParticleTypes.ENTITY_EFFECT, pos.x, pos.y + .1, pos.z, 0, .6, .9, .05, 1);
     }
 
     private static void smoke(ServerLevel level, Vec3 pos, int count) {

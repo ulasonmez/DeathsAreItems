@@ -25,8 +25,8 @@ public class ModLootTableProvider {
 
         @Override
         protected void generate() {
-            // Example: drop the block itself when broken.
-            // dropSelf(ModBlocks.EXAMPLE_BLOCK.get());
+            add(ModBlocks.BEDROCK.get(), createSinglePropConditionTable(ModBlocks.BEDROCK.get(),
+                    net.minecraft.world.level.block.BedBlock.PART, net.minecraft.world.level.block.state.properties.BedPart.HEAD));
         }
 
         @Override

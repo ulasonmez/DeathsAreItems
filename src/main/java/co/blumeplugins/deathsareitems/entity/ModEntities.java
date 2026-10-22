@@ -26,6 +26,13 @@ public class ModEntities {
             () -> EntityType.Builder.<MaskTridentEntity>of(MaskTridentEntity::new, MobCategory.MISC)
                     .sized(.25F, .25F).clientTrackingRange(12).updateInterval(1).build("mask_trident"));
 
+    public static final RegistryObject<EntityType<co.blumeplugins.deathsareitems.entity.custom.CannonTntEntity>> CANNON_TNT = ENTITY_TYPES.register("cannon_tnt",
+            () -> EntityType.Builder.<co.blumeplugins.deathsareitems.entity.custom.CannonTntEntity>of(co.blumeplugins.deathsareitems.entity.custom.CannonTntEntity::new, MobCategory.MISC)
+                    .sized(.98F,.98F).clientTrackingRange(12).updateInterval(1).fireImmune().build("cannon_tnt"));
+    public static final RegistryObject<EntityType<co.blumeplugins.deathsareitems.entity.custom.ChaosPearlEntity>> CHAOS_PEARL = ENTITY_TYPES.register("chaos_pearl",
+            () -> EntityType.Builder.<co.blumeplugins.deathsareitems.entity.custom.ChaosPearlEntity>of(co.blumeplugins.deathsareitems.entity.custom.ChaosPearlEntity::new, MobCategory.MISC)
+                    .sized(.25F,.25F).clientTrackingRange(16).updateInterval(1).build("chaos_pearl"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

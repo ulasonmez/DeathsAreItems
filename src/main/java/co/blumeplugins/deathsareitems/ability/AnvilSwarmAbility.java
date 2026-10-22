@@ -28,7 +28,7 @@ import java.util.*;
 public final class AnvilSwarmAbility {
     private static final List<Swarm> SWARMS = new ArrayList<>();
     public static boolean start(ServerPlayer owner, BlockPos block, LivingEntity mob) {
-        if (SWARMS.size() >= 32 || (block != null && !WorldActions.breakable(owner, block))) return false;
+        if ((mob instanceof Mob m && MobRestraints.busy(m)) || SWARMS.size() >= 32 || (block != null && !WorldActions.breakable(owner, block))) return false;
         if (SWARMS.stream().anyMatch(s -> s.level == owner.level() && (mob != null ? s.mob == mob : block.equals(s.block)))) return false;
         SWARMS.add(new Swarm(owner, block, mob));
         return true;

@@ -44,6 +44,13 @@ public final class ModCommands {
 
     private static int kill(ServerPlayer p,String type) {
         DamageSource source=switch(type) {
+            case "wither" -> p.damageSources().wither();
+            case "cram" -> p.damageSources().cramming();
+            case "cactus" -> p.damageSources().cactus();
+            case "lava" -> p.damageSources().lava();
+            case "bed" -> p.damageSources().badRespawnPointExplosion(p.position());
+            case "tnt" -> p.damageSources().explosion(new net.minecraft.world.entity.item.PrimedTnt(p.level(),p.getX(),p.getY(),p.getZ(),p),p);
+            case "pearl" -> co.blumeplugins.deathsareitems.ability.DeathDamage.source(p,co.blumeplugins.deathsareitems.ability.DeathDamage.PEARL,null);
             case "fall" -> p.damageSources().fall(); case "drown" -> p.damageSources().drown();
             case "suffocate" -> p.damageSources().inWall(); case "starve" -> p.damageSources().starve();
             case "anvil" -> new DamageSource(p.level().registryAccess().registryOrThrow(net.minecraft.core.registries.Registries.DAMAGE_TYPE).getHolderOrThrow(DamageTypes.FALLING_ANVIL));

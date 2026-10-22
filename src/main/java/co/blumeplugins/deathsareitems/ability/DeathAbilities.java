@@ -109,9 +109,10 @@ public final class DeathAbilities {
         }
         return InteractionResult.FAIL;
     }
-    public static boolean eligible(Player owner, LivingEntity target) {
+    public static boolean eligible(Player owner, LivingEntity target) { return eligible(owner, target, 32); }
+    public static boolean eligible(Player owner, LivingEntity target, double range) {
         return target instanceof Mob && target.isAlive() && !target.isInvulnerable() && target.level() == owner.level()
-                && target.distanceToSqr(owner) <= 32 * 32 && owner.hasLineOfSight(target)
+                && target.distanceToSqr(owner) <= range * range && owner.hasLineOfSight(target)
                 && !(target instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon)
                 && !(target instanceof net.minecraft.world.entity.boss.wither.WitherBoss)
                 && !(target instanceof TamableAnimal tame && tame.isTame());
@@ -202,31 +203,19 @@ public final class DeathAbilities {
         player.level().playSound(null, player.blockPosition(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, .8F, .85F);
     }
     private static void cancel(UUID id) { Charge c = CHARGES.remove(id); if (c != null) c.trident.discard(); }
-    private static boolean maskEffect(MobEffectInstance effect) {
-        return effect != null && effect.getAmplifier() == 2 && effect.getDuration() <= 15 && effect.isAmbient() && !effect.isVisible();
-    }
     private static void waterEffects(ServerPlayer player) {
-        boolean wet = mask(player) && player.isAlive() && player.isInWaterOrBubble();
-        var data = player.getPersistentData();
-        int owned = data.getInt(MASK_EFFECTS);
-        if (wet) player.setAirSupply(player.getMaxAirSupply());
+        boolean worn = mask(player) && player.isAlive() && !player.isSpectator();
+        // Remove short level-III effects left by the previous version before migrating.
+        int legacy = player.getPersistentData().getInt(MASK_EFFECTS);
         for (int i = 0; i < WATER_EFFECTS.size(); i++) {
-            var effect = WATER_EFFECTS.get(i);
-            var current = player.getEffect(effect);
-            int bit = 1 << i;
-            boolean ours = (owned & bit) != 0 && maskEffect(current);
-            if (!wet) {
-                if (ours) player.removeEffect(effect);
-                owned &= ~bit;
-            } else if (current == null || (ours && player.tickCount % 10 == 0)) {
-                player.addEffect(new MobEffectInstance(effect, 15, 2, true, false, true));
-                owned |= bit;
-            } else if (!ours) {
-                // Existing potion, beacon and conduit effects belong to their original source.
-                owned &= ~bit;
-            }
+            MobEffect effect = WATER_EFFECTS.get(i);
+            MobEffectInstance current = player.getEffect(effect);
+            if ((legacy & (1 << i)) != 0 && current != null && current.getAmplifier() == 2
+                    && current.getDuration() <= 15 && current.isAmbient() && !current.isVisible()) player.removeEffect(effect);
+            EquipmentEffects.update(player, "deathsareitems.Mask." + i, effect, worn);
         }
-        if (owned == 0) data.remove(MASK_EFFECTS); else data.putInt(MASK_EFFECTS, owned);
+        player.getPersistentData().remove(MASK_EFFECTS);
+        if (worn) player.setAirSupply(player.getMaxAirSupply());
     }
     @SubscribeEvent public static void tick(TickEvent.PlayerTickEvent event) {
         if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer player)) return;

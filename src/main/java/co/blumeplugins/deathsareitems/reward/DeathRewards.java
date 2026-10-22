@@ -16,7 +16,8 @@ public final class DeathRewards {
     private static final Map<ResourceLocation, RewardDefinition> DEFINITIONS = new LinkedHashMap<>();
     public static final ResourceLocation FALL = new ResourceLocation(DeathsAreItems.MOD_ID, "fall");
     public static final ResourceLocation DROWN = id("drown"), SUFFOCATE = id("suffocate"), SKELETON = id("skeleton"),
-            GOLEM = id("golem"), STARVE = id("starve"), ANVIL = id("anvil");
+            GOLEM = id("golem"), STARVE = id("starve"), ANVIL = id("anvil"),
+            CRAM = id("cram"), CACTUS = id("cactus"), TNT = id("tnt"), LAVA = id("lava"), BED = id("bed"), PEARL = id("pearl"), WITHER = id("wither");
 
     private static ResourceLocation id(String path) { return new ResourceLocation(DeathsAreItems.MOD_ID, path); }
     public static List<ResourceLocation> ids() { return List.copyOf(DEFINITIONS.keySet()); }
@@ -24,6 +25,21 @@ public final class DeathRewards {
     private DeathRewards() {}
 
     public static void bootstrap() {
+        register(new RewardDefinition(WITHER, source -> source.is(DamageTypes.WITHER), List.of(
+                preview("withering_staff"), reward(ModItems.SOUL_STORM), preview("bone_hand"))));
+        register(new RewardDefinition(PEARL, source -> source.is(co.blumeplugins.deathsareitems.ability.DeathDamage.PEARL), List.of(
+                preview("ender_pearl_necklace"), preview("ender_eyeballs"), reward(ModItems.ENDER_PEARL_SHIELD))));
+        register(new RewardDefinition(CRAM, source -> source.is(DamageTypes.CRAMMING), List.of(
+                preview("crammer_error"), reward(ModItems.ENTITY_CRAMMER), preview("squish_squash"))));
+        register(new RewardDefinition(CACTUS, source -> source.is(DamageTypes.CACTUS), List.of(
+                reward(ModItems.CACTUS_CHESTPLATE), preview("thorn_in_your_side"), preview("rusty_cactus"))));
+        register(new RewardDefinition(TNT, source -> (source.is(DamageTypes.EXPLOSION) || source.is(DamageTypes.PLAYER_EXPLOSION))
+                && source.getDirectEntity() instanceof net.minecraft.world.entity.item.PrimedTnt, List.of(
+                reward(ModItems.TNT_CANNON), preview("tasty_tnt"), preview("blast_from_the_past"))));
+        register(new RewardDefinition(LAVA, source -> source.is(DamageTypes.LAVA), List.of(
+                preview("firewall"), reward(ModItems.FIRE_PANTS), preview("molten_socks"))));
+        register(new RewardDefinition(BED, source -> source.is(DamageTypes.BAD_RESPAWN_POINT), List.of(
+                preview("fluffy_pillow"), reward(ModItems.BEDROCK), preview("explosive_blankie"))));
         register(new RewardDefinition(FALL, source -> source.is(DamageTypes.FALL), List.of(
                 RewardOption.reward("item.deathsareitems.fall_damage_boots", () -> new ItemStack(ModItems.FALL_DAMAGE_BOOTS.get())),
                 RewardOption.preview("reward.deathsareitems.long_trip"),
@@ -52,6 +68,12 @@ public final class DeathRewards {
         if (DEFINITIONS.putIfAbsent(definition.id(), definition) != null) {
             throw new IllegalArgumentException("Duplicate death reward " + definition.id());
         }
+    }
+
+    public static Optional<RewardDefinition> forDeath(net.minecraft.world.entity.LivingEntity victim, DamageSource source) {
+        if (source.is(DamageTypes.FALL) && co.blumeplugins.deathsareitems.ability.PearlAbility.isPearlImpact(victim))
+            return Optional.ofNullable(get(PEARL));
+        return forDeath(source);
     }
 
     public static Optional<RewardDefinition> forDeath(DamageSource source) {

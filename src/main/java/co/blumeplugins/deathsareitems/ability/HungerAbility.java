@@ -24,7 +24,7 @@ public final class HungerAbility {
     private static final String OLD_TEAM = "deathsareitems.HungerOldTeam", GLOW = "deathsareitems.HungerGlow";
     private static final Map<UUID, Drain> DRAINS = new HashMap<>();
     public static float scale(Entity entity) {
-        return entity.getPersistentData().contains(SCALE) ? Math.max(.25F, entity.getPersistentData().getFloat(SCALE)) : 1F;
+        return entity.getPersistentData().contains(SCALE) ? Math.max(.01F, entity.getPersistentData().getFloat(SCALE)) : 1F;
     }
     public static boolean start(ServerPlayer owner, LivingEntity mob) {
         if (DRAINS.containsKey(mob.getUUID()) || DRAINS.size() >= 64) return false;

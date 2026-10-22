@@ -21,6 +21,13 @@ public class ModItemModelProvider extends ItemModelProvider {
         placeholder("mob_pickaxe", "iron_pickaxe", true);
         placeholder("hunger_staff", "blaze_rod", true);
         withExistingParent("swarm_of_anvils", mcLoc("block/anvil"));
+        placeholder("entity_crammer", "slime_ball", false);
+        placeholder("cactus_chestplate", "iron_chestplate", false);
+        placeholder("fire_pants", "iron_leggings", false);
+        placeholder("tnt_cannon", "crossbow_standby", true);
+        placeholder("ender_pearl_shield", "ender_pearl", false);
+        withExistingParent("bedrock", mcLoc("item/red_bed"));
+        withExistingParent("soul_storm", modLoc("item/soul_storm_base"));
     }
 
     private void placeholder(String name, String texture, boolean handheld) {

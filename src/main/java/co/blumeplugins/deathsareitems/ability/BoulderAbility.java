@@ -23,6 +23,7 @@ public final class BoulderAbility {
     @SubscribeEvent public static void suffocation(net.minecraftforge.event.entity.living.LivingHurtEvent event) {
         if (TRAPS.containsKey(event.getEntity().getUUID()) && event.getSource().is(net.minecraft.world.damagesource.DamageTypes.IN_WALL)) event.setCanceled(true);
     }
+    public static boolean busy(Mob mob) { return TRAPS.containsKey(mob.getUUID()); }
     public static boolean mark(ServerPlayer owner, BlockPos center) {
         if (!WorldActions.breakable(owner, center) || MARKS.stream().anyMatch(m -> m.level == owner.level() && m.center.equals(center))) return false;
         List<Cell> cells = new ArrayList<>();
@@ -35,7 +36,7 @@ public final class BoulderAbility {
         return true;
     }
     public static boolean trap(ServerPlayer owner, LivingEntity target) {
-        if (!(target instanceof Mob mob) || TRAPS.containsKey(target.getUUID())) return false;
+        if (!(target instanceof Mob mob) || MobRestraints.busy(mob)) return false;
         List<Cell> cells = new ArrayList<>();
         BlockState sediment = sediment(owner.serverLevel());
         var box = target.getBoundingBox().deflate(.02);

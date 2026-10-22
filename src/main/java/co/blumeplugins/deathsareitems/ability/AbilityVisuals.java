@@ -55,6 +55,22 @@ public final class AbilityVisuals {
         visual.destination = impact; visual.flight = flight;
         return display;
     }
+    public static Display.BlockDisplay spike(ServerLevel level, Vec3 start, Vec3 end, int flight, int life) {
+        Display.BlockDisplay display = new Display.BlockDisplay(EntityType.BLOCK_DISPLAY, level);
+        CompoundTag tag = base(1F, -1);
+        tag.put("block_state", NbtUtils.writeBlockState(co.blumeplugins.deathsareitems.block.ModBlocks.CACTUS_SPIKE.get().defaultBlockState()));
+        org.joml.Quaternionf q = new org.joml.Quaternionf().rotationTo(new org.joml.Vector3f(0, 1, 0),
+                new org.joml.Vector3f((float)(end.x-start.x), (float)(end.y-start.y), (float)(end.z-start.z)).normalize());
+        CompoundTag transform = tag.getCompound("transformation");
+        ListTag rotation = new ListTag(); for (float f : new float[]{q.x,q.y,q.z,q.w}) rotation.add(FloatTag.valueOf(f));
+        transform.put("left_rotation", rotation);
+        org.joml.Vector3f offset = q.transform(new org.joml.Vector3f(-.5F, -1.9F, -.5F));
+        ListTag translation = new ListTag(); for (float f : new float[]{offset.x,offset.y,offset.z}) translation.add(FloatTag.valueOf(f));
+        transform.put("translation", translation);
+        display.load(tag); spawn(level, display, start, life);
+        Visual visual = ACTIVE.get(ACTIVE.size() - 1); visual.destination = end; visual.flight = flight;
+        return display;
+    }
     private static CompoundTag base(float scale, int color) {
         CompoundTag tag = new CompoundTag();
         CompoundTag transform = new CompoundTag();

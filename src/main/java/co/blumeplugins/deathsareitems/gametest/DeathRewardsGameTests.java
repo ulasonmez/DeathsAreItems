@@ -166,7 +166,7 @@ public final class DeathRewardsGameTests {
         ServerPlayer player = player(helper);
         RewardSavedData data = RewardSavedData.get(helper.getLevel().getServer());
         try {
-            for (DamageSource source : List.of(player.damageSources().generic(), player.damageSources().lava(),
+            for (DamageSource source : List.of(player.damageSources().generic(), player.damageSources().lightningBolt(),
                     player.damageSources().inFire(), player.damageSources().flyIntoWall(),
                     player.damageSources().magic(), player.damageSources().stalagmite())) {
                 RewardManager.offer(player, DeathRewards.get(DeathRewards.FALL));

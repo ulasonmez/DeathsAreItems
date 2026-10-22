@@ -21,6 +21,11 @@ public class ModBlocks {
     public static final RegistryObject<Block> FRAGILE_GRAVEL = BLOCKS.register("fragile_gravel", () ->
             new co.blumeplugins.deathsareitems.block.custom.FragileSedimentBlock(BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.GRAVEL)));
 
+    public static final RegistryObject<Block> BEDROCK = BLOCKS.register("bedrock", co.blumeplugins.deathsareitems.block.custom.BedrockBedBlock::new);
+
+    public static final RegistryObject<Block> CACTUS_SPIKE = BLOCKS.register("cactus_spike", () -> new Block(
+            BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.CACTUS).noCollission().noLootTable()));
+
     // Example block registration. Use registerBlock so a BlockItem is created automatically.
     // public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block",
     //         () -> new Block(BlockBehaviour.Properties.of().strength(2f)));

@@ -16,8 +16,17 @@ public final class ClientModEvents {
     @SubscribeEvent
     public static void renderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.REWARD_CHEST.get(), RewardChestRenderer::new);
+        event.registerEntityRenderer(ModEntities.CANNON_TNT.get(), net.minecraft.client.renderer.entity.TntRenderer::new);
+        event.registerEntityRenderer(ModEntities.CHAOS_PEARL.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);
         event.registerEntityRenderer(ModEntities.LAUNCHED_BLOCK.get(), LaunchedBlockRenderer::new);
         event.registerEntityRenderer(ModEntities.MASK_TRIDENT.get(), co.blumeplugins.deathsareitems.entity.client.MaskTridentRenderer::new);
+    }
+
+    @SubscribeEvent
+    public static void shaders(net.minecraftforge.client.event.RegisterShadersEvent event) throws java.io.IOException {
+        event.registerShader(new net.minecraft.client.renderer.ShaderInstance(event.getResourceProvider(),
+                new net.minecraft.resources.ResourceLocation(DeathsAreItems.MOD_ID, "soul_monochrome"),
+                com.mojang.blaze3d.vertex.DefaultVertexFormat.PARTICLE), SoulParticleRenderType::setShader);
     }
 
     @SubscribeEvent
@@ -27,5 +36,9 @@ public final class ClientModEvents {
         event.registerSpriteSet(ModParticles.GREEN_SMOKE.get(), sprites -> new RewardSmokeParticle.Provider(sprites, false));
         event.registerSpriteSet(ModParticles.HUNGER_MOTE.get(), HungerMoteParticle.Provider::new);
         event.registerSpriteSet(ModParticles.DROWNING_BUBBLE.get(), DrowningBubbleParticle.Provider::new);
+        event.registerSpriteSet(ModParticles.SOUL_FLAME.get(), sprites -> new SoulStormParticle.Provider(sprites, 0));
+        event.registerSpriteSet(ModParticles.WHITE_SOUL.get(), sprites -> new SoulStormParticle.Provider(sprites, 1));
+        event.registerSpriteSet(ModParticles.SOUL_WAVE.get(), sprites -> new SoulStormParticle.Provider(sprites, 3));
+        event.registerSpriteSet(ModParticles.SOUL_SMOKE.get(), sprites -> new SoulStormParticle.Provider(sprites, 2));
     }
 }
