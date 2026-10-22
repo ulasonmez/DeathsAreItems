@@ -14,6 +14,17 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = DeathsAreItems.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD, value = Dist.CLIENT)
 public final class ClientModEvents {
     @SubscribeEvent
+    public static void additionalModels(net.minecraftforge.client.event.ModelEvent.RegisterAdditional event) {
+        event.register(ReferenceItemRenderer.DRAWN_BOW);
+        event.register(ReferenceItemRenderer.PICKAXE_HANDLE);
+    }
+
+    @SubscribeEvent
+    public static void bakedModels(net.minecraftforge.client.event.ModelEvent.BakingCompleted event) {
+        ReferenceItemRenderer.clearModels();
+    }
+
+    @SubscribeEvent
     public static void renderers(EntityRenderersEvent.RegisterRenderers event) {
         event.registerEntityRenderer(ModEntities.REWARD_CHEST.get(), RewardChestRenderer::new);
         event.registerEntityRenderer(ModEntities.CANNON_TNT.get(), net.minecraft.client.renderer.entity.TntRenderer::new);

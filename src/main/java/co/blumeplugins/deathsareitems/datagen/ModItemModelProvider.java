@@ -1,7 +1,6 @@
 package co.blumeplugins.deathsareitems.datagen;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
-import co.blumeplugins.deathsareitems.item.ModItems;
 import net.minecraft.data.PackOutput;
 import net.minecraftforge.client.model.generators.ItemModelProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
@@ -13,12 +12,9 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        withExistingParent(ModItems.FALL_DAMAGE_BOOTS.getId().getPath(), mcLoc("item/generated"))
-                .texture("layer0", mcLoc("item/golden_boots"));
-        placeholder("drowning_mask", "turtle_helmet", false);
-        placeholder("suffocation_boulder", "flint", false);
-        placeholder("skeleton_bow", "bow", false);
-        placeholder("mob_pickaxe", "iron_pickaxe", true);
+        for (String item : new String[]{"fall_damage_boots", "drowning_mask", "suffocation_boulder", "skeleton_bow", "mob_pickaxe"}) {
+            withExistingParent(item, modLoc("item/" + item + "_base"));
+        }
         placeholder("hunger_staff", "blaze_rod", true);
         withExistingParent("swarm_of_anvils", mcLoc("block/anvil"));
         placeholder("entity_crammer", "slime_ball", false);

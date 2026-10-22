@@ -80,7 +80,7 @@ public final class ThirdDeathGameTests {
             var click=new net.minecraftforge.event.entity.player.PlayerInteractEvent.EntityInteract(p,InteractionHand.MAIN_HAND,villager);
             net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(click);
             h.assertTrue(click.isCanceled() && click.getCancellationResult().consumesAction(),"Crammer consumes the click before villager trading");
-            h.assertTrue(villager.isNoGravity() && h.getLevel().getBlockState(villager.blockPosition().west()).is(Blocks.GLASS_PANE),"Villager really enters the cage");
+            h.assertTrue(co.blumeplugins.deathsareitems.ability.MobRestraints.busy(villager) && h.getLevel().getBlockState(villager.blockPosition().west()).is(Blocks.GLASS_PANE),"Villager really enters the cage");
             h.assertTrue(villager.getTradingPlayer()==null,"Cramming never opens a villager trade"); h.succeed();
         } finally { leave(p); }
     }

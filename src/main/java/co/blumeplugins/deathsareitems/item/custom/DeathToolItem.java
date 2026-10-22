@@ -12,12 +12,12 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import java.util.List;
 
-public final class DeathToolItem extends Item {
+public class DeathToolItem extends Item {
     public enum Kind { BOULDER, BOW, STAFF, ANVILS }
     private final Kind kind;
     public DeathToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)); this.kind = kind; }
     public Kind kind() { return kind; }
-    @Override public boolean isFoil(ItemStack stack) { return true; }
+    @Override public boolean isFoil(ItemStack stack) { return kind != Kind.BOULDER && kind != Kind.BOW; }
     @Override public int getUseDuration(ItemStack stack) { return kind == Kind.STAFF ? 100 : 72000; }
     @Override public UseAnim getUseAnimation(ItemStack stack) { return kind == Kind.STAFF ? UseAnim.BOW : UseAnim.NONE; }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {

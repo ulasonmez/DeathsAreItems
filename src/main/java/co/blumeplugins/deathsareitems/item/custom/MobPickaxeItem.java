@@ -21,7 +21,11 @@ public final class MobPickaxeItem extends PickaxeItem {
         return state.is(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE) ? Tiers.IRON.getSpeed() : 1F;
     }
     @Override public boolean isDamageable(ItemStack stack) { return false; }
-    @Override public boolean isFoil(ItemStack stack) { return true; }
+    @Override public boolean isFoil(ItemStack stack) { return false; }
+    @Override public void initializeClient(java.util.function.Consumer<net.minecraftforge.client.extensions.common.IClientItemExtensions> consumer) {
+        consumer.accept(new co.blumeplugins.deathsareitems.client.ReferenceItemExtensions(
+                co.blumeplugins.deathsareitems.client.ReferenceItemRenderer.Kind.MOB_PICKAXE));
+    }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (player instanceof ServerPlayer server) {

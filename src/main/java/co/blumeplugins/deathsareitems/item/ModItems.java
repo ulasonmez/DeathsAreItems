@@ -19,7 +19,7 @@ public class ModItems {
             FallDamageBootsItem::new);
     public static final RegistryObject<Item> DROWNING_MASK = ITEMS.register("drowning_mask", DrowningMaskItem::new);
     public static final RegistryObject<Item> SUFFOCATION_BOULDER = ITEMS.register("suffocation_boulder", () -> new DeathToolItem(DeathToolItem.Kind.BOULDER));
-    public static final RegistryObject<Item> SKELETON_BOW = ITEMS.register("skeleton_bow", () -> new DeathToolItem(DeathToolItem.Kind.BOW));
+    public static final RegistryObject<Item> SKELETON_BOW = ITEMS.register("skeleton_bow", co.blumeplugins.deathsareitems.item.custom.SkeletonBowItem::new);
     public static final RegistryObject<Item> MOB_PICKAXE = ITEMS.register("mob_pickaxe", MobPickaxeItem::new);
     public static final RegistryObject<Item> HUNGER_STAFF = ITEMS.register("hunger_staff", () -> new DeathToolItem(DeathToolItem.Kind.STAFF));
     public static final RegistryObject<Item> SWARM_OF_ANVILS = ITEMS.register("swarm_of_anvils", () -> new DeathToolItem(DeathToolItem.Kind.ANVILS));

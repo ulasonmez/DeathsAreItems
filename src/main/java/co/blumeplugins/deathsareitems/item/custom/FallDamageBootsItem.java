@@ -17,7 +17,14 @@ public final class FallDamageBootsItem extends ArmorItem {
 
     @Override
     public boolean isFoil(ItemStack stack) {
-        return true;
+        return false;
+    }
+
+    @Override
+    public String getArmorTexture(ItemStack stack, net.minecraft.world.entity.Entity entity,
+                                  net.minecraft.world.entity.EquipmentSlot slot, String type) {
+        return co.blumeplugins.deathsareitems.DeathsAreItems.MOD_ID
+                + ":textures/models/armor/fall_damage_boots_layer_1.png";
     }
 
     @Override

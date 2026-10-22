@@ -105,23 +105,52 @@ public final class CrammerAbility {
             }
             if (c.cells.stream().anyMatch(pos -> !level.getBlockState(pos).is(Blocks.GLASS_PANE) && !level.getBlockState(pos).is(Blocks.GLASS))
                     || c.mobs.stream().anyMatch(m -> !m.isAlive() || m.level() != level)) { burst(c); continue; }
-            for (Mob mob : c.mobs) MobRestraints.freeze(mob, c.anchor);
+            for (Mob mob : c.mobs) contain(mob, c.anchor);
             if (c.age % 5 == 0) {
                 CompoundTag copy = c.template.copy();
                 Mob clone = c.original.getType().create(level) instanceof Mob m ? m : null;
                 if (clone == null) { burst(c); continue; }
                 copy.remove("UUID"); copy.remove("Passengers"); copy.remove("Leash"); copy.remove("DeathTime"); copy.remove("HurtTime");
+                copy.remove("NoAI");
                 clone.load(copy); clone.setUUID(UUID.randomUUID()); clone.setHealth(clone.getMaxHealth());
-                clone.moveTo(c.anchor.x, c.anchor.y, c.anchor.z, c.original.getYRot(), 0);
+                clone.moveTo(c.anchor.x + (level.random.nextDouble() - .5) * .2, c.anchor.y, c.anchor.z + (level.random.nextDouble() - .5) * .2, level.random.nextFloat() * 360F, 0);
                 clone.setPersistenceRequired(); clone.getPersistentData().putBoolean("deathsareitems.CramClone", true);
                 if (level.addFreshEntity(clone)) c.add(clone); else { clone.discard(); burst(c); continue; }
                 level.sendParticles(ParticleTypes.POOF, c.anchor.x, c.anchor.y + 1, c.anchor.z, 8, .2, .4, .2, .02);
-                level.playSound(null, BlockPos.containing(c.anchor), SoundEvents.SLIME_SQUISH_SMALL, SoundSource.HOSTILE, .55F, Math.max(.5F, 1.6F - c.mobs.size() * .025F));
                 int limit = level.getGameRules().getInt(GameRules.RULE_MAX_ENTITY_CRAMMING);
                 // Still resolves when cramming is disabled or set to an excessive value.
                 if (c.mobs.size() > Math.min(24, limit <= 0 ? 24 : limit)) burst(c);
             }
         }
+    }
+    private static void contain(Mob mob, Vec3 anchor) {
+        double maxRadius = 0.45;
+        double dx = mob.getX() - anchor.x;
+        double dz = mob.getZ() - anchor.z;
+        double clampedX = mob.getX();
+        double clampedZ = mob.getZ();
+        double vx = mob.getDeltaMovement().x;
+        double vz = mob.getDeltaMovement().z;
+
+        if (Math.abs(dx) > maxRadius) {
+            clampedX = anchor.x + Math.signum(dx) * maxRadius;
+            if (Math.signum(dx) == Math.signum(vx)) vx = -vx * 0.5;
+        }
+        if (Math.abs(dz) > maxRadius) {
+            clampedZ = anchor.z + Math.signum(dz) * maxRadius;
+            if (Math.signum(dz) == Math.signum(vz)) vz = -vz * 0.5;
+        }
+
+        double minY = anchor.y;
+        double maxY = anchor.y + 1.2;
+        double clampedY = Math.max(minY, Math.min(maxY, mob.getY()));
+        double vy = mob.getDeltaMovement().y;
+        if (mob.getY() > maxY && vy > 0) vy = 0;
+
+        if (clampedX != mob.getX() || clampedY != mob.getY() || clampedZ != mob.getZ()) {
+            mob.setPos(clampedX, clampedY, clampedZ);
+        }
+        mob.setDeltaMovement(vx, vy, vz);
     }
     @SubscribeEvent public static void stop(ServerStoppedEvent event) { CAGES.forEach(Cage::cleanup); CAGES.clear(); }
     private static final class Cage {
@@ -133,7 +162,7 @@ public final class CrammerAbility {
             this.anchor = anchor; this.cells = cells; this.group = group;
             this.template = original.saveWithoutId(new CompoundTag());
         }
-        void add(Mob mob) { mobs.add(mob); MobRestraints.acquire(mob, group); MobRestraints.freeze(mob, anchor); }
+        void add(Mob mob) { mobs.add(mob); MobRestraints.acquire(mob, group, false); }
         void cleanup() { TemporaryTerrain.finish(level, group); mobs.forEach(m -> MobRestraints.release(m, group)); }
     }
 }

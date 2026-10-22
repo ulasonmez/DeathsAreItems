@@ -18,9 +18,17 @@ public final class MobRestraints {
                 || BoulderAbility.busy(mob);
     }
     public static void acquire(Mob mob, String owner) {
+        acquire(mob, owner, true);
+    }
+    public static void acquire(Mob mob, String owner, boolean immobilize) {
         var tag = mob.getPersistentData(); tag.putString(KEY, owner);
         tag.putBoolean(KEY + "AI", mob.isNoAi()); tag.putBoolean(KEY + "Gravity", mob.isNoGravity());
-        mob.stopRiding(); mob.ejectPassengers(); mob.setNoAi(true); mob.setNoGravity(true);
+        mob.stopRiding(); mob.ejectPassengers();
+        if (immobilize) {
+            mob.setNoAi(true); mob.setNoGravity(true);
+        } else {
+            mob.setNoAi(false); mob.setNoGravity(false);
+        }
     }
     public static void freeze(Mob mob, Vec3 anchor) {
         ANCHORS.put(mob.getUUID(), anchor);
