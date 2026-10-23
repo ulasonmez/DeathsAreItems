@@ -1,0 +1,6923 @@
+{
+  "loader": "forge:composite",
+  "textures": {
+    "skin": "deathsareitems:item/soul_storm_skin",
+    "eye": "deathsareitems:item/soul_storm_eye",
+    "particle": "deathsareitems:item/soul_storm_skin"
+  },
+  "children": {
+    "head": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "elements": [
+        {
+          "name": "short_underhead_join_north_0",
+          "from": [
+            5,
+            14,
+            4.5
+          ],
+          "to": [
+            11,
+            15,
+            10
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                1.0,
+                11.0,
+                2.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "short_underhead_join_south_0",
+          "from": [
+            5,
+            14,
+            4.5
+          ],
+          "to": [
+            11,
+            15,
+            10
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                1.0,
+                11.0,
+                2.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "short_underhead_join_west_0",
+          "from": [
+            5,
+            14,
+            4.5
+          ],
+          "to": [
+            11,
+            15,
+            10
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                1.0,
+                11.5,
+                2.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "short_underhead_join_east_0",
+          "from": [
+            5,
+            14,
+            4.5
+          ],
+          "to": [
+            11,
+            15,
+            10
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                1.0,
+                10.0,
+                2.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "short_underhead_join_down_0",
+          "from": [
+            5,
+            14,
+            4.5
+          ],
+          "to": [
+            11,
+            15.5,
+            10
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                4.5,
+                11.0,
+                10.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_north_0",
+          "from": [
+            2.5,
+            15,
+            3.5
+          ],
+          "to": [
+            13.5,
+            18,
+            11
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                2.0,
+                13.5,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_0",
+          "from": [
+            4.5,
+            16,
+            3.5
+          ],
+          "to": [
+            6,
+            18,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                2.0,
+                6.0,
+                4.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_1",
+          "from": [
+            7,
+            16,
+            3.5
+          ],
+          "to": [
+            8.5,
+            18,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                2.0,
+                8.5,
+                4.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_2",
+          "from": [
+            9.5,
+            16,
+            3.5
+          ],
+          "to": [
+            11,
+            18,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.5,
+                2.0,
+                11.0,
+                4.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_3",
+          "from": [
+            12,
+            15,
+            3.5
+          ],
+          "to": [
+            13.5,
+            16,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                12.0,
+                4.0,
+                13.5,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_4",
+          "from": [
+            2.5,
+            15,
+            3.5
+          ],
+          "to": [
+            3.5,
+            16,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                4.0,
+                3.5,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_south_5",
+          "from": [
+            3.5,
+            15,
+            3.5
+          ],
+          "to": [
+            4,
+            15.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                3.5,
+                4.5,
+                4.0,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_west_0",
+          "from": [
+            2.5,
+            15,
+            3.5
+          ],
+          "to": [
+            13.5,
+            16,
+            11
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                4.0,
+                12.5,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_west_1",
+          "from": [
+            2.5,
+            16,
+            3.5
+          ],
+          "to": [
+            13.5,
+            18,
+            10.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                2.0,
+                12.0,
+                4.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_east_0",
+          "from": [
+            2.5,
+            15,
+            3.5
+          ],
+          "to": [
+            13.5,
+            16,
+            11
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                3.5,
+                4.0,
+                11.0,
+                5.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_east_1",
+          "from": [
+            2.5,
+            16,
+            3.5
+          ],
+          "to": [
+            13.5,
+            18,
+            10.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                2.0,
+                11.0,
+                4.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_0",
+          "from": [
+            2.5,
+            15,
+            3.5
+          ],
+          "to": [
+            4,
+            20,
+            11
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                3.5,
+                4.0,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_1",
+          "from": [
+            4,
+            15,
+            3.5
+          ],
+          "to": [
+            5,
+            20,
+            10.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                4.0,
+                5.0,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_2",
+          "from": [
+            12,
+            15,
+            3.5
+          ],
+          "to": [
+            13.5,
+            20,
+            11
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                12.0,
+                3.5,
+                13.5,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_3",
+          "from": [
+            11,
+            15,
+            3.5
+          ],
+          "to": [
+            12,
+            20,
+            10.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                11.0,
+                4.0,
+                12.0,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_4",
+          "from": [
+            5,
+            15,
+            3.5
+          ],
+          "to": [
+            11,
+            20,
+            4.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                10.0,
+                11.0,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "lower_head_down_5",
+          "from": [
+            5,
+            15,
+            10
+          ],
+          "to": [
+            11,
+            20,
+            10.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                4.0,
+                11.0,
+                4.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_north_0",
+          "from": [
+            2,
+            18,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            11
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                7.5,
+                14.0,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_0",
+          "from": [
+            4.5,
+            18,
+            3
+          ],
+          "to": [
+            5.75,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                7.5,
+                5.75,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_1",
+          "from": [
+            5.75,
+            18,
+            3
+          ],
+          "to": [
+            6,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                12.0,
+                6.0,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_2",
+          "from": [
+            5.75,
+            24,
+            3
+          ],
+          "to": [
+            6,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                7.5,
+                6.0,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_3",
+          "from": [
+            7,
+            18,
+            3
+          ],
+          "to": [
+            8.5,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                12.0,
+                8.5,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_4",
+          "from": [
+            7,
+            24,
+            3
+          ],
+          "to": [
+            8.5,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                7.5,
+                8.5,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_5",
+          "from": [
+            9.5,
+            18,
+            3
+          ],
+          "to": [
+            9.75,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.5,
+                12.0,
+                9.75,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_6",
+          "from": [
+            9.5,
+            24,
+            3
+          ],
+          "to": [
+            9.75,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.5,
+                7.5,
+                9.75,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_7",
+          "from": [
+            10.25,
+            18,
+            3
+          ],
+          "to": [
+            11,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                10.25,
+                7.5,
+                11.0,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_8",
+          "from": [
+            9.75,
+            18,
+            3
+          ],
+          "to": [
+            10.25,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.75,
+                12.0,
+                10.25,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_9",
+          "from": [
+            9.75,
+            24,
+            3
+          ],
+          "to": [
+            10.25,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.75,
+                7.5,
+                10.25,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_10",
+          "from": [
+            11,
+            18.5,
+            3
+          ],
+          "to": [
+            11.5,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.0,
+                7.5,
+                11.5,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_11",
+          "from": [
+            8.5,
+            18.5,
+            3
+          ],
+          "to": [
+            9.5,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                8.5,
+                12.0,
+                9.5,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_12",
+          "from": [
+            8.5,
+            24,
+            3
+          ],
+          "to": [
+            9.5,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                8.5,
+                7.5,
+                9.5,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_13",
+          "from": [
+            6.25,
+            18.5,
+            3
+          ],
+          "to": [
+            7,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                12.0,
+                7.0,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_14",
+          "from": [
+            6.25,
+            24,
+            3
+          ],
+          "to": [
+            7,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                7.5,
+                7.0,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_15",
+          "from": [
+            6,
+            18.5,
+            3
+          ],
+          "to": [
+            6.25,
+            20,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                12.0,
+                6.25,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_16",
+          "from": [
+            6,
+            24,
+            3
+          ],
+          "to": [
+            6.25,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                7.5,
+                6.25,
+                8.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_17",
+          "from": [
+            11.5,
+            19,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                7.5,
+                14.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_south_18",
+          "from": [
+            2,
+            19,
+            3
+          ],
+          "to": [
+            4.5,
+            24.5,
+            11
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                7.5,
+                4.5,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_west_0",
+          "from": [
+            2,
+            19,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            11
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                7.5,
+                13.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_west_1",
+          "from": [
+            2,
+            18,
+            3
+          ],
+          "to": [
+            14,
+            19,
+            10.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                13.0,
+                12.5,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_east_0",
+          "from": [
+            2,
+            19,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            11
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                7.5,
+                11.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_east_1",
+          "from": [
+            2,
+            18,
+            3
+          ],
+          "to": [
+            14,
+            19,
+            10.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                3.5,
+                13.0,
+                11.0,
+                14.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_up_0",
+          "from": [
+            2,
+            18,
+            3
+          ],
+          "to": [
+            3,
+            24.5,
+            11
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                5.0,
+                3.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_up_1",
+          "from": [
+            13,
+            18,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            11
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                13.0,
+                5.0,
+                14.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_up_2",
+          "from": [
+            3,
+            18,
+            3
+          ],
+          "to": [
+            13,
+            24.5,
+            3.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                5.0,
+                13.0,
+                5.75
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_up_3",
+          "from": [
+            3,
+            18,
+            10.25
+          ],
+          "to": [
+            13,
+            24.5,
+            11
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                12.25,
+                13.0,
+                13.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_down_0",
+          "from": [
+            2,
+            18,
+            3
+          ],
+          "to": [
+            2.5,
+            24.5,
+            10.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                3.5,
+                2.5,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_down_1",
+          "from": [
+            13.5,
+            18,
+            3
+          ],
+          "to": [
+            14,
+            24.5,
+            10.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                13.5,
+                3.5,
+                14.0,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "head_down_2",
+          "from": [
+            2.5,
+            18,
+            3
+          ],
+          "to": [
+            13.5,
+            24.5,
+            3.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                10.5,
+                13.5,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_north_0",
+          "from": [
+            3,
+            24.5,
+            3.75
+          ],
+          "to": [
+            13,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                6.5,
+                13.0,
+                7.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_south_0",
+          "from": [
+            3,
+            24.5,
+            3.75
+          ],
+          "to": [
+            13,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                6.5,
+                13.0,
+                7.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_west_0",
+          "from": [
+            3,
+            24.5,
+            3.75
+          ],
+          "to": [
+            13,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                6.5,
+                12.25,
+                7.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_east_0",
+          "from": [
+            3,
+            24.5,
+            3.75
+          ],
+          "to": [
+            13,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                3.75,
+                6.5,
+                10.25,
+                7.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_up_0",
+          "from": [
+            3,
+            24.5,
+            3.75
+          ],
+          "to": [
+            3.25,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.0,
+                5.75,
+                3.25,
+                12.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_up_1",
+          "from": [
+            12.75,
+            24.5,
+            3.75
+          ],
+          "to": [
+            13,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                12.75,
+                5.75,
+                13.0,
+                12.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_up_2",
+          "from": [
+            3.25,
+            24.5,
+            3.75
+          ],
+          "to": [
+            12.75,
+            25.5,
+            4.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.25,
+                5.75,
+                12.75,
+                6.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_up_3",
+          "from": [
+            3.25,
+            24.5,
+            9.5
+          ],
+          "to": [
+            12.75,
+            25.5,
+            10.25
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.25,
+                11.5,
+                12.75,
+                12.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_top_north_0",
+          "from": [
+            3.25,
+            25.5,
+            4.5
+          ],
+          "to": [
+            12.75,
+            26,
+            9.5
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                3.25,
+                6.0,
+                12.75,
+                6.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_top_south_0",
+          "from": [
+            3.25,
+            25.5,
+            4.5
+          ],
+          "to": [
+            12.75,
+            26,
+            9.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                3.25,
+                6.0,
+                12.75,
+                6.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_top_west_0",
+          "from": [
+            3.25,
+            25.5,
+            4.5
+          ],
+          "to": [
+            12.75,
+            26,
+            9.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                6.5,
+                6.0,
+                11.5,
+                6.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_top_east_0",
+          "from": [
+            3.25,
+            25.5,
+            4.5
+          ],
+          "to": [
+            12.75,
+            26,
+            9.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                6.0,
+                9.5,
+                6.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "crown_top_up_0",
+          "from": [
+            3.25,
+            25.5,
+            4.5
+          ],
+          "to": [
+            12.75,
+            26,
+            9.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.25,
+                6.5,
+                12.75,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_north_0",
+          "from": [
+            2,
+            16,
+            10.5
+          ],
+          "to": [
+            2.5,
+            18,
+            11.5
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                14.0,
+                4.5,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_south_0",
+          "from": [
+            2,
+            16,
+            10.5
+          ],
+          "to": [
+            3.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                13.0,
+                13.0,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_south_1",
+          "from": [
+            3.5,
+            18.5,
+            10.5
+          ],
+          "to": [
+            4.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                13.0,
+                13.0,
+                14.0,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_west_0",
+          "from": [
+            2,
+            16,
+            10.5
+          ],
+          "to": [
+            4.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                13.0,
+                5.5,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_east_0",
+          "from": [
+            2,
+            18.5,
+            11
+          ],
+          "to": [
+            4.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                13.0,
+                11.0,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_up_0",
+          "from": [
+            2,
+            16,
+            11
+          ],
+          "to": [
+            2.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                5.0,
+                2.5,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_up_1",
+          "from": [
+            2.5,
+            16,
+            11
+          ],
+          "to": [
+            4.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                5.0,
+                4.5,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_down_0",
+          "from": [
+            2,
+            16,
+            10.5
+          ],
+          "to": [
+            2.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                10.5,
+                2.5,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "left_cheek_down_1",
+          "from": [
+            2.5,
+            16,
+            11
+          ],
+          "to": [
+            3.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                10.5,
+                3.5,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_north_0",
+          "from": [
+            13.5,
+            16,
+            10.5
+          ],
+          "to": [
+            14,
+            18,
+            11.5
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                14.0,
+                12.0,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_south_0",
+          "from": [
+            12,
+            16,
+            10.5
+          ],
+          "to": [
+            14,
+            19,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.5,
+                13.0,
+                4.5,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_south_1",
+          "from": [
+            11.5,
+            18.5,
+            10.5
+          ],
+          "to": [
+            12,
+            19,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.0,
+                13.0,
+                2.5,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_west_0",
+          "from": [
+            11.5,
+            18.5,
+            11
+          ],
+          "to": [
+            14,
+            19,
+            11.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                13.0,
+                5.5,
+                13.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_east_0",
+          "from": [
+            11.5,
+            16,
+            10.5
+          ],
+          "to": [
+            14,
+            19,
+            11.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                13.0,
+                11.5,
+                16.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_up_0",
+          "from": [
+            13.5,
+            16,
+            11
+          ],
+          "to": [
+            14,
+            19,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                13.5,
+                5.0,
+                14.0,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_up_1",
+          "from": [
+            11.5,
+            16,
+            11
+          ],
+          "to": [
+            13.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                5.0,
+                13.5,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_down_0",
+          "from": [
+            13.5,
+            16,
+            10.5
+          ],
+          "to": [
+            14,
+            19,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                13.5,
+                10.5,
+                14.0,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "right_cheek_down_1",
+          "from": [
+            12,
+            16,
+            11
+          ],
+          "to": [
+            13.5,
+            19,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                12.0,
+                10.5,
+                13.5,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_north_0",
+          "from": [
+            4,
+            14.5,
+            10.5
+          ],
+          "to": [
+            12,
+            15,
+            11.75
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                1.0,
+                12.0,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_0",
+          "from": [
+            4.5,
+            14.5,
+            10.5
+          ],
+          "to": [
+            6,
+            16,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                0.0,
+                6.0,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_1",
+          "from": [
+            7,
+            14.5,
+            10.5
+          ],
+          "to": [
+            8.5,
+            16,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                0.0,
+                8.5,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_2",
+          "from": [
+            9.5,
+            14.5,
+            10.5
+          ],
+          "to": [
+            11,
+            16,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.5,
+                0.0,
+                11.0,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_3",
+          "from": [
+            11,
+            14.5,
+            10.5
+          ],
+          "to": [
+            12,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.0,
+                0.5,
+                12.0,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_4",
+          "from": [
+            8.5,
+            14.5,
+            10.5
+          ],
+          "to": [
+            9.5,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                8.5,
+                0.5,
+                9.5,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_5",
+          "from": [
+            6,
+            14.5,
+            10.5
+          ],
+          "to": [
+            7,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                0.5,
+                7.0,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_south_6",
+          "from": [
+            4,
+            14.5,
+            10.5
+          ],
+          "to": [
+            4.5,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                0.5,
+                4.5,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_west_0",
+          "from": [
+            4,
+            14.5,
+            10.5
+          ],
+          "to": [
+            12,
+            15,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.25,
+                1.0,
+                5.5,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_west_1",
+          "from": [
+            4,
+            15,
+            11
+          ],
+          "to": [
+            12,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.75,
+                0.5,
+                5.5,
+                1.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_east_0",
+          "from": [
+            4,
+            14.5,
+            10.5
+          ],
+          "to": [
+            12,
+            15,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                1.0,
+                11.75,
+                1.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_east_1",
+          "from": [
+            4,
+            15,
+            11
+          ],
+          "to": [
+            12,
+            15.5,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                0.5,
+                11.25,
+                1.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_up_0",
+          "from": [
+            4.5,
+            14.5,
+            11
+          ],
+          "to": [
+            6,
+            16,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                4.75,
+                6.0,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_up_1",
+          "from": [
+            7,
+            14.5,
+            11
+          ],
+          "to": [
+            8.5,
+            16,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                4.75,
+                8.5,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_up_2",
+          "from": [
+            9.5,
+            14.5,
+            11
+          ],
+          "to": [
+            11,
+            16,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                9.5,
+                4.75,
+                11.0,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "jaw_down_0",
+          "from": [
+            4,
+            14.5,
+            10.5
+          ],
+          "to": [
+            12,
+            16,
+            11.75
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                10.5,
+                12.0,
+                11.75
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_south_0",
+          "from": [
+            3.5,
+            15.5,
+            10.75
+          ],
+          "to": [
+            4.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                0.0,
+                12.5,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_west_0",
+          "from": [
+            3.5,
+            15.5,
+            11
+          ],
+          "to": [
+            4.5,
+            16,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                2.5,
+                5.25,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_west_1",
+          "from": [
+            3.5,
+            16,
+            11.5
+          ],
+          "to": [
+            4.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                0.0,
+                5.25,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_east_0",
+          "from": [
+            3.5,
+            16,
+            11
+          ],
+          "to": [
+            4.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.75,
+                0.0,
+                11.5,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_up_0",
+          "from": [
+            3.5,
+            15.5,
+            11.5
+          ],
+          "to": [
+            4.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.5,
+                5.0,
+                4.5,
+                5.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_0_down_0",
+          "from": [
+            3.5,
+            15.5,
+            11
+          ],
+          "to": [
+            4,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                3.5,
+                10.75,
+                4.0,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_1_south_0",
+          "from": [
+            6,
+            15.5,
+            10.75
+          ],
+          "to": [
+            7,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.0,
+                0.0,
+                10.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_1_west_0",
+          "from": [
+            6,
+            16,
+            11
+          ],
+          "to": [
+            7,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                0.0,
+                5.25,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_1_east_0",
+          "from": [
+            6,
+            16,
+            11
+          ],
+          "to": [
+            7,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.75,
+                0.0,
+                11.5,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_1_up_0",
+          "from": [
+            6,
+            15.5,
+            11
+          ],
+          "to": [
+            7,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                4.5,
+                7.0,
+                5.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_2_south_0",
+          "from": [
+            8.5,
+            15.5,
+            10.75
+          ],
+          "to": [
+            9.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.5,
+                0.0,
+                7.5,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_2_west_0",
+          "from": [
+            8.5,
+            16,
+            11
+          ],
+          "to": [
+            9.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                0.0,
+                5.25,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_2_east_0",
+          "from": [
+            8.5,
+            16,
+            11
+          ],
+          "to": [
+            9.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.75,
+                0.0,
+                11.5,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_2_up_0",
+          "from": [
+            8.5,
+            15.5,
+            11
+          ],
+          "to": [
+            9.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                8.5,
+                4.5,
+                9.5,
+                5.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_south_0",
+          "from": [
+            11,
+            15.5,
+            10.75
+          ],
+          "to": [
+            12,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.0,
+                0.0,
+                5.0,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_west_0",
+          "from": [
+            11,
+            16,
+            11
+          ],
+          "to": [
+            12,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                4.5,
+                0.0,
+                5.25,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_east_0",
+          "from": [
+            11,
+            15.5,
+            11
+          ],
+          "to": [
+            12,
+            16,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.75,
+                2.5,
+                11.5,
+                3.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_east_1",
+          "from": [
+            11,
+            16,
+            11.5
+          ],
+          "to": [
+            12,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.75,
+                0.0,
+                11.0,
+                2.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_up_0",
+          "from": [
+            11,
+            15.5,
+            11
+          ],
+          "to": [
+            11.5,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                11.0,
+                4.5,
+                11.5,
+                5.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "face_ridge_3_up_1",
+          "from": [
+            11.5,
+            15.5,
+            11.5
+          ],
+          "to": [
+            12,
+            18.5,
+            11.75
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                11.5,
+                5.0,
+                12.0,
+                5.25
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_left_south_0",
+          "from": [
+            5.75,
+            20,
+            10.5
+          ],
+          "to": [
+            6.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.75,
+                8.0,
+                10.25,
+                12.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_left_west_0",
+          "from": [
+            5.75,
+            20,
+            11
+          ],
+          "to": [
+            6.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.0,
+                8.0,
+                5.5,
+                12.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_left_east_0",
+          "from": [
+            5.75,
+            20.5,
+            11.25
+          ],
+          "to": [
+            6.25,
+            23.5,
+            11.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                8.5,
+                10.75,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_left_up_0",
+          "from": [
+            5.75,
+            20,
+            11
+          ],
+          "to": [
+            6.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                5.0,
+                6.25,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_left_down_0",
+          "from": [
+            5.75,
+            20,
+            11
+          ],
+          "to": [
+            6.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                10.5,
+                6.25,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_right_south_0",
+          "from": [
+            9.75,
+            20,
+            10.5
+          ],
+          "to": [
+            10.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                5.75,
+                8.0,
+                6.25,
+                12.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_right_west_0",
+          "from": [
+            9.75,
+            20.5,
+            11.25
+          ],
+          "to": [
+            10.25,
+            23.5,
+            11.5
+          ],
+          "faces": {
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.25,
+                8.5,
+                5.5,
+                11.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_right_east_0",
+          "from": [
+            9.75,
+            20,
+            11
+          ],
+          "to": [
+            10.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.5,
+                8.0,
+                11.0,
+                12.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_right_up_0",
+          "from": [
+            9.75,
+            20,
+            11
+          ],
+          "to": [
+            10.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                9.75,
+                5.0,
+                10.25,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_right_down_0",
+          "from": [
+            9.75,
+            20,
+            11
+          ],
+          "to": [
+            10.25,
+            24,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                9.75,
+                10.5,
+                10.25,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_top_south_0",
+          "from": [
+            6.25,
+            23.5,
+            10.5
+          ],
+          "to": [
+            9.75,
+            24,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                8.0,
+                9.75,
+                8.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_top_up_0",
+          "from": [
+            6.25,
+            23.5,
+            11
+          ],
+          "to": [
+            9.75,
+            24,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                5.0,
+                9.75,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_top_down_0",
+          "from": [
+            6.25,
+            23.5,
+            11.25
+          ],
+          "to": [
+            9.75,
+            24,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                10.5,
+                9.75,
+                10.75
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_bottom_south_0",
+          "from": [
+            6.25,
+            20,
+            10.5
+          ],
+          "to": [
+            9.75,
+            20.5,
+            11.5
+          ],
+          "faces": {
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                11.5,
+                9.75,
+                12.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_bottom_up_0",
+          "from": [
+            6.25,
+            20,
+            11.25
+          ],
+          "to": [
+            9.75,
+            20.5,
+            11.5
+          ],
+          "faces": {
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                5.25,
+                9.75,
+                5.5
+              ]
+            }
+          }
+        },
+        {
+          "name": "eye_bottom_down_0",
+          "from": [
+            6.25,
+            20,
+            11
+          ],
+          "to": [
+            9.75,
+            20.5,
+            11.5
+          ],
+          "faces": {
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                6.25,
+                10.5,
+                9.75,
+                11.0
+              ]
+            }
+          }
+        },
+        {
+          "name": "purple_eye_south_0",
+          "from": [
+            6.25,
+            20.5,
+            10.875
+          ],
+          "to": [
+            9.75,
+            23.5,
+            11.25
+          ],
+          "faces": {
+            "south": {
+              "texture": "#eye",
+              "uv": [
+                0.0,
+                0.0,
+                16.0,
+                16.0
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "left_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -180
+        },
+        "origin": [
+          0.17455582617584078,
+          0.8933058261758408,
+          0.46875
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_0",
+          "from": [
+            1.2428932188134525,
+            13.092893218813451,
+            6.0
+          ],
+          "to": [
+            4.342893218813453,
+            15.492893218813453,
+            9.0
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                1.2428932188134525,
+                0.5071067811865468,
+                4.342893218813453,
+                2.907106781186549
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.657106781186547,
+                0.5071067811865468,
+                14.757106781186547,
+                2.907106781186549
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                0.5071067811865468,
+                10.0,
+                2.907106781186549
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                0.5071067811865468,
+                9.0,
+                2.907106781186549
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                1.2428932188134525,
+                7.0,
+                4.342893218813453,
+                10.0
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                1.2428932188134525,
+                6.0,
+                4.342893218813453,
+                9.0
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              2.7928932188134525,
+              14.292893218813452,
+              7.5
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "left_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -175
+        },
+        "origin": [
+          0.05845822329205466,
+          0.8192145091981589,
+          0.4750407349113579
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_1",
+          "from": [
+            -0.5146684273271256,
+            11.73743214717054,
+            6.270651758581726
+          ],
+          "to": [
+            2.3853315726728748,
+            14.477432147170543,
+            8.930651758581726
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.5225678528294573,
+                2.9000000000000004,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.5225678528294573,
+                2.9000000000000004,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                7.069348241418274,
+                1.5225678528294573,
+                9.729348241418274,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                6.270651758581726,
+                1.5225678528294573,
+                8.930651758581726,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                7.069348241418274,
+                2.9000000000000004,
+                9.729348241418274
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                6.270651758581726,
+                2.9000000000000004,
+                8.930651758581726
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              0.9353315726728746,
+              13.107432147170542,
+              7.600651758581726
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "left_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -160
+        },
+        "origin": [
+          -0.10154138896625114,
+          0.7893173660446362,
+          0.5133958582594971
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_2",
+          "from": [
+            -3.3246622234600185,
+            11.43907785671418,
+            7.054333732151955
+          ],
+          "to": [
+            0.07533777653998164,
+            13.819077856714179,
+            9.374333732151953
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.4000000000000004,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.4000000000000004,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                6.625666267848046,
+                2.1809221432858212,
+                8.945666267848045,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                7.054333732151955,
+                2.1809221432858212,
+                9.374333732151953,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                6.625666267848046,
+                3.4000000000000004,
+                8.945666267848045
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                7.054333732151955,
+                3.4000000000000004,
+                9.374333732151953
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "left_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -140
+        },
+        "origin": [
+          -0.2559875204766454,
+          0.8251939378288633,
+          0.6011344638532705
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_3",
+          "from": [
+            -5.795800327626326,
+            12.193103005261813,
+            8.628151421652328
+          ],
+          "to": [
+            -2.395800327626327,
+            14.213103005261813,
+            10.608151421652328
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                10.204199672373674,
+                1.7868969947381874,
+                13.604199672373673,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.3958003276263256,
+                1.7868969947381874,
+                5.795800327626324,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.3918485783476715,
+                1.7868969947381874,
+                7.371848578347672,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                8.628151421652328,
+                1.7868969947381874,
+                10.608151421652328,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                10.204199672373674,
+                5.3918485783476715,
+                13.604199672373673,
+                7.371848578347672
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                10.204199672373674,
+                8.628151421652328,
+                13.604199672373673,
+                10.608151421652328
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -4.095800327626327,
+              13.203103005261813,
+              9.618151421652328
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "left_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -120
+        },
+        "origin": [
+          -0.34995882742846024,
+          0.9163132268932895,
+          0.7046502775489965
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_4",
+          "from": [
+            -7.049341238855364,
+            13.831011630292632,
+            10.454404440783943
+          ],
+          "to": [
+            -4.149341238855364,
+            15.491011630292633,
+            12.094404440783943
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                8.950658761144636,
+                0.5089883697073674,
+                11.850658761144636,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                4.149341238855364,
+                0.5089883697073674,
+                7.049341238855362,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.905595559216057,
+                0.5089883697073674,
+                5.545595559216057,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.454404440783943,
+                0.5089883697073674,
+                12.094404440783943,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                8.950658761144636,
+                3.905595559216057,
+                11.850658761144636,
+                5.545595559216057
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                8.950658761144636,
+                10.454404440783943,
+                11.850658761144636,
+                12.094404440783943
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -5.599341238855364,
+              14.661011630292633,
+              11.274404440783943
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "left_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -105
+        },
+        "origin": [
+          -0.38222295609393264,
+          1.014862797259955,
+          0.7698189277102797
+        ]
+      },
+      "elements": [
+        {
+          "name": "left_5",
+          "from": [
+            -6.765567297502923,
+            15.28780475615928,
+            11.667102843364475
+          ],
+          "to": [
+            -5.465567297502922,
+            17.18780475615928,
+            12.967102843364476
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                9.234432702497077,
+                0,
+                10.534432702497078,
+                1.9000000000000004
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                5.465567297502922,
+                0,
+                6.765567297502923,
+                1.9000000000000004
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.0328971566355243,
+                0,
+                4.332897156635524,
+                1.9000000000000004
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                11.667102843364475,
+                0,
+                12.967102843364476,
+                1.9000000000000004
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                9.234432702497077,
+                3.0328971566355243,
+                10.534432702497078,
+                4.332897156635524
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                9.234432702497077,
+                11.667102843364475,
+                10.534432702497078,
+                12.967102843364476
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -6.115567297502922,
+              16.23780475615928,
+              12.317102843364475
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "right_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 0
+        },
+        "origin": [
+          0.8254441738241592,
+          0.8933058261758408,
+          0.46875
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_0",
+          "from": [
+            12.007106781186547,
+            12.742893218813451,
+            6.0
+          ],
+          "to": [
+            14.407106781186549,
+            15.842893218813453,
+            9.0
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                12.007106781186547,
+                0.1571067811865472,
+                14.407106781186549,
+                3.2571067811865486
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                1.592893218813451,
+                0.1571067811865472,
+                3.992893218813453,
+                3.2571067811865486
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                7.0,
+                0.1571067811865472,
+                10.0,
+                3.2571067811865486
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                6.0,
+                0.1571067811865472,
+                9.0,
+                3.2571067811865486
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                12.007106781186547,
+                7.0,
+                14.407106781186549,
+                10.0
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                12.007106781186547,
+                6.0,
+                14.407106781186549,
+                9.0
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              13.207106781186548,
+              14.292893218813452,
+              7.5
+            ],
+            "axis": "z",
+            "angle": -45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "right_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -5
+        },
+        "origin": [
+          0.9415417767079454,
+          0.8192145091981589,
+          0.4750407349113579
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_1",
+          "from": [
+            13.614668427327127,
+            11.73743214717054,
+            6.270651758581726
+          ],
+          "to": [
+            16.514668427327123,
+            14.477432147170543,
+            8.930651758581726
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.5225678528294573,
+                2.899999999999997,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.5225678528294573,
+                2.899999999999997,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                7.069348241418274,
+                1.5225678528294573,
+                9.729348241418274,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                6.270651758581726,
+                1.5225678528294573,
+                8.930651758581726,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                7.069348241418274,
+                2.899999999999997,
+                9.729348241418274
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                6.270651758581726,
+                2.899999999999997,
+                8.930651758581726
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              15.064668427327126,
+              13.107432147170542,
+              7.600651758581726
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "right_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -20
+        },
+        "origin": [
+          1.1015413889662513,
+          0.7893173660446362,
+          0.5133958582594971
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_2",
+          "from": [
+            15.924662223460022,
+            11.43907785671418,
+            7.054333732151955
+          ],
+          "to": [
+            19.32466222346002,
+            13.819077856714179,
+            9.374333732151953
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.3999999999999986,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.3999999999999986,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                6.625666267848046,
+                2.1809221432858212,
+                8.945666267848045,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                7.054333732151955,
+                2.1809221432858212,
+                9.374333732151953,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                6.625666267848046,
+                3.3999999999999986,
+                8.945666267848045
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                7.054333732151955,
+                3.3999999999999986,
+                9.374333732151953
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "right_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -40
+        },
+        "origin": [
+          1.2559875204766455,
+          0.8251939378288633,
+          0.6011344638532705
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_3",
+          "from": [
+            18.39580032762633,
+            12.193103005261813,
+            8.628151421652328
+          ],
+          "to": [
+            21.795800327626328,
+            14.213103005261813,
+            10.608151421652328
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                2.395800327626329,
+                1.7868969947381874,
+                5.795800327626328,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                10.204199672373672,
+                1.7868969947381874,
+                13.604199672373671,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                5.3918485783476715,
+                1.7868969947381874,
+                7.371848578347672,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                8.628151421652328,
+                1.7868969947381874,
+                10.608151421652328,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.395800327626329,
+                5.3918485783476715,
+                5.795800327626328,
+                7.371848578347672
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.395800327626329,
+                8.628151421652328,
+                5.795800327626328,
+                10.608151421652328
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              20.09580032762633,
+              13.203103005261813,
+              9.618151421652328
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "right_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -60
+        },
+        "origin": [
+          1.3499588274284604,
+          0.9163132268932895,
+          0.7046502775489965
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_4",
+          "from": [
+            20.149341238855367,
+            13.831011630292632,
+            10.454404440783943
+          ],
+          "to": [
+            23.049341238855366,
+            15.491011630292633,
+            12.094404440783942
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                4.149341238855367,
+                0.5089883697073674,
+                7.049341238855366,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                8.950658761144634,
+                0.5089883697073674,
+                11.850658761144633,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.905595559216058,
+                0.5089883697073674,
+                5.545595559216058,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.454404440783943,
+                0.5089883697073674,
+                12.094404440783942,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                4.149341238855367,
+                3.905595559216058,
+                7.049341238855366,
+                5.545595559216058
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                4.149341238855367,
+                10.454404440783943,
+                7.049341238855366,
+                12.094404440783942
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              21.599341238855366,
+              14.661011630292633,
+              11.274404440783943
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "right_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -75
+        },
+        "origin": [
+          1.3822229560939328,
+          1.014862797259955,
+          0.7698189277102797
+        ]
+      },
+      "elements": [
+        {
+          "name": "right_5",
+          "from": [
+            21.465567297502925,
+            15.287804756159282,
+            11.667102843364475
+          ],
+          "to": [
+            22.765567297502923,
+            17.18780475615928,
+            12.967102843364476
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                5.4655672975029255,
+                0,
+                6.765567297502923,
+                1.8999999999999986
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.234432702497077,
+                0,
+                10.534432702497075,
+                1.8999999999999986
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.0328971566355247,
+                0,
+                4.332897156635525,
+                1.8999999999999986
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                11.667102843364475,
+                0,
+                12.967102843364476,
+                1.8999999999999986
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                5.4655672975029255,
+                3.0328971566355247,
+                6.765567297502923,
+                4.332897156635525
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                5.4655672975029255,
+                11.667102843364475,
+                6.765567297502923,
+                12.967102843364476
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              22.115567297502924,
+              16.23780475615928,
+              12.317102843364475
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_left_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -120
+        },
+        "origin": [
+          0.32165291308792043,
+          0.8933058261758408,
+          0.6632732772309872
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_0",
+          "from": [
+            3.9464466094067268,
+            12.742893218813451,
+            9.112372435695795
+          ],
+          "to": [
+            6.346446609406727,
+            15.842893218813453,
+            12.112372435695795
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                3.9464466094067268,
+                0.1571067811865472,
+                6.346446609406727,
+                3.2571067811865486
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.653553390593274,
+                0.1571067811865472,
+                12.053553390593272,
+                3.2571067811865486
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.8876275643042053,
+                0.1571067811865472,
+                6.887627564304205,
+                3.2571067811865486
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                9.112372435695795,
+                0.1571067811865472,
+                12.112372435695795,
+                3.2571067811865486
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.9464466094067268,
+                3.8876275643042053,
+                6.346446609406727,
+                6.887627564304205
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                3.9464466094067268,
+                9.112372435695795,
+                6.346446609406727,
+                12.112372435695795
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              5.146446609406727,
+              14.292893218813452,
+              10.612372435695795
+            ],
+            "axis": "z",
+            "angle": -45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_left_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -125
+        },
+        "origin": [
+          0.2581561754043178,
+          0.8192145091981589,
+          0.7606713831911445
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_1",
+          "from": [
+            2.6804988064690844,
+            11.73743214717054,
+            10.840742131058313
+          ],
+          "to": [
+            5.580498806469085,
+            14.477432147170543,
+            13.500742131058313
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                2.6804988064690844,
+                1.5225678528294573,
+                5.580498806469085,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                10.419501193530916,
+                1.5225678528294573,
+                13.319501193530915,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                2.4992578689416876,
+                1.5225678528294573,
+                5.159257868941688,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.840742131058313,
+                1.5225678528294573,
+                13.500742131058313,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.6804988064690844,
+                2.4992578689416876,
+                5.580498806469085,
+                5.159257868941688
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.6804988064690844,
+                10.840742131058313,
+                5.580498806469085,
+                13.500742131058313
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              4.130498806469085,
+              13.107432147170542,
+              12.170742131058311
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_left_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -130
+        },
+        "origin": [
+          0.15649518622468175,
+          0.7893173660446362,
+          0.891612878462719
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_2",
+          "from": [
+            0.8039229795949079,
+            11.43907785671418,
+            13.105806055403503
+          ],
+          "to": [
+            4.203922979594907,
+            13.819077856714179,
+            15.425806055403502
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0.8039229795949079,
+                2.1809221432858212,
+                4.203922979594907,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.796077020405093,
+                2.1809221432858212,
+                15.196077020405092,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0.5741939445964972,
+                2.1809221432858212,
+                2.894193944596497,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                13.105806055403503,
+                2.1809221432858212,
+                15.425806055403502,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0.8039229795949079,
+                0.5741939445964972,
+                4.203922979594907,
+                2.894193944596497
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0.8039229795949079,
+                13.105806055403503,
+                4.203922979594907,
+                15.425806055403502
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "front_left_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -135
+        },
+        "origin": [
+          0.03498870883798855,
+          0.8251939378288633,
+          1.0246746839837033
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_3",
+          "from": [
+            -1.140180658592183,
+            12.193103005261813,
+            15.404794943739253
+          ],
+          "to": [
+            2.2598193414078165,
+            14.213103005261813,
+            17.38479494373925
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999995,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999995,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                1.98,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                1.98,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999995,
+                1.98
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999995,
+                1.98
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              0.5598193414078168,
+              13.203103005261813,
+              16.394794943739253
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_left_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -140
+        },
+        "origin": [
+          -0.06857480673588079,
+          0.9163132268932895,
+          1.1214291571554118
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_4",
+          "from": [
+            -2.547196907774093,
+            13.831011630292632,
+            17.12286651448659
+          ],
+          "to": [
+            0.35280309222590733,
+            15.491011630292633,
+            18.76286651448659
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.9000000000000004,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.9000000000000004,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                13.23713348551341,
+                0.5089883697073674,
+                14.877133485513411,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                1.1228665144865886,
+                0.5089883697073674,
+                2.762866514486589,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                13.23713348551341,
+                2.9000000000000004,
+                14.877133485513411
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.1228665144865886,
+                2.9000000000000004,
+                2.762866514486589
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -1.0971969077740926,
+              14.661011630292633,
+              17.94286651448659
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_left_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -145
+        },
+        "origin": [
+          -0.1255873668907352,
+          1.014862797259955,
+          1.167227469444785
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_left_5",
+          "from": [
+            -2.6593978702517633,
+            15.28780475615928,
+            18.02563951111656
+          ],
+          "to": [
+            -1.3593978702517633,
+            17.18780475615928,
+            19.32563951111656
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                13.340602129748238,
+                0,
+                14.640602129748236,
+                1.9000000000000004
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                1.3593978702517617,
+                0,
+                2.6593978702517624,
+                1.9000000000000004
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                12.67436048888344,
+                0,
+                13.97436048888344,
+                1.9000000000000004
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                2.025639511116559,
+                0,
+                3.3256395111165595,
+                1.9000000000000004
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                13.340602129748238,
+                12.67436048888344,
+                14.640602129748236,
+                13.97436048888344
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                13.340602129748238,
+                2.025639511116559,
+                14.640602129748236,
+                3.3256395111165595
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -2.0093978702517634,
+              16.23780475615928,
+              18.67563951111656
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_right_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -60
+        },
+        "origin": [
+          0.6783470869120796,
+          0.8933058261758408,
+          0.6632732772309872
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_0",
+          "from": [
+            9.653553390593272,
+            12.742893218813451,
+            9.112372435695795
+          ],
+          "to": [
+            12.053553390593274,
+            15.842893218813453,
+            12.112372435695795
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                9.653553390593272,
+                0.1571067811865472,
+                12.053553390593274,
+                3.2571067811865486
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                3.946446609406726,
+                0.1571067811865472,
+                6.346446609406728,
+                3.2571067811865486
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.8876275643042053,
+                0.1571067811865472,
+                6.887627564304205,
+                3.2571067811865486
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                9.112372435695795,
+                0.1571067811865472,
+                12.112372435695795,
+                3.2571067811865486
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                9.653553390593272,
+                3.8876275643042053,
+                12.053553390593274,
+                6.887627564304205
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                9.653553390593272,
+                9.112372435695795,
+                12.053553390593274,
+                12.112372435695795
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              10.853553390593273,
+              14.292893218813452,
+              10.612372435695795
+            ],
+            "axis": "z",
+            "angle": -45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_right_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -55
+        },
+        "origin": [
+          0.7418438245956822,
+          0.8192145091981589,
+          0.7606713831911446
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_1",
+          "from": [
+            10.419501193530914,
+            11.73743214717054,
+            10.840742131058313
+          ],
+          "to": [
+            13.319501193530916,
+            14.477432147170543,
+            13.500742131058313
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                10.419501193530914,
+                1.5225678528294573,
+                13.319501193530916,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.6804988064690836,
+                1.5225678528294573,
+                5.580498806469086,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                2.499257868941687,
+                1.5225678528294573,
+                5.159257868941687,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.840742131058313,
+                1.5225678528294573,
+                13.500742131058313,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                10.419501193530914,
+                2.499257868941687,
+                13.319501193530916,
+                5.159257868941687
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                10.419501193530914,
+                10.840742131058313,
+                13.319501193530916,
+                13.500742131058313
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              11.869501193530915,
+              13.107432147170542,
+              12.170742131058313
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_right_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -50
+        },
+        "origin": [
+          0.8435048137753183,
+          0.7893173660446362,
+          0.891612878462719
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_2",
+          "from": [
+            11.796077020405093,
+            11.43907785671418,
+            13.105806055403503
+          ],
+          "to": [
+            15.196077020405092,
+            13.819077856714179,
+            15.425806055403504
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                11.796077020405093,
+                2.1809221432858212,
+                15.196077020405092,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0.8039229795949083,
+                2.1809221432858212,
+                4.203922979594907,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0.5741939445964968,
+                2.1809221432858212,
+                2.8941939445964966,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                13.105806055403503,
+                2.1809221432858212,
+                15.425806055403504,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                11.796077020405093,
+                0.5741939445964968,
+                15.196077020405092,
+                2.8941939445964966
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                11.796077020405093,
+                13.105806055403503,
+                15.196077020405092,
+                15.425806055403504
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "front_right_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -45
+        },
+        "origin": [
+          0.9650112911620115,
+          0.8251939378288633,
+          1.0246746839837033
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_3",
+          "from": [
+            13.740180658592184,
+            12.193103005261813,
+            15.404794943739253
+          ],
+          "to": [
+            17.140180658592183,
+            14.213103005261813,
+            17.38479494373925
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999986,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999986,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                1.98,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                1.98,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999986,
+                1.98
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999986,
+                1.98
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              15.440180658592183,
+              13.203103005261813,
+              16.394794943739253
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_right_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -40
+        },
+        "origin": [
+          1.068574806735881,
+          0.9163132268932895,
+          1.1214291571554118
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_4",
+          "from": [
+            15.647196907774095,
+            13.831011630292632,
+            17.12286651448659
+          ],
+          "to": [
+            18.547196907774094,
+            15.491011630292633,
+            18.76286651448659
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999986,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999986,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                13.23713348551341,
+                0.5089883697073674,
+                14.877133485513411,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                1.1228665144865886,
+                0.5089883697073674,
+                2.762866514486589,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                13.23713348551341,
+                2.8999999999999986,
+                14.877133485513411
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.1228665144865886,
+                2.8999999999999986,
+                2.762866514486589
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              17.097196907774094,
+              14.661011630292633,
+              17.94286651448659
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "front_right_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": -35
+        },
+        "origin": [
+          1.1255873668907355,
+          1.014862797259955,
+          1.167227469444785
+        ]
+      },
+      "elements": [
+        {
+          "name": "front_right_5",
+          "from": [
+            17.35939787025177,
+            15.287804756159282,
+            18.02563951111656
+          ],
+          "to": [
+            18.659397870251766,
+            17.18780475615928,
+            19.32563951111656
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                1.3593978702517688,
+                0,
+                2.659397870251766,
+                1.8999999999999986
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                13.340602129748234,
+                0,
+                14.640602129748231,
+                1.8999999999999986
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                12.67436048888344,
+                0,
+                13.97436048888344,
+                1.8999999999999986
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                2.025639511116559,
+                0,
+                3.3256395111165595,
+                1.8999999999999986
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                1.3593978702517688,
+                12.67436048888344,
+                2.659397870251766,
+                13.97436048888344
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                1.3593978702517688,
+                2.025639511116559,
+                2.659397870251766,
+                3.3256395111165595
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              18.009397870251767,
+              16.23780475615928,
+              18.67563951111656
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_left_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 145
+        },
+        "origin": [
+          0.3075482521662769,
+          0.8933058261758408,
+          0.25590126327046003
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_0",
+          "from": [
+            3.7207720346604303,
+            12.742893218813451,
+            2.5944202123273605
+          ],
+          "to": [
+            6.120772034660431,
+            15.842893218813453,
+            5.5944202123273605
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                3.7207720346604303,
+                0.1571067811865472,
+                6.120772034660431,
+                3.2571067811865486
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                9.87922796533957,
+                0.1571067811865472,
+                12.279227965339569,
+                3.2571067811865486
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                10.40557978767264,
+                0.1571067811865472,
+                13.40557978767264,
+                3.2571067811865486
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                2.5944202123273605,
+                0.1571067811865472,
+                5.5944202123273605,
+                3.2571067811865486
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                3.7207720346604303,
+                10.40557978767264,
+                6.120772034660431,
+                13.40557978767264
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                3.7207720346604303,
+                2.5944202123273605,
+                6.120772034660431,
+                5.5944202123273605
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              4.9207720346604304,
+              14.292893218813452,
+              4.0944202123273605
+            ],
+            "axis": "z",
+            "angle": -45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_left_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 140
+        },
+        "origin": [
+          0.2160548807394577,
+          0.8192145091981589,
+          0.18415734557676022
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_1",
+          "from": [
+            2.0068780918313234,
+            11.73743214717054,
+            1.6165175292281635
+          ],
+          "to": [
+            4.906878091831324,
+            14.477432147170543,
+            4.276517529228164
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                2.0068780918313234,
+                1.5225678528294573,
+                4.906878091831324,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                11.093121908168676,
+                1.5225678528294573,
+                13.993121908168677,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                11.723482470771836,
+                1.5225678528294573,
+                14.383482470771837,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                1.6165175292281635,
+                1.5225678528294573,
+                4.276517529228164,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                2.0068780918313234,
+                11.723482470771836,
+                4.906878091831324,
+                14.383482470771837
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                2.0068780918313234,
+                1.6165175292281635,
+                4.906878091831324,
+                4.276517529228164
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              3.4568780918313236,
+              13.107432147170542,
+              2.9465175292281636
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_left_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 130
+        },
+        "origin": [
+          0.10050191873824851,
+          0.7893173660446362,
+          0.06594549807019612
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_2",
+          "from": [
+            -0.09196930018802374,
+            11.43907785671418,
+            -0.10487203087686225
+          ],
+          "to": [
+            3.308030699811976,
+            13.819077856714179,
+            2.215127969123138
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.3999999999999995,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.3999999999999995,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                2.3200000000000003,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                2.3200000000000003,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999995,
+                2.3200000000000003
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.3999999999999995,
+                2.3200000000000003
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "back_left_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 115
+        },
+        "origin": [
+          0.003636046384410771,
+          0.8251939378288633,
+          -0.08436984484084187
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_3",
+          "from": [
+            -1.6418232578494274,
+            12.193103005261813,
+            -2.3399175174534683
+          ],
+          "to": [
+            1.758176742150572,
+            14.213103005261813,
+            -0.35991751745347145
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999995,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.3999999999999995,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0.35991751745347145,
+                1.7868969947381874,
+                2.3399175174534683,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                13.660082482546532,
+                1.7868969947381874,
+                15.640082482546529,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.35991751745347145,
+                3.3999999999999995,
+                2.3399175174534683
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                13.660082482546532,
+                3.3999999999999995,
+                15.640082482546529
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              0.058176742150572336,
+              13.203103005261813,
+              -1.3499175174534699
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_left_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 100
+        },
+        "origin": [
+          -0.042561284746389906,
+          0.9163132268932895,
+          -0.21727197748447669
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_4",
+          "from": [
+            -2.130980555942238,
+            13.831011630292632,
+            -4.296351639751627
+          ],
+          "to": [
+            0.7690194440577616,
+            15.491011630292633,
+            -2.6563516397516267
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999995,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999995,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                2.6563516397516267,
+                0.5089883697073674,
+                4.296351639751627,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                11.703648360248373,
+                0.5089883697073674,
+                13.343648360248373,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.6563516397516267,
+                2.8999999999999995,
+                4.296351639751627
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                11.703648360248373,
+                2.8999999999999995,
+                13.343648360248373
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -0.6809805559422384,
+              14.661011630292633,
+              -3.476351639751627
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_left_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 85
+        },
+        "origin": [
+          -0.05059065730091891,
+          1.014862797259955,
+          -0.28954545905805573
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_left_5",
+          "from": [
+            -1.4594505168147027,
+            15.28780475615928,
+            -5.28272734492889
+          ],
+          "to": [
+            -0.15945051681470246,
+            17.18780475615928,
+            -3.982727344928893
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                14.540549483185297,
+                0,
+                15.840549483185297,
+                1.9000000000000004
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0.1594505168147009,
+                0,
+                1.4594505168147016,
+                1.9000000000000004
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.982727344928893,
+                0,
+                5.28272734492889,
+                1.9000000000000004
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.71727265507111,
+                0,
+                12.017272655071107,
+                1.9000000000000004
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                14.540549483185297,
+                3.982727344928893,
+                15.840549483185297,
+                5.28272734492889
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                14.540549483185297,
+                10.71727265507111,
+                15.840549483185297,
+                12.017272655071107
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              -0.8094505168147026,
+              16.23780475615928,
+              -4.632727344928892
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_right_0": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 35
+        },
+        "origin": [
+          0.6924517478337231,
+          0.8933058261758408,
+          0.25590126327046003
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_0",
+          "from": [
+            9.879227965339568,
+            12.742893218813451,
+            2.5944202123273605
+          ],
+          "to": [
+            12.27922796533957,
+            15.842893218813453,
+            5.5944202123273605
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                9.879227965339568,
+                0.1571067811865472,
+                12.27922796533957,
+                3.2571067811865486
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                3.7207720346604294,
+                0.1571067811865472,
+                6.1207720346604315,
+                3.2571067811865486
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                10.40557978767264,
+                0.1571067811865472,
+                13.40557978767264,
+                3.2571067811865486
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                2.5944202123273605,
+                0.1571067811865472,
+                5.5944202123273605,
+                3.2571067811865486
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                9.879227965339568,
+                10.40557978767264,
+                12.27922796533957,
+                13.40557978767264
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                9.879227965339568,
+                2.5944202123273605,
+                12.27922796533957,
+                5.5944202123273605
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              11.07922796533957,
+              14.292893218813452,
+              4.0944202123273605
+            ],
+            "axis": "z",
+            "angle": -45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_right_1": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 40
+        },
+        "origin": [
+          0.7839451192605423,
+          0.8192145091981589,
+          0.18415734557676022
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_1",
+          "from": [
+            11.093121908168678,
+            11.73743214717054,
+            1.6165175292281635
+          ],
+          "to": [
+            13.993121908168677,
+            14.477432147170543,
+            4.276517529228164
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                11.093121908168678,
+                1.5225678528294573,
+                13.993121908168677,
+                4.262567852829459
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                2.0068780918313234,
+                1.5225678528294573,
+                4.906878091831322,
+                4.262567852829459
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                11.723482470771836,
+                1.5225678528294573,
+                14.383482470771837,
+                4.262567852829459
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                1.6165175292281635,
+                1.5225678528294573,
+                4.276517529228164,
+                4.262567852829459
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                11.093121908168678,
+                11.723482470771836,
+                13.993121908168677,
+                14.383482470771837
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                11.093121908168678,
+                1.6165175292281635,
+                13.993121908168677,
+                4.276517529228164
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              12.543121908168677,
+              13.107432147170542,
+              2.9465175292281636
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_right_2": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 50
+        },
+        "origin": [
+          0.8994980812617516,
+          0.7893173660446362,
+          0.06594549807019612
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_2",
+          "from": [
+            12.691969300188026,
+            11.43907785671418,
+            -0.10487203087686225
+          ],
+          "to": [
+            16.091969300188026,
+            13.819077856714179,
+            2.215127969123138
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.4000000000000004,
+                4.56092214328582
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                3.4000000000000004,
+                4.56092214328582
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                2.3200000000000003,
+                4.56092214328582
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.1809221432858212,
+                2.3200000000000003,
+                4.56092214328582
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.4000000000000004,
+                2.3200000000000003
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0,
+                3.4000000000000004,
+                2.3200000000000003
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "back_right_3": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 65
+        },
+        "origin": [
+          0.9963639536155894,
+          0.8251939378288633,
+          -0.08436984484084187
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_3",
+          "from": [
+            14.241823257849429,
+            12.193103005261813,
+            -2.3399175174534683
+          ],
+          "to": [
+            17.64182325784943,
+            14.213103005261813,
+            -0.35991751745347145
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.400000000000002,
+                3.806896994738187
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                1.7868969947381874,
+                3.400000000000002,
+                3.806896994738187
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                0.35991751745347145,
+                1.7868969947381874,
+                2.3399175174534683,
+                3.806896994738187
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                13.660082482546532,
+                1.7868969947381874,
+                15.640082482546529,
+                3.806896994738187
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.35991751745347145,
+                3.400000000000002,
+                2.3399175174534683
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                13.660082482546532,
+                3.400000000000002,
+                15.640082482546529
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              15.94182325784943,
+              13.203103005261813,
+              -1.3499175174534699
+            ],
+            "axis": "z",
+            "angle": 22.5,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_right_4": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 80
+        },
+        "origin": [
+          1.04256128474639,
+          0.9163132268932895,
+          -0.21727197748447669
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_4",
+          "from": [
+            15.230980555942242,
+            13.831011630292632,
+            -4.296351639751627
+          ],
+          "to": [
+            18.13098055594224,
+            15.491011630292633,
+            -2.6563516397516267
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999986,
+                2.1689883697073675
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                0.5089883697073674,
+                2.8999999999999986,
+                2.1689883697073675
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                2.6563516397516267,
+                0.5089883697073674,
+                4.296351639751627,
+                2.1689883697073675
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                11.703648360248373,
+                0.5089883697073674,
+                13.343648360248373,
+                2.1689883697073675
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                2.6563516397516267,
+                2.8999999999999986,
+                4.296351639751627
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0,
+                11.703648360248373,
+                2.8999999999999986,
+                13.343648360248373
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              16.68098055594224,
+              14.661011630292633,
+              -3.476351639751627
+            ],
+            "axis": "z",
+            "angle": 45,
+            "rescale": false
+          }
+        }
+      ]
+    },
+    "back_right_5": {
+      "loader": "forge:elements",
+      "textures": {
+        "skin": "deathsareitems:item/soul_storm_skin",
+        "eye": "deathsareitems:item/soul_storm_eye",
+        "particle": "deathsareitems:item/soul_storm_skin"
+      },
+      "transform": {
+        "rotation": {
+          "y": 95
+        },
+        "origin": [
+          1.0505906573009192,
+          1.014862797259955,
+          -0.28954545905805573
+        ]
+      },
+      "elements": [
+        {
+          "name": "back_right_5",
+          "from": [
+            16.159450516814708,
+            15.287804756159282,
+            -5.28272734492889
+          ],
+          "to": [
+            17.459450516814705,
+            17.18780475615928,
+            -3.982727344928893
+          ],
+          "faces": {
+            "north": {
+              "texture": "#skin",
+              "uv": [
+                0.159450516814708,
+                0,
+                1.4594505168147052,
+                1.8999999999999986
+              ]
+            },
+            "south": {
+              "texture": "#skin",
+              "uv": [
+                14.540549483185295,
+                0,
+                15.840549483185292,
+                1.8999999999999986
+              ]
+            },
+            "west": {
+              "texture": "#skin",
+              "uv": [
+                3.982727344928893,
+                0,
+                5.28272734492889,
+                1.8999999999999986
+              ]
+            },
+            "east": {
+              "texture": "#skin",
+              "uv": [
+                10.71727265507111,
+                0,
+                12.017272655071107,
+                1.8999999999999986
+              ]
+            },
+            "up": {
+              "texture": "#skin",
+              "uv": [
+                0.159450516814708,
+                3.982727344928893,
+                1.4594505168147052,
+                5.28272734492889
+              ]
+            },
+            "down": {
+              "texture": "#skin",
+              "uv": [
+                0.159450516814708,
+                10.71727265507111,
+                1.4594505168147052,
+                12.017272655071107
+              ]
+            }
+          },
+          "rotation": {
+            "origin": [
+              16.809450516814707,
+              16.23780475615928,
+              -4.632727344928892
+            ],
+            "axis": "z",
+            "angle": -22.5,
+            "rescale": false
+          }
+        }
+      ]
+    }
+  },
+  "display": {
+    "gui": {
+      "rotation": [
+        8,
+        -12,
+        -5
+      ],
+      "translation": [
+        0,
+        -1,
+        0
+      ],
+      "scale": [
+        0.34,
+        0.34,
+        0.34
+      ]
+    },
+    "firstperson_righthand": {
+      "rotation": [
+        0,
+        -8,
+        0
+      ],
+      "translation": [
+        0,
+        1,
+        -3
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "firstperson_lefthand": {
+      "rotation": [
+        0,
+        8,
+        0
+      ],
+      "translation": [
+        0,
+        1,
+        -3
+      ],
+      "scale": [
+        0.65,
+        0.65,
+        0.65
+      ]
+    },
+    "thirdperson_righthand": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "thirdperson_lefthand": {
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "translation": [
+        0,
+        2,
+        0
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ]
+    },
+    "ground": {
+      "translation": [
+        0,
+        4,
+        0
+      ],
+      "scale": [
+        0.22,
+        0.22,
+        0.22
+      ]
+    },
+    "fixed": {
+      "rotation": [
+        0,
+        180,
+        0
+      ],
+      "scale": [
+        0.34,
+        0.34,
+        0.34
+      ]
+    }
+  }
+}

@@ -90,7 +90,7 @@ public final class FourthDeathGameTests {
             pulse(p);
             h.assertTrue(mob.getHealth() == health - .5F, "Each harvest pulse deals precisely half a point of real damage");
             h.assertTrue(mob.getBbWidth() < width && HungerAbility.scale(mob) < 1, "Both actual collision and synced scale shrink");
-            mob.getPersistentData().putFloat(HungerAbility.SCALE, .26F); mob.refreshDimensions(); pulse(p);
+            mob.getPersistentData().putFloat(HungerAbility.SCALE, .26F); mob.refreshDimensions(); pulse(p); pulse(p); pulse(p);
             h.assertTrue(HungerAbility.scale(mob) < .25F && mob.getBbWidth() < width * .25F, "Soul Storm can shrink beyond the Hunger Staff quarter-size floor");
             h.assertTrue(SoulStormAbility.souls(p.getMainHandItem()) == 0, "The counter cannot increment before the flying glass arrives"); h.succeed();
         } finally { leave(p); }

@@ -1,0 +1,2021 @@
+{
+  "version": 1,
+  "items": {
+    "bedrock": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/bedrock_base.json",
+      "source_sha256": "7d6dc5e28a86fb4d1e85fb9ba76dc4e4384af52744ba58718e7594ea4e4735a2",
+      "display": {
+        "gui": {
+          "rotation": [
+            30.0,
+            160.0,
+            0.0
+          ],
+          "translation": [
+            2.0,
+            3.0,
+            0.0
+          ],
+          "scale": [
+            0.5325,
+            0.5325,
+            0.5325
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            30.0,
+            160.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            0.0
+          ],
+          "scale": [
+            0.375,
+            0.375,
+            0.375
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            30.0,
+            160.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            0.0
+          ],
+          "scale": [
+            0.375,
+            0.375,
+            0.375
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            30.0,
+            160.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            -2.0
+          ],
+          "scale": [
+            0.23,
+            0.23,
+            0.23
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            30.0,
+            160.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            -2.0
+          ],
+          "scale": [
+            0.23,
+            0.23,
+            0.23
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            1.0,
+            2.0
+          ],
+          "scale": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            270.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            4.0,
+            -2.0
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            10.0,
+            -8.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 288
+    },
+    "cactus_chestplate": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/cactus_chestplate_base.json",
+      "source_sha256": "fbfda8414a69c127ac72a560369c8cb2868cec87a1f5d7729b4ef056578461f0",
+      "display": {
+        "gui": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            13.0,
+            7.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 168
+    },
+    "drowning_mask": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/drowning_mask_base.json",
+      "source_sha256": "8da59ace0e66199b5dfa12b155880d35ccb7151c6ab06dac5abae10c827113c6",
+      "display": {
+        "gui": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0,
+            -45,
+            0
+          ],
+          "translation": [
+            2.25,
+            7.25,
+            -1.25
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0,
+            -45,
+            0
+          ],
+          "translation": [
+            2.25,
+            7.25,
+            -1.25
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0,
+            -136,
+            0
+          ],
+          "translation": [
+            0,
+            0.5,
+            0.5
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0,
+            -136,
+            0
+          ],
+          "translation": [
+            0,
+            0.5,
+            0.5
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            3,
+            0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.6,
+            0.6,
+            0.6
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 16,
+      "quads": 1592
+    },
+    "ender_pearl_shield": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/ender_pearl_shield_base.json",
+      "source_sha256": "6a55275b4bf3b41a95838f03d1af4692a5bac32609c4f5f7c9ea1d5904882871",
+      "display": {
+        "gui": {
+          "rotation": [
+            15.0,
+            -25.0,
+            -5.0
+          ],
+          "translation": [
+            2.0,
+            3.0,
+            0.0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0.0,
+            180.0,
+            5.0
+          ],
+          "translation": [
+            -10.0,
+            2.0,
+            -10.0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0.0,
+            180.0,
+            5.0
+          ],
+          "translation": [
+            10.0,
+            0.0,
+            -10.0
+          ],
+          "scale": [
+            1.25,
+            1.25,
+            1.25
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0.0,
+            90.0,
+            0.0
+          ],
+          "translation": [
+            10.0,
+            6.0,
+            -4.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0.0,
+            90.0,
+            0.0
+          ],
+          "translation": [
+            10.0,
+            6.0,
+            12.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            2.0,
+            4.0,
+            2.0
+          ],
+          "scale": [
+            0.25,
+            0.25,
+            0.25
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            -4.5,
+            4.5,
+            -5.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 96
+    },
+    "entity_crammer": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/entity_crammer_base.json",
+      "source_sha256": "9e7f28c8d6ca67a9467e3a0fcc04d6513f0bc7e15fbfd506f7ab6eca85bb36cf",
+      "display": {
+        "gui": {
+          "rotation": [
+            48.49,
+            -4.31,
+            33.04
+          ],
+          "translation": [
+            0,
+            -1,
+            0
+          ],
+          "scale": [
+            1.2,
+            1.2,
+            1.2
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            29,
+            1,
+            -3
+          ],
+          "translation": [
+            0,
+            1.75,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            29,
+            1,
+            -3
+          ],
+          "translation": [
+            0,
+            1.75,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            1,
+            0
+          ],
+          "scale": [
+            0.7,
+            0.7,
+            0.7
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            1,
+            0
+          ],
+          "scale": [
+            0.7,
+            0.7,
+            0.7
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            -1.5,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 23520
+    },
+    "fall_damage_boots": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/fall_damage_boots_base.json",
+      "source_sha256": "897f557eadcc8a86b8aa3b3a64a405975d84089297e9a07a61ce68dd59385b26",
+      "display": {
+        "gui": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            13.0,
+            7.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 160
+    },
+    "fire_pants": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/fire_pants_base.json",
+      "source_sha256": "787b748c4e97e81413307f161d912f393b5630a0dca02feead3e73f6993c37ea",
+      "display": {
+        "gui": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0.0,
+            -90.0,
+            25.0
+          ],
+          "translation": [
+            1.13,
+            3.2,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            1.0
+          ],
+          "scale": [
+            0.55,
+            0.55,
+            0.55
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            13.0,
+            7.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 8,
+      "quads": 96
+    },
+    "hunger_staff": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/hunger_staff_base.json",
+      "source_sha256": "104df0a50eb8f5b26d4c02eda3629f11ef45af7e7f649f6d860010a3fd0aec8b",
+      "display": {
+        "gui": {
+          "rotation": [
+            11,
+            29,
+            -46
+          ],
+          "translation": [
+            0.25,
+            -0.25,
+            0
+          ],
+          "scale": [
+            0.4,
+            0.4,
+            0.4
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            -14,
+            102,
+            3
+          ],
+          "translation": [
+            3,
+            2.75,
+            -2
+          ],
+          "scale": [
+            0.68,
+            0.6,
+            0.68
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            -14,
+            102,
+            3
+          ],
+          "translation": [
+            3.25,
+            2.75,
+            -1
+          ],
+          "scale": [
+            0.68,
+            0.6,
+            0.68
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            -90,
+            -90,
+            -90
+          ],
+          "translation": [
+            0,
+            8.25,
+            2
+          ],
+          "scale": [
+            0.65,
+            0.5,
+            0.65
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            -90,
+            -90,
+            -90
+          ],
+          "translation": [
+            0,
+            8.25,
+            2
+          ],
+          "scale": [
+            0.65,
+            0.5,
+            0.65
+          ]
+        },
+        "ground": {
+          "rotation": [
+            66,
+            -15,
+            0
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ],
+          "scale": [
+            0.4,
+            0.4,
+            0.4
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.3,
+            0.3,
+            0.3
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 16,
+      "quads": 2768
+    },
+    "mob_pickaxe": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/mob_pickaxe_base.json",
+      "source_sha256": "d85d02a2177ca91a9affab11753794924ebf3416badbc8499684d002bdc128e8",
+      "display": {
+        "gui": {
+          "rotation": [
+            0.0,
+            -12.0,
+            0.0
+          ],
+          "translation": [
+            -1.0,
+            -1.0,
+            0.0
+          ],
+          "scale": [
+            0.78,
+            0.78,
+            0.78
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0,
+            -90,
+            25
+          ],
+          "translation": [
+            -1.12,
+            3.45,
+            1.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0,
+            90,
+            -25
+          ],
+          "translation": [
+            -1.87,
+            3.45,
+            2.13
+          ],
+          "scale": [
+            0.68,
+            0.68,
+            0.68
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0,
+            -90,
+            55
+          ],
+          "translation": [
+            0,
+            5,
+            0.5
+          ],
+          "scale": [
+            0.85,
+            0.85,
+            0.85
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0,
+            -90,
+            -55
+          ],
+          "translation": [
+            0,
+            5,
+            3
+          ],
+          "scale": [
+            0.85,
+            0.85,
+            0.85
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.6,
+            0.6,
+            0.6
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 48,
+      "quads": 2096
+    },
+    "skeleton_bow": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/skeleton_bow_base.json",
+      "source_sha256": "9e2ddd2a86bce636c784812fd45b95f8be7d724696d3b360002c2d14e6cbf0bd",
+      "display": {
+        "gui": {
+          "rotation": [
+            19,
+            0,
+            0
+          ],
+          "translation": [
+            -1.25,
+            -0.25,
+            0
+          ],
+          "scale": [
+            1.2,
+            1.2,
+            1.2
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            9,
+            21,
+            0
+          ],
+          "translation": [
+            3,
+            -6.5,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            9,
+            21,
+            0
+          ],
+          "translation": [
+            3,
+            -6.5,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            -85,
+            0,
+            0
+          ],
+          "translation": [
+            -1.25,
+            13.25,
+            1.5
+          ],
+          "scale": [
+            0.9,
+            0.9,
+            0.9
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            -85,
+            0,
+            0
+          ],
+          "translation": [
+            -1.25,
+            13.25,
+            1.5
+          ],
+          "scale": [
+            0.9,
+            0.9,
+            0.9
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            -3.5,
+            4,
+            11.5
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.6,
+            0.6,
+            0.6
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 16,
+      "quads": 1400
+    },
+    "soul_storm": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/soul_storm_base.json",
+      "source_sha256": "7b692e58169ec20282fe59130e3bb0119ab75d5a4ae0117e81f5f00769c728a3",
+      "display": {
+        "gui": {
+          "rotation": [
+            -35,
+            -20,
+            -5
+          ],
+          "translation": [
+            0,
+            -5.5,
+            0
+          ],
+          "scale": [
+            0.47031,
+            0.65,
+            0.65
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            36,
+            180,
+            0
+          ],
+          "translation": [
+            0.5,
+            -1.75,
+            -3
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            36,
+            -180,
+            0
+          ],
+          "translation": [
+            0.5,
+            -1.75,
+            -3
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            34,
+            180,
+            0
+          ],
+          "translation": [
+            0.25,
+            -2.25,
+            -2.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            34,
+            180,
+            0
+          ],
+          "translation": [
+            0.25,
+            -2.25,
+            -2.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            -4.5,
+            0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.34,
+            0.34,
+            0.34
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 16,
+      "quads": 2824
+    },
+    "suffocation_boulder": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/suffocation_boulder_base.json",
+      "source_sha256": "6b515f946e1cfdaa302c184d2a95feb761079cc74a1b2ca8513732cf34c2d613",
+      "display": {
+        "gui": {
+          "rotation": [
+            25.0,
+            35.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.85,
+            0.85,
+            0.85
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0.0,
+            25.0,
+            -12.0
+          ],
+          "translation": [
+            0.0,
+            1.0,
+            -2.0
+          ],
+          "scale": [
+            0.78,
+            0.78,
+            0.78
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0.0,
+            -25.0,
+            12.0
+          ],
+          "translation": [
+            0.0,
+            1.0,
+            -2.0
+          ],
+          "scale": [
+            0.78,
+            0.78,
+            0.78
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            35.0,
+            20.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            35.0,
+            -20.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            2.0,
+            0.0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            3.0,
+            0.0
+          ],
+          "scale": [
+            0.45,
+            0.45,
+            0.45
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.8,
+            0.8,
+            0.8
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 24,
+      "quads": 288
+    },
+    "swarm_of_anvils": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/swarm_of_anvils_base.json",
+      "source_sha256": "57eb1567332138d231098212bf76f7c147a860103e47721ecae30f3fb05e8428",
+      "display": {
+        "gui": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            -0.25,
+            0,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            -1.75,
+            4,
+            1.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            -1.75,
+            4,
+            1.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0,
+            -19,
+            0
+          ],
+          "translation": [
+            0,
+            1.75,
+            0.75
+          ],
+          "scale": [
+            0.6,
+            0.6,
+            0.6
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0,
+            -19,
+            0
+          ],
+          "translation": [
+            0,
+            1.75,
+            0.75
+          ],
+          "scale": [
+            0.6,
+            0.6,
+            0.6
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            0,
+            3,
+            0
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            180.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.65,
+            0.65,
+            0.65
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 16,
+      "quads": 1008
+    },
+    "tnt_cannon": {
+      "source": "src/main/resources/assets/deathsareitems/models/item/tnt_cannon_base.json",
+      "source_sha256": "f35cf32db29ee608b23e976b9391936a549674fd680794ee00d84f22c3fc2fdd",
+      "display": {
+        "gui": {
+          "rotation": [
+            21,
+            144,
+            0
+          ],
+          "translation": [
+            1,
+            0.25,
+            0
+          ],
+          "scale": [
+            0.35,
+            0.35,
+            0.35
+          ]
+        },
+        "firstperson_righthand": {
+          "rotation": [
+            6,
+            11,
+            0
+          ],
+          "translation": [
+            2.5,
+            3,
+            0.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.35
+          ]
+        },
+        "firstperson_lefthand": {
+          "rotation": [
+            6,
+            11,
+            0
+          ],
+          "translation": [
+            2.5,
+            3,
+            0.75
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.35
+          ]
+        },
+        "thirdperson_righthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            1.3,
+            4.5,
+            6
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "thirdperson_lefthand": {
+          "rotation": [
+            0,
+            0,
+            0
+          ],
+          "translation": [
+            1.3,
+            4.5,
+            6
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        },
+        "ground": {
+          "rotation": [
+            0,
+            0,
+            43
+          ],
+          "translation": [
+            0,
+            4,
+            0
+          ],
+          "scale": [
+            0.35,
+            0.35,
+            0.35
+          ]
+        },
+        "fixed": {
+          "rotation": [
+            0.0,
+            90.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            0.31,
+            0.31,
+            0.31
+          ]
+        },
+        "head": {
+          "rotation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "translation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "scale": [
+            1.0,
+            1.0,
+            1.0
+          ]
+        }
+      },
+      "meshes": 32,
+      "quads": 2544
+    }
+  }
+}

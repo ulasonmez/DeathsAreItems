@@ -2,7 +2,7 @@
 
 Run: python3 tools/build_drowning_mask_assets.py
 Geometry and UV locations are read from DrowningMaskModel.java. All faces use
-integer texel boundaries. The separate glass texture is uniformly transparent.
+integer texel boundaries. The separate glass texture uses the white stained glass palette and opacity.
 No face, eyes, skin colors or reflections are painted into the empty window.
 """
 from pathlib import Path
@@ -158,6 +158,19 @@ def validate_geometry():
             assert min(overlap) <= .00001, f'Coplanar overlapping surfaces: {name}, {other}'
 
 
+def build_glass():
+    # Match Minecraft white stained glass: white RGB, alpha 102 for the frosted
+    # field and 155/163 for the small highlights. The model's existing single
+    # quad samples 7.94 x 5.7 texels of its 128-unit UV space; paint that area
+    # directly so no geometry, UVs, frame texture or material needs to change.
+    glass = Image.new('RGBA', (128, 128), (255, 255, 255, 102))
+    draw = ImageDraw.Draw(glass)
+    draw.rectangle((0, 0, 7, 5), outline=(255, 255, 255, 163))
+    for x, y in ((1, 1), (2, 2), (3, 3), (5, 1), (6, 2)):
+        glass.putpixel((x, y), (255, 255, 255, 155))
+    glass.save(GLASS_TEXTURE)
+
+
 def build():
     validate_geometry()
     atlas = Image.new('RGBA', (128, 128), (23, 30, 36, 255))
@@ -185,8 +198,7 @@ def build():
         count += 1
     TEXTURE.parent.mkdir(parents=True, exist_ok=True)
     atlas.save(TEXTURE)
-    # Uniform faint green-gray tint only: no eyes or other opaque pixels.
-    Image.new('RGBA', (16, 16), (173, 199, 189, 27)).save(GLASS_TEXTURE)
+    build_glass()
     print(f'Validated head clearance / coplanar faces; painted {count} cuboids / {count * 6} faces into {TEXTURE.relative_to(ROOT)}')
 
 

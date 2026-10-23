@@ -58,7 +58,7 @@ public final class AnvilSwarmAbility {
                 Vec3 start = end.add(Math.cos(azimuth) * reach, rise, Math.sin(azimuth) * reach);
                 var anvil = AbilityVisuals.anvil(level, start, end, 12, 300 - s.age);
                 s.visuals.add(anvil);
-                s.impacts.add(new Impact(end, s.age + 12));
+                s.impacts.add(new Impact(end, s.age + 14));
                 level.sendParticles(ParticleTypes.CLOUD, start.x, start.y, start.z, 3, .08, .08, .08, .01);
             }
             s.impacts.removeIf(impact -> {
@@ -77,7 +77,7 @@ public final class AnvilSwarmAbility {
                 List<ItemStack> drops = Block.getDrops(s.state, level, s.block, null, owner, new ItemStack(Items.NETHERITE_PICKAXE));
                 if (level.setBlock(s.block, Blocks.AIR.defaultBlockState(), 3)) {
                     if (level.getGameRules().getBoolean(GameRules.RULE_DOBLOCKDROPS)) for (ItemStack drop : drops) {
-                        enchant255(drop, Enchantments.INFINITY_ARROWS);
+                        enchant255(drop, randomEnchantment(level));
                         Block.popResource(level, s.block, drop);
                     }
                     if (level.getGameRules().getBoolean(GameRules.RULE_SHOWDEATHMESSAGES)) level.getServer().getPlayerList().broadcastSystemMessage(
@@ -93,6 +93,10 @@ public final class AnvilSwarmAbility {
         List<Enchantment> pool = BuiltInRegistries.ENCHANTMENT.stream().toList();
         if (pool.isEmpty()) return;
         for (ItemEntity drop : event.getDrops()) enchant255(drop.getItem(), pool.get(event.getEntity().getRandom().nextInt(pool.size())));
+    }
+    private static Enchantment randomEnchantment(ServerLevel level) {
+        List<Enchantment> pool = BuiltInRegistries.ENCHANTMENT.stream().toList();
+        return pool.get(level.random.nextInt(pool.size()));
     }
     private static void enchant255(ItemStack stack, Enchantment enchantment) {
         // ItemStack.enchant narrows through a byte in 1.20.1; 255 would become -1.
@@ -137,7 +141,8 @@ public final class AnvilSwarmAbility {
             }
         }
         Collections.shuffle(cells, random);
-        return cells;
+        // Bound display and tracking load even for a very large target.
+        return new ArrayList<>(cells.subList(0, Math.min(192, cells.size())));
     }
     private static final class Swarm {
         final ServerLevel level; final UUID owner; final BlockPos block; final BlockState state; final LivingEntity mob; final Vec3 anchor;

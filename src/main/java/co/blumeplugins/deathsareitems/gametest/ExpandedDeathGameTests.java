@@ -186,12 +186,12 @@ public final class ExpandedDeathGameTests {
             } finally { p.server.getPlayerList().remove(p); }
         });
     }
-    @GameTest(template="test_arena",timeoutTicks=340) public static void anvilSwarmFinishesWithInfinity255Loot(GameTestHelper h) {
+    @GameTest(template="test_arena",timeoutTicks=340) public static void anvilSwarmFliesSmoothlyAndFinishesWithRandom255Loot(GameTestHelper h) {
         var p=online(h); var center=h.absolutePos(new BlockPos(3,2,3)); h.setBlock(3,2,3,Blocks.DIAMOND_BLOCK);
         h.assertTrue(AnvilSwarmAbility.start(p,center,null),"Swarm starts on an ordinary block");
         h.runAfterDelay(60,()->{
             var flying=h.getLevel().getEntitiesOfClass(Display.BlockDisplay.class,new net.minecraft.world.phys.AABB(center).inflate(12),
-                    d->d.getY()>center.getY()+2 && d.saveWithoutId(new CompoundTag()).getCompound("block_state").getString("Name").equals("minecraft:anvil"));
+                    d->d.tickCount <= 2 && d.saveWithoutId(new CompoundTag()).getCompound("block_state").getString("Name").equals("minecraft:anvil"));
             h.assertTrue(!flying.isEmpty(),"Anvils must start above the target");
             Map<Display.BlockDisplay,Vec3> starts=new HashMap<>();
             Map<Display.BlockDisplay,Tag> rotations=new HashMap<>();
@@ -201,7 +201,9 @@ public final class ExpandedDeathGameTests {
             }
             h.runAfterDelay(15,()->{
                 for(var anvil:flying) {
-                    h.assertTrue(anvil.getY()<starts.get(anvil).y,"Every flying anvil travels downward");
+                    h.assertTrue(anvil.position().equals(starts.get(anvil)), "Flight uses a smooth client transform instead of server position jumps");
+                    var translation = anvil.saveWithoutId(new CompoundTag()).getCompound("transformation").getList("translation", 5);
+                    h.assertTrue(Math.abs(translation.getFloat(1)) < 1, "After flight the transform is centered on the embedded anvil");
                     h.assertTrue(rotations.get(anvil).equals(anvil.saveWithoutId(new CompoundTag()).getCompound("transformation").get("left_rotation")),
                             "Flight rotation remains unchanged when the anvil embeds");
                 }
@@ -231,7 +233,7 @@ public final class ExpandedDeathGameTests {
                 h.assertTrue(h.getLevel().getBlockState(center).isAir(),"Block is destroyed at the end of the swarm");
                 var drops=h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,new net.minecraft.world.phys.AABB(center).inflate(3),e->e.getItem().is(Items.DIAMOND_BLOCK));
                 h.assertTrue(!drops.isEmpty(),"Swarm must drop a diamond block; nearby items="+h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.item.ItemEntity.class,new net.minecraft.world.phys.AABB(center).inflate(10)).stream().map(e->e.getItem().toString()).toList());
-                h.assertTrue(net.minecraft.world.item.enchantment.EnchantmentHelper.getItemEnchantmentLevel(net.minecraft.world.item.enchantment.Enchantments.INFINITY_ARROWS,drops.get(0).getItem())==255,"Block drop carries Infinity 255; actual="+drops.get(0).getItem().getTag()); h.succeed();
+                h.assertTrue(net.minecraft.world.item.enchantment.EnchantmentHelper.getEnchantments(drops.get(0).getItem()).containsValue(255),"Block drop carries a random level-255 enchantment; actual="+drops.get(0).getItem().getTag()); h.succeed();
             } finally { p.server.getPlayerList().remove(p); }
         });
     }
@@ -320,14 +322,14 @@ public final class ExpandedDeathGameTests {
             h.succeed();
         } finally { DeathAbilities.logout(new net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedOutEvent(p)); }
     }
-    @GameTest(template="test_arena") public static void spearAimHasLongerLagAndSmoothlyHandlesTurningAround(GameTestHelper h) {
+    @GameTest(template="test_arena") public static void spearAimFollowsFasterAndSmoothlyHandlesTurningAround(GameTestHelper h) {
         var first=co.blumeplugins.deathsareitems.entity.custom.MaskTridentEntity.followAim(new Vec3(0,0,1),new Vec3(1,0,0));
         double degrees=Math.toDegrees(Math.acos(first.z));
-        h.assertTrue(degrees>6 && degrees<8,"A ninety-degree camera turn moves the spear only about seven degrees on its first tick");
+        h.assertTrue(degrees>30 && degrees<33,"The spear promptly follows a ninety-degree camera turn");
         Vec3 aim=new Vec3(0,0,1), target=new Vec3(0,0,-1);
         for(int i=0;i<80;i++) {
             Vec3 next=co.blumeplugins.deathsareitems.entity.custom.MaskTridentEntity.followAim(aim,target);
-            h.assertTrue(aim.dot(next)>.96,"A full turnaround never snaps or stalls at an opposite direction"); aim=next;
+            h.assertTrue(aim.dot(next)>.4,"A full turnaround never snaps or stalls at an opposite direction"); aim=next;
         }
         h.assertTrue(aim.dot(target)>.999,"Delayed aim eventually converges on the player's new view");
         var p=player(h); p.setYRot(35); p.setXRot(-70);
@@ -364,7 +366,7 @@ public final class ExpandedDeathGameTests {
         var mob=h.spawn(EntityType.IRON_GOLEM,new BlockPos(5,2,6)); mob.setNoAi(true);
         float before=mob.getHealth();
         h.assertTrue(mob.hurt(p.damageSources().playerAttack(p),(float)attack),"Pickaxe hit succeeds so normal attack feedback and knockback still apply");
-        h.assertTrue(Math.abs(before-mob.getHealth()-40)<.01,"A full pickaxe hit deals forty damage through the real attack event pipeline");
+        h.assertTrue(Math.abs(before-mob.getHealth()-16)<.01,"A full pickaxe hit deals sixteen damage after the sixty-percent reduction");
         h.assertTrue(mob.getLastDamageSource()!=null && mob.getLastDamageSource().is(DamageTypes.PLAYER_ATTACK),"Only one normal player attack reaches the damage pipeline");
         h.assertTrue(pick.getDestroySpeed(Blocks.STONE.defaultBlockState())==new ItemStack(Items.IRON_PICKAXE).getDestroySpeed(Blocks.STONE.defaultBlockState()),
                 "Stone mining uses the ordinary iron pickaxe speed");

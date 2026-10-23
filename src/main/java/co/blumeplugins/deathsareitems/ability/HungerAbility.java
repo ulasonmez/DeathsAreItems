@@ -89,6 +89,7 @@ public final class HungerAbility {
                 owner.getFoodData().setFoodLevel(food + restored);
                 int reserve = Math.min(100, owner.getPersistentData().getInt(RESERVE) + 2 - restored);
                 owner.getPersistentData().putInt(RESERVE, reserve);
+                owner.getPersistentData().putInt("deathsareitems.FoodReserveIdle", 0);
                 ModNetwork.state(owner, owner.getId(), 1, reserve);
                 level.playSound(null, owner.blockPosition(), SoundEvents.GENERIC_EAT, SoundSource.PLAYERS, .8F, .9F + level.random.nextFloat() * .3F);
             }
@@ -105,10 +106,31 @@ public final class HungerAbility {
             int restored = Math.min(20 - food, reserve); p.getFoodData().setFoodLevel(food + restored); reserve -= restored;
             data.putInt(RESERVE, reserve);
         }
+        // A full bar consumes no reserve: retire one displayed drumstick every ten idle seconds.
+        int idle = reserve > 0 && food >= 20 ? data.getInt("deathsareitems.FoodReserveIdle") + 1 : 0;
+        if (idle >= 200) {
+            reserve = Math.max(0, reserve - 2);
+            data.putInt(RESERVE, reserve);
+            idle = 0;
+        }
+        data.putInt("deathsareitems.FoodReserveIdle", idle);
         if (reserve != data.getInt("deathsareitems.SyncedFoodReserve") || p.tickCount % 20 == 0) {
             data.putInt("deathsareitems.SyncedFoodReserve", reserve);
             ModNetwork.state(p, p.getId(), 1, reserve);
         }
+    }
+    @SubscribeEvent public static void starvation(TickEvent.PlayerTickEvent event) {
+        if (event.phase != TickEvent.Phase.END || !(event.player instanceof ServerPlayer p)) return;
+        var difficulty = p.level().getDifficulty();
+        boolean belowVanillaFloor = difficulty == net.minecraft.world.Difficulty.EASY && p.getHealth() <= 10
+                || difficulty == net.minecraft.world.Difficulty.NORMAL && p.getHealth() <= 1;
+        var data = p.getPersistentData();
+        if (!p.isAlive() || p.isCreative() || p.isSpectator() || p.getFoodData().getFoodLevel() > 0 || !belowVanillaFloor) {
+            data.remove("deathsareitems.StarveTicks"); return;
+        }
+        int ticks = data.getInt("deathsareitems.StarveTicks") + 1;
+        if (ticks >= 80) { p.hurt(p.damageSources().starve(), 1F); ticks = 0; }
+        data.putInt("deathsareitems.StarveTicks", ticks);
     }
     @SubscribeEvent public static void clone(PlayerEvent.Clone event) {
         var old = event.getOriginal().getPersistentData(); var data = event.getEntity().getPersistentData();

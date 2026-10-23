@@ -13,7 +13,7 @@ import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.network.simple.SimpleChannel;
 
 public final class ModNetwork {
-    private static final String VERSION = "3";
+    private static final String VERSION = "4";
     private static final SimpleChannel CHANNEL = NetworkRegistry.newSimpleChannel(
             new ResourceLocation(DeathsAreItems.MOD_ID, "effects"), () -> VERSION, VERSION::equals, VERSION::equals);
 
@@ -21,10 +21,10 @@ public final class ModNetwork {
 
     public static void register() {
         CHANNEL.messageBuilder(EffectPacket.class, 0, NetworkDirection.PLAY_TO_CLIENT)
-                .encoder((packet, buffer) -> { buffer.writeBoolean(packet.celebration); buffer.writeItem(packet.stack); })
-                .decoder(buffer -> new EffectPacket(buffer.readBoolean(), buffer.readItem()))
+                .encoder((packet, buffer) -> { buffer.writeItem(packet.stack); })
+                .decoder(buffer -> new EffectPacket(buffer.readItem()))
                 .consumerMainThread((packet, context) -> {
-                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientEffects.handle(packet.celebration, packet.stack));
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> ClientEffects.handle(packet.stack));
                     context.get().setPacketHandled(true);
                 }).add();
         CHANNEL.messageBuilder(InputPacket.class, 1, NetworkDirection.PLAY_TO_SERVER)
@@ -49,8 +49,18 @@ public final class ModNetwork {
                     DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> co.blumeplugins.deathsareitems.client.AbilityClient.food(packet.x, packet.y, packet.z, packet.recipient));
                     context.get().setPacketHandled(true);
                 }).add();
+        CHANNEL.messageBuilder(HardcorePacket.class, 4, NetworkDirection.PLAY_TO_CLIENT)
+                .encoder((packet, buffer) -> buffer.writeBoolean(packet.active))
+                .decoder(buffer -> new HardcorePacket(buffer.readBoolean()))
+                .consumerMainThread((packet, context) -> {
+                    DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> co.blumeplugins.deathsareitems.client.EndHardcoreHud.setActive(packet.active));
+                    context.get().setPacketHandled(true);
+                }).add();
     }
 
+    public static void hardcore(ServerPlayer player, boolean active) {
+        CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), new HardcorePacket(active));
+    }
     public static void food(net.minecraft.world.entity.LivingEntity source, net.minecraft.world.phys.Vec3 start, ServerPlayer recipient) {
         CHANNEL.send(PacketDistributor.TRACKING_ENTITY_AND_SELF.with(() -> source), new FoodPacket(start.x, start.y, start.z, recipient.getId()));
     }
@@ -63,11 +73,11 @@ public final class ModNetwork {
         CHANNEL.send(PacketDistributor.TRACKING_ENTITY.with(() -> entity), new StatePacket(entity.getId(), scale, -1));
     }
 
-    public static void celebrate(ServerPlayer player, ItemStack icon) { send(player, new EffectPacket(true, icon)); }
-    public static void reveal(ServerPlayer player, ItemStack stack) { send(player, new EffectPacket(false, stack)); }
+    public static void reveal(ServerPlayer player, ItemStack stack) { send(player, new EffectPacket(stack)); }
     private static void send(ServerPlayer player, EffectPacket packet) { CHANNEL.send(PacketDistributor.PLAYER.with(() -> player), packet); }
-    private record EffectPacket(boolean celebration, ItemStack stack) {}
+    private record EffectPacket(ItemStack stack) {}
     private record InputPacket(boolean held) {}
     private record StatePacket(int entity, float scale, int reserve) {}
+    private record HardcorePacket(boolean active) {}
     private record FoodPacket(double x, double y, double z, int recipient) {}
 }

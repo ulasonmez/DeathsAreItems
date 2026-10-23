@@ -16,6 +16,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.EntityTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingAttackEvent;
 import net.minecraftforge.event.server.ServerStoppedEvent;
 import net.minecraftforge.eventbus.api.*;
 import net.minecraftforge.fml.common.Mod;
@@ -44,12 +45,18 @@ public final class PearlAbility {
         p.level().playSound(null, p.blockPosition(), SoundEvents.AMETHYST_BLOCK_CHIME, SoundSource.PLAYERS, .7F, 1.4F);
         return true;
     }
+    @SubscribeEvent public static void block(LivingAttackEvent event) {
+        if (event.getAmount() > 0 && event.getEntity() instanceof ServerPlayer p && holdsShield(p)
+                && p.isBlocking() && p.getUseItem().is(ModItems.ENDER_PEARL_SHIELD.get())
+                && event.getSource().getEntity() instanceof Mob mob) startBurst(p, mob);
+    }
     @SubscribeEvent public static void defend(LivingHurtEvent event) {
         if (event.getAmount() > 0 && event.getEntity() instanceof ServerPlayer p && holdsShield(p)
                 && event.getSource().getEntity() instanceof Mob mob) startBurst(p, mob);
     }
     public static boolean startBurst(ServerPlayer p, Mob mob) {
-        if (!DeathAbilities.eligible(p, mob) || MobRestraints.busy(mob) || BURSTS.size() >= 16
+        if (!mob.isAlive() || mob.isInvulnerable() || mob.level() != p.level() || mob.distanceToSqr(p) > 128 * 128
+                || MobRestraints.busy(mob) || BURSTS.size() >= 16
                 || BURSTS.values().stream().anyMatch(b -> b.mob == mob)) return false;
         UUID id = UUID.randomUUID(); Burst burst = new Burst(p, mob, id); BURSTS.put(id, burst);
         MobRestraints.acquire(mob, burst.restraint); MobRestraints.freeze(mob, mob.position());

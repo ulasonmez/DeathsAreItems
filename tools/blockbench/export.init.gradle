@@ -1,0 +1,6 @@
+allprojects { afterEvaluate { project ->
+    project.tasks.compileJava.destinationDirectory.set(project.layout.projectDirectory.dir('tmp/blockbench-export-classes'))
+    project.sourceSets.main.output.classesDirs.setFrom(project.files('tmp/blockbench-export-classes'))
+    project.sourceSets.main.java.srcDir(project.file('tools/blockbench/java'))
+    project.minecraft.runs.client.workingDirectory(project.file('tmp/blockbench-export-client'))
+} }

@@ -46,6 +46,10 @@ public final class TemporaryTerrain extends SavedData {
         data.cells.add(new Cell(level.dimension().location(), pos.immutable(), state, after, old, owner.getUUID(), level.getGameTime() + delay, group));
         data.setDirty(); return true;
     }
+    public static void forget(ServerLevel level, Collection<BlockPos> positions) {
+        var data = get(level.getServer());
+        if (data.cells.removeIf(c -> c.dimension.equals(level.dimension().location()) && positions.contains(c.pos))) data.setDirty();
+    }
     public static void renewWalk(ServerPlayer owner, BlockPos pos, int delay) {
         var data = get(owner.server);
         for (int i = 0; i < data.cells.size(); i++) {

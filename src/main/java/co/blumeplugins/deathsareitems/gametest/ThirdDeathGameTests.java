@@ -91,8 +91,10 @@ public final class ThirdDeathGameTests {
         p.setSprinting(true); p.setOnGround(true); p.setDeltaMovement(Vec3.ZERO); fireTick(p);
         for(int i=0;i<60;i++) {
             p.setPos(p.getX()+.025,p.getY(),p.getZ()); p.xo=p.getX(); p.zo=p.getZ();
-            h.getLevel().setBlock(p.getOnPos(),Blocks.STONE.defaultBlockState(),3);
+            if (!h.getLevel().getBlockState(p.getOnPos()).is(Blocks.OBSIDIAN))
+                h.getLevel().setBlock(p.getOnPos(),Blocks.STONE.defaultBlockState(),3);
             fireTick(p);
+            if (i == 5) h.assertTrue(h.getLevel().getBlockState(p.getOnPos()).is(Blocks.OBSIDIAN), "The trail starts well before maximum speed");
         }
         BlockPos trail=p.getOnPos();
         h.assertTrue(FirePantsAbility.ramp(p)==60 && p.onGround(),"Ground position packets accelerate even when xo and delta movement are reset");
@@ -172,10 +174,12 @@ public final class ThirdDeathGameTests {
             double halfway=p.getAttributeValue(Attributes.MOVEMENT_SPEED);
             for (int i=0;i<50;i++) fireTick(p);
             h.assertTrue(FirePantsAbility.ramp(p)==60 && halfway>base && p.getAttributeValue(Attributes.MOVEMENT_SPEED)>halfway,"Sprint accelerates gradually then caps");
-            h.assertTrue(p.getAttributeValue(ForgeMod.STEP_HEIGHT_ADDITION.get())>=.4,"Only full speed enables one-block stepping");
+            h.assertTrue(p.getAttributeValue(ForgeMod.STEP_HEIGHT_ADDITION.get())>=.4,"Step-up is available while the sprint is accelerating");
             p.setSprinting(false); fireTick(p);
-            h.assertTrue(FirePantsAbility.ramp(p)==0 && p.getAttributeValue(ForgeMod.STEP_HEIGHT_ADDITION.get())==0,"Stopping removes both ramp and step ability");
-            h.assertTrue(p.getAttributeValue(Attributes.MOVEMENT_SPEED)<halfway,"Stopping removes the speed bonus"); h.succeed();
+            h.assertTrue(FirePantsAbility.ramp(p)==60, "A brief sprint interruption preserves the speed ramp");
+            p.setItemSlot(EquipmentSlot.LEGS, ItemStack.EMPTY); fireTick(p);
+            h.assertTrue(FirePantsAbility.ramp(p)==0 && p.getAttributeValue(ForgeMod.STEP_HEIGHT_ADDITION.get())==0,"Removing the pants clears speed and stepping");
+            h.assertTrue(p.getAttributeValue(Attributes.MOVEMENT_SPEED)<halfway,"Removing the pants removes the speed bonus"); h.succeed();
         } finally { leave(p); }
     }
     @GameTest(template="test_arena",timeoutTicks=65) public static void moltenTrailWaitsThirtyTicksAndPersists(GameTestHelper h) {
@@ -186,12 +190,25 @@ public final class ThirdDeathGameTests {
         h.runAfterDelay(20,()->h.assertTrue(h.getLevel().getBlockState(pos).is(Blocks.OBSIDIAN),"Trail stays obsidian for the first second"));
         h.runAfterDelay(33,()->{try { h.assertTrue(h.getLevel().getBlockState(pos).is(Blocks.LAVA),"Trail becomes real lava after 1.5 seconds"); h.succeed(); } finally { leave(p); }});
     }
-    @GameTest(template="test_arena",timeoutTicks=50) public static void lavaWalkingCreatesCollisionAndRestoresLava(GameTestHelper h) {
+    @GameTest(template="test_arena") public static void lavaWalkingHasRealCollisionWithoutChangingFluid(GameTestHelper h) {
         var p=online(h); BlockPos lava=h.absolutePos(new BlockPos(5,2,5)); h.getLevel().setBlock(lava,Blocks.LAVA.defaultBlockState(),3);
-        p.setPos(lava.getX()+.5,lava.getY()+1,lava.getZ()+.5); p.setItemSlot(EquipmentSlot.LEGS,new ItemStack(ModItems.FIRE_PANTS.get())); fireTick(p);
-        h.assertTrue(h.getLevel().getBlockState(lava).is(Blocks.OBSIDIAN),"Lava walking has actual solid collision beneath the wearer");
-        p.setItemSlot(EquipmentSlot.LEGS,ItemStack.EMPTY); p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(7,2,7))));
-        h.runAfterDelay(12,()->{try { h.assertTrue(h.getLevel().getBlockState(lava).is(Blocks.LAVA),"Leaving returns the surface to lava"); h.succeed(); } finally { leave(p); }});
+        try {
+            p.setPos(lava.getX()+.5,lava.getY()+1.2,lava.getZ()+.5);
+            p.setItemSlot(EquipmentSlot.LEGS,new ItemStack(ModItems.FIRE_PANTS.get())); fireTick(p);
+            var state=h.getLevel().getBlockState(lava);
+            var shape=state.getCollisionShape(h.getLevel(),lava,net.minecraft.world.phys.shapes.CollisionContext.of(p));
+            h.assertTrue(!shape.isEmpty(),"The wearer's actual collision query sees a lava surface");
+            p.move(MoverType.SELF,new Vec3(0,-.6,0));
+            double surface=lava.getY()+state.getFluidState().getHeight(h.getLevel(),lava);
+            h.assertTrue(Math.abs(p.getY()-surface)<.00001 && p.onGround(),"A descending player lands on the real lava surface");
+            for (int i=0;i<8;i++) { p.move(MoverType.SELF,new Vec3(.01,-.08,0)); fireTick(p); }
+            h.assertTrue(Math.abs(p.getY()-surface)<.00001,"Repeated movement keeps the wearer above the lava");
+            h.assertTrue(h.getLevel().getBlockState(lava).equals(state),"Walking never converts or changes the lava");
+            p.setItemSlot(EquipmentSlot.LEGS,ItemStack.EMPTY);
+            h.assertTrue(state.getCollisionShape(h.getLevel(),lava,net.minecraft.world.phys.shapes.CollisionContext.of(p)).isEmpty(),"Removing the pants removes the surface collision");
+            p.move(MoverType.SELF,new Vec3(0,-.3,0));
+            h.assertTrue(p.getY()<surface-.2,"Without the pants the player falls into the same unchanged lava"); h.succeed();
+        } finally { leave(p); }
     }
     @GameTest(template="test_arena") public static void terrainChangesRespectContainersAndSurviveCageCleanup(GameTestHelper h) {
         var p=online(h); BlockPos pos=h.absolutePos(new BlockPos(3,2,3));
@@ -228,10 +245,10 @@ public final class ThirdDeathGameTests {
             h.assertTrue(mob.isAlive() && mob.getDeltaMovement().lengthSqr()>.01,"Burst launches living mobs before their delayed death");
         });
         h.runAfterDelay(156,()->{try { h.assertTrue(!mob.isAlive(),"Original dies half a second after glass bursts");
-            h.assertTrue(h.getLevel().getBlockState(wall).is(Blocks.STONE),"Replaced terrain returns after the launch has cleared the opening");
+            h.assertTrue(h.getLevel().getBlockState(wall).isAir(),"Broken cage obstacles stay broken after the launch");
             h.assertTrue(h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.monster.Zombie.class,new AABB(wall).inflate(30),m->m.getPersistentData().getBoolean("deathsareitems.CramClone") && m.isAlive()).isEmpty(),"All copies also die"); h.succeed(); } finally { leave(p); }});
     }
-    @GameTest(template="test_arena",timeoutTicks=55) public static void cactusPinsRetaliateAndRestoreOriginalFlags(GameTestHelper h) {
+    @GameTest(template="test_arena",timeoutTicks=100) public static void cactusPinsRetaliateAndRestoreOriginalFlags(GameTestHelper h) {
         for (BlockPos pos : BlockPos.betweenClosed(new BlockPos(3,1,5), new BlockPos(7,1,9)))
             h.setBlock(pos, Blocks.SANDSTONE_SLAB);
         var p=online(h); var mob=h.spawn(EntityType.COW,new BlockPos(5,2,7)); mob.setNoAi(false); mob.setHealth(5);
@@ -242,13 +259,16 @@ public final class ThirdDeathGameTests {
         h.assertTrue(visuals.size()==3,"Three angled cactus spikes launch from overhead");
         for (var spike : visuals) {
             var tag = spike.saveWithoutId(new CompoundTag());
-            h.assertTrue(tag.getInt("interpolation_duration") == 4,
-                    "Spike flight is smoothed by the client over four ticks");
+            h.assertTrue(tag.getInt("interpolation_duration") >= 10 && tag.getInt("interpolation_duration") <= 20,
+                    "The ten-block approach now takes about sixteen ticks at 2.5 times the previous speed");
             var initial = com.mojang.math.Transformation.EXTENDED_CODEC.parse(net.minecraft.nbt.NbtOps.INSTANCE,
                     tag.get("transformation")).result().orElseThrow();
             var tip = new org.joml.Vector3f(.5F, 2F, .5F);
             initial.getMatrix().transformPosition(tip);
             h.assertTrue(tip.y > 1, "The initial rendered tip starts overhead rather than already in the floor");
+            Vec3 initialTip=spike.position().add(tip.x,tip.y,tip.z);
+            h.assertTrue(Math.abs(initialTip.distanceTo(mob.position().add(0,mob.getBbHeight()*(.35+visuals.indexOf(spike)*.12),0))-10)<.001,
+                    "Each blade starts exactly ten blocks away from its target point");
         }
         h.runAfterDelay(6, () -> {
             for (var spike : visuals) {
@@ -257,8 +277,8 @@ public final class ThirdDeathGameTests {
                         tag.get("transformation")).result().orElseThrow();
                 var tip = new org.joml.Vector3f(.5F, 2F, .5F);
                 target.getMatrix().transformPosition(tip);
-                h.assertTrue(tip.length() < .0001F && tag.getInt("interpolation_duration") == 4,
-                        "The blade reaches its smooth landing target within six ticks");
+                h.assertTrue(tip.length() < .0001F && tag.getInt("interpolation_duration") >= 10 && tag.getInt("interpolation_duration") <= 20,
+                        "The client receives the smooth landing transform and the faster flight duration");
             }
         });
         h.runAfterDelay(15,()->{
@@ -281,7 +301,8 @@ public final class ThirdDeathGameTests {
                         "Each full-length blade must pass through the mob before reaching the ground");
             }
         });
-        h.runAfterDelay(35,()->{try { h.assertTrue(!mob.isAlive(),"Impaled mob takes repeated real cactus damage");
+        h.runAfterDelay(8,()->h.assertTrue(mob.getHealth()==5,"Distant spikes do not deal damage before arrival"));
+        h.runAfterDelay(80,()->{try { h.assertTrue(!mob.isAlive(),"Impaled mob takes repeated real cactus damage");
             h.assertTrue(!mob.isNoAi() && !mob.isNoGravity(),"Cleanup restores original AI and gravity"); h.succeed(); } finally { leave(p); }});
     }
     @GameTest(template="test_arena",timeoutTicks=60,batch="deaths3-cannon") public static void cannonUsesGravityGroundDetonationAndProtectsShooter(GameTestHelper h) {

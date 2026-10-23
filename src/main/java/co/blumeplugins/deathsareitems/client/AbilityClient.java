@@ -63,8 +63,8 @@ public final class AbilityClient {
         event.getPoseStack().pushPose(); event.getPoseStack().scale(scale, scale, scale);
     }
     @SubscribeEvent public static void post(RenderLivingEvent.Post<?, ?> event) { event.getPoseStack().popPose(); }
-    @SubscribeEvent public static void hud(RenderGuiOverlayEvent.Post event) {
-        if (!event.getOverlay().id().equals(VanillaGuiOverlay.PLAYER_HEALTH.id()) || reserve <= 0) return;
+    @SubscribeEvent public static void hud(RenderGuiOverlayEvent.Pre event) {
+        if (!event.getOverlay().id().equals(VanillaGuiOverlay.ARMOR_LEVEL.id()) || reserve <= 0) return;
         var mc = Minecraft.getInstance(); if (mc.player == null || mc.options.hideGui) return;
         if (!mc.gameMode.canHurtPlayer()) return;
         int x = event.getWindow().getGuiScaledWidth() / 2 - 91;

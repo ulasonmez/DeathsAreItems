@@ -69,9 +69,7 @@ public final class DeathAbilities {
         var s = event.getSource();
         if ((mask(p) && s.is(DamageTypes.DROWN))
                 || (s.is(DamageTypes.IN_WALL) && carries(p, ModItems.SUFFOCATION_BOULDER.get()))
-                || (s.is(DamageTypes.STARVE) && carries(p, ModItems.HUNGER_STAFF.get()))
                 || (s.is(DamageTypes.FALLING_ANVIL) && carries(p, ModItems.SWARM_OF_ANVILS.get()))
-                || (s.is(DamageTypes.ARROW) && s.getEntity() instanceof net.minecraft.world.entity.monster.Skeleton && carries(p, ModItems.SKELETON_BOW.get()))
                 || (s.getEntity() instanceof net.minecraft.world.entity.animal.IronGolem && carries(p, ModItems.MOB_PICKAXE.get()))) event.setCanceled(true);
     }
     public static InteractionResultHolder<ItemStack> useTool(Player player, InteractionHand hand, Kind kind) {
@@ -197,6 +195,12 @@ public final class DeathAbilities {
     private static void release(ServerPlayer player) {
         Charge charge = CHARGES.get(player.getUUID());
         if (charge == null || charge.flying) return;
+        // Release follows the current crosshair, independently of the held visual's smoothing.
+        Vec3 eye = player.getEyePosition();
+        Vec3 far = eye.add(player.getLookAngle().scale(100));
+        var aim = player.level().clip(new ClipContext(eye, far, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
+        Vec3 target = aim.getType() == HitResult.Type.MISS ? far : aim.getLocation();
+        charge.direction = target.subtract(charge.trident.position()).normalize();
         charge.flying = true; charge.life = 0;
         ((co.blumeplugins.deathsareitems.entity.custom.MaskTridentEntity)charge.trident).launch();
         player.getPersistentData().putLong("deathsareitems.TridentCooldown", player.level().getGameTime() + 30);

@@ -15,16 +15,27 @@ public class ChaosToolItem extends Item {
     public enum Kind { CRAMMER, CANNON, SHIELD }
     private final Kind kind;
     public ChaosToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant()); this.kind = kind; }
-    @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.NONE; }
+    @Override public UseAnim getUseAnimation(ItemStack stack) { return kind == Kind.SHIELD ? UseAnim.BLOCK : UseAnim.NONE; }
     @Override public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return kind == Kind.CANNON ? slotChanged || !ItemStack.isSameItemSameTags(oldStack, newStack)
                 : super.shouldCauseReequipAnimation(oldStack, newStack, slotChanged);
     }
+    @Override public boolean canPerformAction(ItemStack stack, net.minecraftforge.common.ToolAction action) {
+        return kind == Kind.SHIELD && action == net.minecraftforge.common.ToolActions.SHIELD_BLOCK;
+    }
+    @Override public int getUseDuration(ItemStack stack) { return kind == Kind.SHIELD ? 72000 : 0; }
     @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
+        if (kind == Kind.CANNON) player.getCooldowns().removeCooldown(this);
+        if (kind == Kind.SHIELD) {
+            player.startUsingItem(hand);
+            if (!level.isClientSide && !player.getCooldowns().isOnCooldown(this) && PearlAbility.throwPearl((ServerPlayer)player))
+                player.getCooldowns().addCooldown(this, 16);
+            return InteractionResultHolder.consume(stack);
+        }
         if (player.getCooldowns().isOnCooldown(this)) return InteractionResultHolder.fail(stack);
-        if (level.isClientSide) return kind == Kind.CANNON ? InteractionResultHolder.consume(stack) : InteractionResultHolder.success(stack);
+        if (level.isClientSide) return InteractionResultHolder.consume(stack);
         ServerPlayer owner = (ServerPlayer)player;
         boolean started = switch (kind) {
             case CRAMMER -> { LivingEntity target = DeathAbilities.target(owner, 24); yield target != null && CrammerAbility.start(owner, target); }
@@ -32,7 +43,7 @@ public class ChaosToolItem extends Item {
             case SHIELD -> PearlAbility.throwPearl(owner);
         };
         if (!started) return InteractionResultHolder.fail(stack);
-        player.getCooldowns().addCooldown(this, kind == Kind.CRAMMER ? 20 : kind == Kind.CANNON ? 12 : 16);
+        if (kind == Kind.CRAMMER) player.getCooldowns().addCooldown(this, 20);
         return InteractionResultHolder.consume(stack);
     }
     @Override public InteractionResult interactLivingEntity(ItemStack stack, Player player, LivingEntity target, InteractionHand hand) {

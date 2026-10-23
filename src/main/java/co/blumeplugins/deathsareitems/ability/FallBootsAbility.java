@@ -89,7 +89,9 @@ public final class FallBootsAbility {
                 Vec3 to = from.add(0, -Math.max(1.6, -player.getDeltaMovement().y + .9), 0);
                 BlockHitResult hit = player.level().clip(new ClipContext(from, to, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, player));
                 if (hit.getType() == HitResult.Type.BLOCK && hit.getDirection() == Direction.UP) {
-                    placeCushion(player, hit.getBlockPos().above());
+                    ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
+                    BlockPos cushionPos = CushionCycle.next(boots) == Blocks.WATER ? hit.getBlockPos().above() : hit.getBlockPos();
+                    placeCushion(player, cushionPos);
                     landing.cushion = true;
                 }
             }
@@ -99,7 +101,7 @@ public final class FallBootsAbility {
         }
     }
 
-    /** Never covers existing blocks, fluids or block entities; honours Forge placement cancellation. */
+    /** Solid cushions replace the landing surface; water only fills air. Placement protections still apply. */
     public static int placeCushion(ServerPlayer player, BlockPos center) {
         ServerLevel level = player.serverLevel();
         ItemStack boots = player.getItemBySlot(EquipmentSlot.FEET);
@@ -116,8 +118,9 @@ public final class FallBootsAbility {
         for (int dx = -1; dx <= 1; dx++) {
             for (int dz = -1; dz <= 1; dz++) {
                 BlockPos pos = center.offset(dx, 0, dz);
-                if (!canModify(player, pos) || !level.getBlockState(pos).isAir()
-                        || !level.getFluidState(pos).isEmpty()) continue;
+                if (!canModify(player, pos) || !level.getFluidState(pos).isEmpty()) continue;
+                BlockState old = level.getBlockState(pos);
+                if (!old.isAir() && (cushion.is(Blocks.WATER) || !WorldActions.breakEvent(player, pos))) continue;
                 // A fast fall or another nearby mob must not be enclosed by a late solid cushion.
                 if (!cushion.is(Blocks.WATER) && (new AABB(pos).intersects(player.getBoundingBox())
                         || !level.getEntitiesOfClass(LivingEntity.class, new AABB(pos)).isEmpty())) continue;

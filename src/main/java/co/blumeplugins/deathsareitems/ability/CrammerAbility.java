@@ -27,11 +27,24 @@ public final class CrammerAbility {
         BlockPos base = victim.blockPosition(); List<BlockPos> cells = new ArrayList<>();
         for (int y = 0; y < 3; y++) for (int x = -1; x <= 1; x++) for (int z = -1; z <= 1; z++)
             if (x != 0 || z != 0) cells.add(base.offset(x, y, z));
-        cells.add(base.below());
-        for (BlockPos pos : cells) {
+        // An unbreakable solid floor already supports the cage; do not reject bedrock terrain.
+        if (owner.level().getBlockState(base.below()).getDestroySpeed(owner.level(), base.below()) >= 0)
+            cells.add(base.below());
+        List<BlockPos> clearance = new ArrayList<>(cells);
+        for (int y = 0; y < Math.max(3, (int)Math.ceil(mob.getBbHeight())); y++) clearance.add(base.above(y));
+        // Snow layers and plants may have no collision shape. Check actual break permission,
+        // rather than the solid-block target filter shared by the other abilities.
+        for (BlockPos pos : clearance) {
             BlockState old = owner.level().getBlockState(pos);
-            if (!WorldActions.allowed(owner, pos) || old.hasBlockEntity() || old.getDestroySpeed(owner.level(), pos) < 0) return false;
+            if (!WorldActions.allowed(owner, pos) || old.getDestroySpeed(owner.level(), pos) < 0) return false;
+            if (!old.isAir() && net.minecraftforge.common.MinecraftForge.EVENT_BUS.post(
+                    new net.minecraftforge.event.level.BlockEvent.BreakEvent(owner.level(), pos, old, owner))) return false;
         }
+        for (BlockPos pos : clearance) {
+            if (!owner.level().getBlockState(pos).isAir() && !owner.serverLevel().destroyBlock(pos, true, owner)) return false;
+        }
+        // Broken blocks stay broken, with their normal drops; restoring them would duplicate loot.
+        TemporaryTerrain.forget(owner.serverLevel(), clearance);
         String group = "crammer." + UUID.randomUUID(); List<BlockPos> placed = new ArrayList<>();
         for (BlockPos pos : cells) {
             BlockState pane = Blocks.GLASS_PANE.defaultBlockState();
@@ -48,8 +61,7 @@ public final class CrammerAbility {
                 }, connects);
             }
             if (pos.getY() < base.getY()) pane = Blocks.GLASS.defaultBlockState();
-            BlockState old = owner.level().getBlockState(pos);
-            if (!TemporaryTerrain.put(owner, pos, pane, old, 720, group)) {
+            if (!TemporaryTerrain.put(owner, pos, pane, Blocks.AIR.defaultBlockState(), 720, group)) {
                 TemporaryTerrain.finish(owner.serverLevel(), group); return false;
             }
             placed.add(pos.immutable());
@@ -79,6 +91,7 @@ public final class CrammerAbility {
         cage.level.playSound(null, BlockPos.containing(cage.anchor), SoundEvents.GLASS_BREAK, SoundSource.BLOCKS, 1F, .65F);
         for (int i = 0; i < cage.mobs.size(); i++) {
             Mob mob = cage.mobs.get(i); MobRestraints.release(mob, cage.group);
+            cage.launchOrigins.put(mob.getUUID(), mob.position());
             double angle = i * Math.PI * (3 - Math.sqrt(5));
             mob.setDeltaMovement(Math.cos(angle) * (.325 + cage.level.random.nextDouble() * .25), .3 + cage.level.random.nextDouble() * .25,
                     Math.sin(angle) * (.325 + cage.level.random.nextDouble() * .25)); mob.hurtMarked = true;
@@ -95,13 +108,19 @@ public final class CrammerAbility {
             }
             c.age++;
             if (c.burstAt >= 0) {
-                if (c.age - c.burstAt < 10) continue;
-                // Every crowded mob has its own real death, loot and announcement.
+                int flightAge = c.age - c.burstAt;
+                // Allow a brief launch before using collision flags, which may still describe
+                // the cage floor on the burst tick. Open flights keep the half-second lifetime.
                 for (Mob mob : List.copyOf(c.mobs)) if (mob.isAlive()) {
+                    Vec3 origin = c.launchOrigins.get(mob.getUUID());
+                    boolean launched = origin != null && mob.position().distanceToSqr(origin) > .0001;
+                    boolean impact = flightAge >= 2 && launched && (mob.horizontalCollision || mob.verticalCollision);
+                    if (flightAge < 10 && !impact) continue;
                     mob.invulnerableTime = 0; DeathDamage.hurt(mob, DeathDamage.CRAM, owner, Float.MAX_VALUE);
                     level.sendParticles(ParticleTypes.CLOUD, mob.getX(), mob.getY() + .5, mob.getZ(), 18, .4, .5, .4, .08);
                 }
-                c.cleanup(); it.remove(); continue;
+                if (flightAge >= 10 || c.mobs.stream().noneMatch(Mob::isAlive)) { c.cleanup(); it.remove(); }
+                continue;
             }
             if (c.cells.stream().anyMatch(pos -> !level.getBlockState(pos).is(Blocks.GLASS_PANE) && !level.getBlockState(pos).is(Blocks.GLASS))
                     || c.mobs.stream().anyMatch(m -> !m.isAlive() || m.level() != level)) { burst(c); continue; }
@@ -115,7 +134,7 @@ public final class CrammerAbility {
                 clone.load(copy); clone.setUUID(UUID.randomUUID()); clone.setHealth(clone.getMaxHealth());
                 clone.moveTo(c.anchor.x + (level.random.nextDouble() - .5) * .2, c.anchor.y, c.anchor.z + (level.random.nextDouble() - .5) * .2, level.random.nextFloat() * 360F, 0);
                 clone.setPersistenceRequired(); clone.getPersistentData().putBoolean("deathsareitems.CramClone", true);
-                if (level.addFreshEntity(clone)) c.add(clone); else { clone.discard(); burst(c); continue; }
+                if (level.addFreshEntity(clone)) { c.add(clone); clone.playAmbientSound(); } else { clone.discard(); burst(c); continue; }
                 level.sendParticles(ParticleTypes.POOF, c.anchor.x, c.anchor.y + 1, c.anchor.z, 8, .2, .4, .2, .02);
                 int limit = level.getGameRules().getInt(GameRules.RULE_MAX_ENTITY_CRAMMING);
                 // Still resolves when cramming is disabled or set to an excessive value.
@@ -156,6 +175,7 @@ public final class CrammerAbility {
     private static final class Cage {
         final ServerLevel level; final UUID owner; final Mob original; final CompoundTag template;
         final Vec3 anchor; final List<BlockPos> cells; final String group; final List<Mob> mobs = new ArrayList<>();
+        final Map<UUID, Vec3> launchOrigins = new HashMap<>();
         int age, burstAt = -1;
         Cage(ServerPlayer owner, Mob original, Vec3 anchor, List<BlockPos> cells, String group) {
             this.level = owner.serverLevel(); this.owner = owner.getUUID(); this.original = original;

@@ -67,7 +67,7 @@ public final class MaskTridentEntity extends ThrownTrident {
         float pitch = (float)Math.toDegrees(Math.atan2(-previous.y, previous.horizontalDistance()));
         float targetPitch = (float)Math.toDegrees(Math.atan2(-target.y, target.horizontalDistance()));
         // Angle interpolation also turns smoothly through a full 180-degree camera reversal.
-        return Vec3.directionFromRotation(Mth.lerp(.08F, pitch, targetPitch), Mth.rotLerp(.08F, yaw, targetYaw));
+        return Vec3.directionFromRotation(Mth.lerp(.35F, pitch, targetPitch), Mth.rotLerp(.35F, yaw, targetYaw));
     }
     public void pointAlong(Vec3 direction) {
         setYRot((float)Math.toDegrees(Math.atan2(direction.x, direction.z)));

@@ -14,6 +14,9 @@ import java.util.List;
 
 public final class SoulStormItem extends Item {
     public SoulStormItem() { super(new Properties().stacksTo(1).fireResistant()); }
+    @Override public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
+        return slotChanged || oldStack.getItem() != newStack.getItem();
+    }
     @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public int getUseDuration(ItemStack stack) { return 72000; }
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.NONE; }
@@ -24,7 +27,7 @@ public final class SoulStormItem extends Item {
             player.startUsingItem(hand);
             return InteractionResultHolder.consume(stack);
         }
-        if (level.isClientSide) return InteractionResultHolder.success(stack);
+        if (level.isClientSide) return InteractionResultHolder.consume(stack);
         if (!SoulStormAbility.fire((ServerPlayer)player, stack)) return InteractionResultHolder.fail(stack);
         player.getCooldowns().addCooldown(this, 12);
         return InteractionResultHolder.consume(stack);

@@ -2,7 +2,6 @@ package co.blumeplugins.deathsareitems.ability;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.GameType;
@@ -23,13 +22,13 @@ public final class EndHardcore {
     }
     public static boolean active(Player player) { return data(player).getBoolean(ACTIVE); }
     public static void enter(ServerPlayer player) {
-        if (active(player)) return;
         data(player).putBoolean(ACTIVE, true);
-        player.sendSystemMessage(Component.translatable("message.deathsareitems.end_hardcore").withStyle(net.minecraft.ChatFormatting.DARK_RED));
-        co.blumeplugins.deathsareitems.ability.AbilityMessages.show(player, Component.translatable("message.deathsareitems.last_life").withStyle(net.minecraft.ChatFormatting.RED), 120);
+        sync(player);
     }
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.getTo().equals(Level.END) && event.getEntity() instanceof ServerPlayer player) enter(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            if (event.getTo().equals(Level.END)) enter(player); else sync(player);
+        }
     }
     @SubscribeEvent(priority = EventPriority.LOWEST) public static void death(LivingDeathEvent event) {
         if (event.getEntity() instanceof ServerPlayer player && active(player)) data(player).putBoolean(DEAD, true);
@@ -42,10 +41,19 @@ public final class EndHardcore {
         if (data(player).getBoolean(DEAD)) player.setGameMode(GameType.SPECTATOR);
     }
     @SubscribeEvent(priority = EventPriority.LOWEST) public static void respawn(PlayerEvent.PlayerRespawnEvent event) {
-        if (!event.isEndConquered() && event.getEntity() instanceof ServerPlayer player) enforce(player);
+        if (event.getEntity() instanceof ServerPlayer player) {
+            if (!event.isEndConquered()) enforce(player);
+            sync(player);
+        }
     }
     @SubscribeEvent public static void login(PlayerEvent.PlayerLoggedInEvent event) {
-        if (event.getEntity() instanceof ServerPlayer player) { if (player.level().dimension().equals(Level.END)) enter(player); enforce(player); }
+        if (event.getEntity() instanceof ServerPlayer player) {
+            if (player.level().dimension().equals(Level.END)) enter(player);
+            enforce(player); sync(player);
+        }
+    }
+    private static void sync(ServerPlayer player) {
+        co.blumeplugins.deathsareitems.network.ModNetwork.hardcore(player, active(player));
     }
     private EndHardcore() {}
 }

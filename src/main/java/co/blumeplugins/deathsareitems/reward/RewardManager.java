@@ -127,10 +127,6 @@ public final class RewardManager {
             if (!offer.announced) {
                 offer.announced = true;
                 player.serverLevel().sendParticles(ModParticles.CONFETTI.get(), player.getX(), player.getY() + 1, player.getZ(), 130, .65, .5, .65, .3);
-                RewardDefinition announced = DeathRewards.get(offer.reward);
-                ItemStack icon = announced == null ? ItemStack.EMPTY : announced.options().stream().filter(RewardOption::selectable)
-                        .findFirst().map(RewardOption::createReward).orElse(ItemStack.EMPTY);
-                ModNetwork.celebrate(player, icon);
             }
             if (!offer.spawned && --offer.delay <= 0) spawnPresentation(player, offer);
             else if (offer.spawned && server.overworld().getGameTime() % 40 == 0) {
@@ -166,7 +162,6 @@ public final class RewardManager {
         List<Vec3> positions = findPositions(player);
         if (positions.size() != 3) {
             offer.delay = 40; // Retry in a tight room without replacing terrain.
-            player.displayClientMessage(Component.translatable("message.deathsareitems.need_space"), true);
             return;
         }
         removeChests(player.server, offer);
@@ -183,10 +178,6 @@ public final class RewardManager {
         }
         double centerX = Math.floor(player.getX()) + .5;
         double centerZ = Math.floor(player.getZ()) + .5;
-        AABB centeredPlayer = player.getBoundingBox().move(centerX - player.getX(), 0, centerZ - player.getZ());
-        if (level.noCollision(player, centeredPlayer)) {
-            player.connection.teleport(centerX, player.getY(), centerZ, player.getYRot(), player.getXRot());
-        }
         for (int i = 0; i < 3; i++) {
             RewardChestEntity chest = ModEntities.REWARD_CHEST.get().create(level);
             if (chest == null) continue;
@@ -240,7 +231,6 @@ public final class RewardManager {
         int settle = RewardTimings.settlesAt(chest.slot());
         if (age >= settle && !chest.isSettled() && !SettledRewardChests.place(chest, offer)) {
             resetPresentation(player);
-            player.displayClientMessage(Component.translatable("message.deathsareitems.need_space"), true);
             return;
         }
         if (chest.isSettled() && SettledRewardChests.read(level, chest.blockPosition())

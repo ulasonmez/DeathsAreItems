@@ -43,9 +43,34 @@ public class DeathsAreItems {
     }
 
     @net.minecraftforge.eventbus.api.SubscribeEvent
+    public void onServerStarting(net.minecraftforge.event.server.ServerStartingEvent event) {
+        ensureKeepInventory(event.getServer());
+    }
+
+    @net.minecraftforge.eventbus.api.SubscribeEvent
+    public void onLevelLoad(net.minecraftforge.event.level.LevelEvent.Load event) {
+        if (event.getLevel() instanceof net.minecraft.server.level.ServerLevel serverLevel
+                && serverLevel.dimension() == net.minecraft.world.level.Level.OVERWORLD) {
+            ensureKeepInventory(serverLevel.getServer());
+        }
+    }
+
+    private static void ensureKeepInventory(net.minecraft.server.MinecraftServer server) {
+        if (server == null)
+            return;
+        net.minecraft.world.level.GameRules gameRules = server.getGameRules();
+        net.minecraft.world.level.GameRules.BooleanValue keepInventory = gameRules
+                .getRule(net.minecraft.world.level.GameRules.RULE_KEEPINVENTORY);
+        if (keepInventory != null && !keepInventory.get()) {
+            keepInventory.set(true, server);
+            LOGGER.info("keepInventory gamerule was false; automatically set to true.");
+        }
+    }
+
+    @net.minecraftforge.eventbus.api.SubscribeEvent
     public void onPlayerLoggedIn(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player) {
-            // co.blumeplugins.util.internal.GlobalConfigManager.syncProfile(player);
+            co.blumeplugins.util.internal.GlobalConfigManager.syncProfile(player);
         }
     }
 }

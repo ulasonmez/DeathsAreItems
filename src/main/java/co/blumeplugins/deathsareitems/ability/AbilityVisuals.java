@@ -49,13 +49,20 @@ public final class AbilityVisuals {
         ListTag translation = new ListTag();
         for (float f : new float[]{centered.x, centered.y, centered.z}) translation.add(FloatTag.valueOf(f));
         transform.put("translation", translation);
+        CompoundTag arrival = transform.copy();
+        ListTag departure = new ListTag();
+        for (float f : new float[]{centered.x + (float)(start.x-impact.x),
+                centered.y + (float)(start.y-impact.y), centered.z + (float)(start.z-impact.z)})
+            departure.add(FloatTag.valueOf(f));
+        transform.put("translation", departure);
+        tag.putInt("interpolation_duration", flight);
         display.load(tag);
-        spawn(level, display, start, life);
+        spawn(level, display, impact, life);
         Visual visual = ACTIVE.get(ACTIVE.size() - 1);
-        visual.destination = impact; visual.flight = flight;
+        visual.arrivalTransform = arrival; visual.flight = flight;
         return display;
     }
-    public static Display.BlockDisplay spike(ServerLevel level, Vec3 start, Vec3 end, int flight, int life) {
+    public static Display.BlockDisplay spike(ServerLevel level, Vec3 start, Vec3 end, int flight, int life, float length) {
         Display.BlockDisplay display = new Display.BlockDisplay(EntityType.BLOCK_DISPLAY, level);
         CompoundTag tag = base(1F, -1);
         // The tip's light probe ends inside the floor; keep the sand blades' original color.
@@ -69,7 +76,6 @@ public final class AbilityVisuals {
         ListTag rotation = new ListTag(); for (float f : new float[]{q.x,q.y,q.z,q.w}) rotation.add(FloatTag.valueOf(f));
         transform.put("left_rotation", rotation);
         // The two flat blades run from local Y=0 to Y=2. Anchor their tapered tip at end.
-        float length = (float)start.distanceTo(end);
         ListTag scale = new ListTag();
         for (float f : new float[]{1F, length / 2F, 1F}) scale.add(FloatTag.valueOf(f));
         transform.put("scale", scale);

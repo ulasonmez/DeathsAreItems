@@ -30,15 +30,20 @@ public final class CactusAbility {
         for (int i = 0; i < 3; i++) {
             double angle = i * Math.PI * 2 / 3 + owner.getRandom().nextDouble() * .4;
             Vec3 body = pin.anchor.add(0, mob.getBbHeight() * (.35 + i * .12), 0);
-            Vec3 start = body.add(Math.cos(angle) * 1.8, 1.6 + i * .15, Math.sin(angle) * 1.8);
-            Vec3 direction = body.subtract(start).normalize();
+            Vec3 nearStart = body.add(Math.cos(angle) * 1.8, 1.6 + i * .15, Math.sin(angle) * 1.8);
+            Vec3 direction = body.subtract(nearStart).normalize();
+            Vec3 start = body.subtract(direction.scale(10));
             // Continue through the body to the actual collision surface, including slabs and slopes.
             var ground = owner.serverLevel().clip(new ClipContext(body, body.add(direction.scale(32)),
                     ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, mob));
             Vec3 end = ground.getType() == HitResult.Type.BLOCK
                     ? ground.getLocation().add(direction.scale(.025))
                     : body.add(direction.scale(mob.getBbHeight() / -direction.y));
-            pin.visuals.add(AbilityVisuals.spike(owner.serverLevel(), start, end, 4, 220));
+            // Keep the ten-block approach and make the previous flight 2.5 times faster.
+            int previousFlight = (int)Math.ceil(12 * start.distanceTo(end) / nearStart.distanceTo(end));
+            int flight = Math.max(1, (int)Math.round(previousFlight / 2.5));
+            pin.arrival = Math.max(pin.arrival, flight + 2);
+            pin.visuals.add(AbilityVisuals.spike(owner.serverLevel(), start, end, flight, 220, (float)nearStart.distanceTo(end)));
         }
         owner.level().playSound(null, mob.blockPosition(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, .8F, .65F);
         return true;
@@ -53,7 +58,7 @@ public final class CactusAbility {
                 p.cleanup(); it.remove(); continue;
             }
             MobRestraints.freeze(p.mob, p.anchor);
-            if (++p.age >= 10 && p.age % 10 == 0) {
+            if (++p.age >= p.arrival && (p.age - p.arrival) % 10 == 0) {
                 p.mob.invulnerableTime = 0; DeathDamage.hurt(p.mob, DeathDamage.CACTUS, owner, p.age >= 200 ? Float.MAX_VALUE : 4F);
                 level.sendParticles(ParticleTypes.CRIT, p.mob.getX(), p.mob.getY() + .8, p.mob.getZ(), 8, .25, .5, .25, .03);
                 level.playSound(null, p.mob.blockPosition(), SoundEvents.TRIDENT_HIT, SoundSource.HOSTILE, .35F, .75F);
@@ -63,7 +68,7 @@ public final class CactusAbility {
     @SubscribeEvent public static void stop(ServerStoppedEvent event) { PINS.forEach(Pin::cleanup); PINS.clear(); }
     private static final class Pin {
         final Mob mob; final UUID owner; final String id = "cactus." + UUID.randomUUID(); final Vec3 anchor;
-        final List<Entity> visuals = new ArrayList<>(); int age;
+        final List<Entity> visuals = new ArrayList<>(); int age, arrival;
         Pin(ServerPlayer owner, Mob mob) { this.owner = owner.getUUID(); this.mob = mob; this.anchor = mob.position(); }
         void cleanup() { visuals.forEach(Entity::discard); MobRestraints.release(mob, id); }
     }

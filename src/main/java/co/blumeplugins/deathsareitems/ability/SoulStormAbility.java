@@ -60,6 +60,7 @@ public final class SoulStormAbility {
         if (channel.stack != p.getUseItem()) { channel = new Channel(p.getUseItem()); CHANNELS.put(p.getUUID(), channel); }
         int age = ++channel.age;
         if (age <= 32) spiral(p, age);
+        if (age % 32 == 1) p.serverLevel().playSound(null, p.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, .55F, .7F);
         if (age % 4 == 0) harvest(p, channel.stack, age % 12 == 4);
     }
     private static void spiral(ServerPlayer p, int age) {
@@ -70,7 +71,6 @@ public final class SoulStormAbility {
             Vec3 at = p.position().add(Math.cos(angle) * radius, t * (p.getBbHeight() + 2), Math.sin(angle) * radius);
             level.sendParticles(ModParticles.SOUL_FLAME.get(), at.x, at.y, at.z, 1, 0, 0, 0, 0);
         }
-        if (age == 1) level.playSound(null, p.blockPosition(), SoundEvents.SOUL_ESCAPE, SoundSource.PLAYERS, .55F, .7F);
     }
     private static void harvest(ServerPlayer owner, ItemStack stack, boolean showGlass) {
         var level = owner.serverLevel();
@@ -81,10 +81,18 @@ public final class SoulStormAbility {
             if (SOULS_IN_FLIGHT.size() >= 256) break;
             Vec3 start = mob.position().add(0, mob.getBbHeight() * .65, 0);
             // Half a point per pulse; do not bypass the target's hurt/death cancellation hooks.
+            var harvesters = mob.getPersistentData().getCompound("deathsareitems.SoulHarvesters");
+            harvesters.putBoolean(owner.getStringUUID(), true);
+            mob.getPersistentData().put("deathsareitems.SoulHarvesters", harvesters);
             mob.invulnerableTime = 0;
             if (!mob.hurt(DeathDamage.source(mob, DeathDamage.SOUL, owner), .5F)) continue;
-            float next = Math.max(.01F, HungerAbility.scale(mob) - .10F);
-            if (mob.isAlive()) {
+            if (mob.getTarget() == owner) mob.setTarget(null);
+            if (mob.getLastHurtByMob() == owner) mob.setLastHurtByMob(null);
+            if (mob instanceof NeutralMob neutral && owner.getUUID().equals(neutral.getPersistentAngerTarget())) {
+                neutral.setPersistentAngerTarget(null); neutral.setRemainingPersistentAngerTime(0);
+            }
+            float next = Math.max(.01F, HungerAbility.scale(mob) - .05F);
+            if (showGlass && mob.isAlive()) {
                 mob.getPersistentData().putFloat(HungerAbility.SCALE, next); mob.refreshDimensions(); ModNetwork.trackingState(mob, next);
                 if (next <= .011F) {
                     // Finish a nearly invisible mob through normal real damage and Forge death events.
@@ -96,6 +104,10 @@ public final class SoulStormAbility {
                     ? AbilityVisuals.block(level, start, Blocks.WHITE_STAINED_GLASS.defaultBlockState(), .23F, 24, -1) : null;
             SOULS_IN_FLIGHT.add(new Soul(owner.getUUID(), level, stack, glass, start));
         }
+    }
+    @SubscribeEvent public static void target(LivingChangeTargetEvent event) {
+        if (event.getNewTarget() != null && event.getEntity().getPersistentData()
+                .getCompound("deathsareitems.SoulHarvesters").getBoolean(event.getNewTarget().getStringUUID())) event.setCanceled(true);
     }
     public static boolean fire(ServerPlayer owner, ItemStack stack) {
         if (!owner.isAlive() || owner.isSpectator() || !stack.is(ModItems.SOUL_STORM.get()) || !carries(owner, stack) || BOLTS.size() >= 64) return false;
@@ -165,8 +177,8 @@ public final class SoulStormAbility {
             var block = level.clip(new ClipContext(bolt.pos, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, owner));
             Vec3 limit = block.getType() == HitResult.Type.MISS ? end : block.getLocation();
             var entity = ProjectileUtil.getEntityHitResult(owner, bolt.pos, limit, new AABB(bolt.pos, limit).inflate(.5),
-                    e -> e instanceof EndCrystal || e instanceof Mob mob && mob.isAlive() && !mob.isInvulnerable()
-                            && !(mob instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon)
+                    e -> e instanceof EndCrystal || e instanceof net.minecraft.world.entity.boss.EnderDragonPart part && part.parentMob.isAlive()
+                            || e instanceof Mob mob && mob.isAlive() && !mob.isInvulnerable()
                             && !(mob instanceof net.minecraft.world.entity.boss.wither.WitherBoss)
                             && !(mob instanceof TamableAnimal tame && tame.isTame()), bolt.pos.distanceToSqr(limit));
             Vec3 next = entity == null ? limit : entity.getLocation();
@@ -179,11 +191,24 @@ public final class SoulStormAbility {
         return false;
     }
     private static void impact(ServerPlayer owner, Bolt bolt, Entity target) {
-        if (target instanceof LivingEntity living) { living.invulnerableTime = 0; living.hurt(DeathDamage.source(living, DeathDamage.SOUL, owner), 24F); }
+        if (target instanceof net.minecraft.world.entity.boss.EnderDragonPart part) {
+            damageDragon(owner, part.parentMob);
+        } else if (target instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon dragon) {
+            damageDragon(owner, dragon);
+        } else if (target instanceof LivingEntity living) {
+            living.invulnerableTime = 0; living.hurt(DeathDamage.source(living, DeathDamage.SOUL, owner), 24F);
+        } else if (target instanceof EndCrystal crystal) {
+            crystal.hurt(owner.damageSources().playerAttack(owner), 24F);
+        }
         OwnedExplosions.soulBlast(owner, bolt.pos);
         bolt.level.sendParticles(ModParticles.SOUL_SMOKE.get(), bolt.pos.x, bolt.pos.y, bolt.pos.z, 20, .7, .7, .7, .04);
         bolt.level.sendParticles(ModParticles.SOUL_FLAME.get(), bolt.pos.x, bolt.pos.y, bolt.pos.z, 16, .6, .6, .6, .035);
         owner.displayClientMessage(counter(bolt.stack), true);
+    }
+    private static void damageDragon(ServerPlayer owner, net.minecraft.world.entity.boss.enderdragon.EnderDragon dragon) {
+        dragon.invulnerableTime = 0;
+        // Route through a dragon part with player attribution; body hits otherwise quarter the damage.
+        dragon.hurt(dragon.head, DeathDamage.source(dragon, DeathDamage.SOUL, owner), 16F);
     }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) {
         UUID id = event.getEntity().getUUID(); CHANNELS.remove(id);
