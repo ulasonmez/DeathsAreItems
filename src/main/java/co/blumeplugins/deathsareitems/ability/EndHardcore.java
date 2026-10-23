@@ -21,8 +21,18 @@ public final class EndHardcore {
         return tag.getCompound(Player.PERSISTED_NBT_TAG);
     }
     public static boolean active(Player player) { return data(player).getBoolean(ACTIVE); }
+    public static boolean isDead(Player player) { return data(player).getBoolean(DEAD); }
     public static void enter(ServerPlayer player) {
         data(player).putBoolean(ACTIVE, true);
+        sync(player);
+    }
+    public static void reset(ServerPlayer player) {
+        var tag = data(player);
+        tag.putBoolean(ACTIVE, false);
+        tag.putBoolean(DEAD, false);
+        if (player.gameMode.getGameModeForPlayer() == GameType.SPECTATOR) {
+            player.setGameMode(GameType.SURVIVAL);
+        }
         sync(player);
     }
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) {

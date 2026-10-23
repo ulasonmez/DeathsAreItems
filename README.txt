@@ -1,4 +1,6 @@
-Deaths Are Items forge 1.20.1 mod
+================================================================================
+DEATHS ARE ITEMS - FORGE 1.20.1 MOD
+================================================================================
 
 ================================================================================
 COMMANDS
@@ -6,11 +8,22 @@ COMMANDS
 
 Commands require operator permission level 2 or cheats enabled:
 
-/deathsareitems reset <type|all>
-- Resets death discovery history so you can unlock the reward again.
+/deathsareitems revive [player]
+- Revives a player from End Hardcore death.
+- Clears the hardcore spectator death lock and resets End Hardcore status.
+- Restores the player's game mode back to Survival and sets hearts HUD to normal.
 - Parameters:
-  <type> : Specific death type (see list below)
-  all    : Resets all 14 death discoveries (default if omitted)
+  [player] : Target player(s) (e.g. player name, @s, @a; defaults to self if omitted)
+- Alternative aliases:
+  /deathsareitems reset hardcore
+  /deathsareitems hardcore reset [player]
+
+/deathsareitems reset <type|all|hardcore>
+- Resets death discovery history so you can unlock the reward again, or resets End Hardcore.
+- Parameters:
+  <type>   : Specific death type (see list below)
+  all      : Resets all 14 death discoveries (default if omitted)
+  hardcore : Resets End Hardcore status and revives you to Survival
 
 /deathsareitems preview <type>
 - Previews the reward chest sequence without dying.
@@ -27,6 +40,18 @@ Commands require operator permission level 2 or cheats enabled:
 
 Valid death types:
 fall, drown, suffocate, skeleton, golem, starve, anvil, cram, cactus, tnt, lava, bed, pearl, wither
+
+================================================================================
+END HARDCORE CHALLENGE
+================================================================================
+
+When a player enters The End dimension:
+- Personal "End Hardcore" mode is activated (hardcore hearts render on the HUD).
+- Reward chests are disabled while in End Hardcore mode.
+- If the player dies after entering The End, they are permanently locked into
+  Spectator mode across dimensions, respawns, and server restarts.
+- To revive a player and restore them to Survival mode:
+  Run `/deathsareitems revive <player>` (or `/deathsareitems reset hardcore`).
 
 ================================================================================
 DEATH REWARDS & USAGE

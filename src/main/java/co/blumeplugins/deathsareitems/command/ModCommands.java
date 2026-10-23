@@ -1,12 +1,14 @@
 package co.blumeplugins.deathsareitems.command;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
+import co.blumeplugins.deathsareitems.ability.EndHardcore;
 import co.blumeplugins.deathsareitems.reward.DeathRewards;
 import co.blumeplugins.deathsareitems.reward.RewardManager;
 import co.blumeplugins.deathsareitems.reward.RewardSavedData;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.SharedSuggestionProvider;
+import net.minecraft.commands.arguments.EntityArgument;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
@@ -17,6 +19,9 @@ import net.minecraft.commands.Commands;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.Collection;
+import java.util.Collections;
 
 @Mod.EventBusSubscriber(modid = DeathsAreItems.MOD_ID)
 public final class ModCommands {
@@ -35,17 +40,42 @@ public final class ModCommands {
                 .then(Commands.literal("die").then(Commands.argument("type",StringArgumentType.word())
                         .suggests((c,b) -> SharedSuggestionProvider.suggest(DeathRewards.ids().stream().map(ResourceLocation::getPath),b))
                         .executes(c -> kill(c.getSource().getPlayerOrException(),StringArgumentType.getString(c,"type")))))
+                .then(Commands.literal("revive")
+                        .executes(c -> revive(c.getSource(), Collections.singleton(c.getSource().getPlayerOrException())))
+                        .then(Commands.argument("targets", EntityArgument.players())
+                                .executes(c -> revive(c.getSource(), EntityArgument.getPlayers(c, "targets")))))
+                .then(Commands.literal("hardcore")
+                        .then(Commands.literal("reset")
+                                .executes(c -> revive(c.getSource(), Collections.singleton(c.getSource().getPlayerOrException())))
+                                .then(Commands.argument("targets", EntityArgument.players())
+                                        .executes(c -> revive(c.getSource(), EntityArgument.getPlayers(c, "targets"))))))
                 .then(Commands.literal("reset")
                         .executes(c -> reset(c.getSource(), "all"))
                         .then(Commands.argument("type", StringArgumentType.word())
                                 .suggests((c, b) -> SharedSuggestionProvider.suggest(java.util.stream.Stream.concat(
-                                        java.util.stream.Stream.of("all"),
+                                        java.util.stream.Stream.of("all", "hardcore"),
                                         DeathRewards.ids().stream().map(ResourceLocation::getPath)), b))
                                 .executes(c -> reset(c.getSource(), StringArgumentType.getString(c, "type"))))));
     }
 
+    private static int revive(CommandSourceStack source, Collection<ServerPlayer> players) {
+        for (ServerPlayer player : players) {
+            EndHardcore.reset(player);
+        }
+        if (players.size() == 1) {
+            ServerPlayer target = players.iterator().next();
+            source.sendSuccess(() -> Component.literal("Revived " + target.getScoreboardName() + " from End Hardcore death. Gamemode restored to Survival."), true);
+        } else {
+            source.sendSuccess(() -> Component.literal("Revived " + players.size() + " players from End Hardcore death. Gamemode restored to Survival."), true);
+        }
+        return players.size();
+    }
+
     private static int reset(CommandSourceStack source, String type) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
         ServerPlayer player = source.getPlayerOrException();
+        if (type.equals("hardcore")) {
+            return revive(source, Collections.singleton(player));
+        }
         RewardSavedData data = RewardSavedData.get(player.server);
         if (type.equals("all")) {
             data.resetDiscoveries(player.getUUID());
@@ -54,7 +84,7 @@ public final class ModCommands {
         }
         ResourceLocation id = ResourceLocation.tryParse(DeathsAreItems.MOD_ID + ":" + type);
         if (id == null || DeathRewards.get(id) == null) {
-            source.sendFailure(Component.literal("Unknown death type '" + type + "'. Use a suggested death type or 'all'."));
+            source.sendFailure(Component.literal("Unknown death type '" + type + "'. Use a suggested death type, 'hardcore', or 'all'."));
             return 0;
         }
         data.resetDiscovery(player.getUUID(), id);

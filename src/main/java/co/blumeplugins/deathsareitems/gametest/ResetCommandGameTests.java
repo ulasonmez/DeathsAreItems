@@ -13,8 +13,10 @@ import net.minecraft.gametest.framework.GameTestHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.GameType;
 import net.minecraftforge.common.util.FakePlayerFactory;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.gametest.GameTestHolder;
 import net.minecraftforge.gametest.PrefixGameTestTemplate;
 
@@ -34,6 +36,7 @@ public final class ResetCommandGameTests {
     }
 
     private static void cleanup(ServerPlayer player) {
+        EndHardcore.reset(player);
         RewardManager.clearOffer(player);
         RewardSavedData data = RewardSavedData.get(player.server);
         data.resetDiscoveries(player.getUUID());
@@ -121,6 +124,48 @@ public final class ResetCommandGameTests {
                 denied = true;
             }
             helper.assertTrue(denied && data.hasDiscovered(player.getUUID(), DeathRewards.FALL), "Non-operators must not reset discoveries");
+            helper.succeed();
+        } finally {
+            cleanup(player);
+        }
+    }
+
+    @GameTest(template = "test_arena")
+    public static void reviveCommandRestoresSurvivalAndClearsEndHardcore(GameTestHelper helper) throws CommandSyntaxException {
+        ServerPlayer player = player(helper);
+        try {
+            EndHardcore.enter(player);
+            helper.assertTrue(EndHardcore.active(player), "Player must be marked as End Hardcore active");
+            var death = new LivingDeathEvent(player, player.damageSources().cactus());
+            EndHardcore.death(death);
+            helper.assertTrue(EndHardcore.isDead(player), "Player must be marked as End Hardcore dead");
+            EndHardcore.respawn(new PlayerEvent.PlayerRespawnEvent(player, false));
+            helper.assertTrue(player.isSpectator(), "Dead End Hardcore player must respawn into spectator");
+
+            // Test /deathsareitems revive
+            helper.assertTrue(execute(player, "deathsareitems revive") == 1, "Revive command must execute successfully");
+            helper.assertTrue(!EndHardcore.active(player), "End Hardcore must no longer be active after revive");
+            helper.assertTrue(!EndHardcore.isDead(player), "End Hardcore dead status must be cleared after revive");
+            helper.assertTrue(player.gameMode.getGameModeForPlayer() == GameType.SURVIVAL, "Player must be restored to survival gamemode");
+
+            // Test /deathsareitems reset hardcore
+            EndHardcore.enter(player);
+            EndHardcore.death(death);
+            EndHardcore.respawn(new PlayerEvent.PlayerRespawnEvent(player, false));
+            helper.assertTrue(player.isSpectator() && EndHardcore.isDead(player), "Setup spectator again");
+            helper.assertTrue(execute(player, "deathsareitems reset hardcore") == 1, "Reset hardcore must execute successfully");
+            helper.assertTrue(!EndHardcore.active(player) && !EndHardcore.isDead(player) && player.gameMode.getGameModeForPlayer() == GameType.SURVIVAL,
+                    "Reset hardcore must also restore survival and clear hardcore state");
+
+            // Test non-operator permission
+            boolean denied = false;
+            try {
+                player.server.getCommands().getDispatcher().execute("deathsareitems revive",
+                        player.createCommandSourceStack().withPermission(0).withSuppressedOutput());
+            } catch (CommandSyntaxException expected) {
+                denied = true;
+            }
+            helper.assertTrue(denied, "Non-operators must not execute revive");
             helper.succeed();
         } finally {
             cleanup(player);
