@@ -14,6 +14,7 @@ import java.util.List;
 
 public final class SoulStormItem extends Item {
     public SoulStormItem() { super(new Properties().stacksTo(1).fireResistant()); }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     @Override public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return slotChanged || oldStack.getItem() != newStack.getItem();
     }

@@ -16,7 +16,8 @@ import java.util.List;
 
 public final class MobPickaxeItem extends PickaxeItem {
     public static final String ENABLED = "deathsareitems.Morphing";
-    public MobPickaxeItem() { super(Tiers.NETHERITE, 11, -2.4F, new Properties().fireResistant().rarity(Rarity.EPIC)); }
+    public MobPickaxeItem() { super(Tiers.NETHERITE, 11, -2.4F, new Properties().fireResistant()); }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     @Override public float getDestroySpeed(ItemStack stack, net.minecraft.world.level.block.state.BlockState state) {
         return state.is(net.minecraft.tags.BlockTags.MINEABLE_WITH_PICKAXE) ? Tiers.IRON.getSpeed() : 1F;
     }

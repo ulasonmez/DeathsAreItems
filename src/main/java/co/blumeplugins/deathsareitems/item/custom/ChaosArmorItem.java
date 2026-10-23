@@ -11,6 +11,7 @@ public final class ChaosArmorItem extends ArmorItem {
     public ChaosArmorItem(Type type, String tooltip) {
         super(ArmorMaterials.IRON, type, new Properties().stacksTo(1).fireResistant()); this.tooltip = tooltip;
     }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     @Override public boolean isDamageable(ItemStack stack) { return false; }
     @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public String getArmorTexture(ItemStack stack, net.minecraft.world.entity.Entity entity,

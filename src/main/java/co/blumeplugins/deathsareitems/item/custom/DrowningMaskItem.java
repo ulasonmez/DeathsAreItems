@@ -7,6 +7,7 @@ import java.util.List;
 
 public final class DrowningMaskItem extends ArmorItem {
     public DrowningMaskItem() { super(ArmorMaterials.TURTLE, Type.HELMET, new Properties().stacksTo(1).fireResistant()); }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     @Override public boolean isDamageable(ItemStack stack) { return false; }
     @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public String getArmorTexture(ItemStack stack, net.minecraft.world.entity.Entity entity,

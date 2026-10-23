@@ -15,7 +15,8 @@ import java.util.List;
 public class DeathToolItem extends Item {
     public enum Kind { BOULDER, BOW, STAFF, ANVILS }
     private final Kind kind;
-    public DeathToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant().rarity(Rarity.EPIC)); this.kind = kind; }
+    public DeathToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant()); this.kind = kind; }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     public Kind kind() { return kind; }
     @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public int getUseDuration(ItemStack stack) { return kind == Kind.STAFF ? 100 : 72000; }

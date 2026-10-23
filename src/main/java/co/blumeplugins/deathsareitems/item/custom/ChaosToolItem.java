@@ -15,6 +15,7 @@ public class ChaosToolItem extends Item {
     public enum Kind { CRAMMER, CANNON, SHIELD }
     private final Kind kind;
     public ChaosToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant()); this.kind = kind; }
+    @Override public Rarity getRarity(ItemStack stack) { return Rarity.COMMON; }
     @Override public UseAnim getUseAnimation(ItemStack stack) { return kind == Kind.SHIELD ? UseAnim.BLOCK : UseAnim.NONE; }
     @Override public boolean shouldCauseReequipAnimation(ItemStack oldStack, ItemStack newStack, boolean slotChanged) {
         return kind == Kind.CANNON ? slotChanged || !ItemStack.isSameItemSameTags(oldStack, newStack)
