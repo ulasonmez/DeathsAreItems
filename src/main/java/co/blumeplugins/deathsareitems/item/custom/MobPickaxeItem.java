@@ -31,7 +31,9 @@ public final class MobPickaxeItem extends PickaxeItem {
         if (player instanceof ServerPlayer server) {
             boolean enabled = !stack.getOrCreateTag().getBoolean(ENABLED);
             stack.getOrCreateTag().putBoolean(ENABLED, enabled);
-            AbilityMessages.show(server, Component.literal("MOB MORPHING TIME " + (enabled ? "ENABLED" : "DISABLED"))
+            AbilityMessages.show(server, Component.translatable(enabled
+                            ? "message.deathsareitems.mob_morphing_enabled"
+                            : "message.deathsareitems.mob_morphing_disabled")
                     .withStyle(enabled ? ChatFormatting.GREEN : ChatFormatting.RED), 60);
             level.playSound(null, player.blockPosition(), SoundEvents.NETHERITE_BLOCK_HIT, SoundSource.PLAYERS, .7F, enabled ? .8F : .65F);
         }

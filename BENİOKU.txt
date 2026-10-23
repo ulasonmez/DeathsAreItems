@@ -1,0 +1,141 @@
+================================================================================
+DEATHS ARE ITEMS - FORGE 1.20.1 MODU
+================================================================================
+
+================================================================================
+KOMUTLAR
+================================================================================
+
+Komutlar için 2. seviye operatör yetkisi veya hilelerin açık olması gerekir:
+
+/deathsareitems revive [player]
+- End Hardcore modunda ölen bir oyuncuyu hayata döndürür.
+- Oyuncuyu İzleyici moduna kilitleyen ölüm durumunu kaldırır ve End Hardcore
+  durumunu sıfırlar.
+- Oyuncuyu Hayatta Kalma moduna döndürür ve ekrandaki kalpleri normale çevirir.
+- Parametreler:
+  [player] : Hedef oyuncu veya oyuncular (oyuncu adı, @s, @a gibi;
+             belirtilmezse komutu kullanan oyuncu)
+- Alternatif kullanımlar:
+  /deathsareitems reset hardcore
+  /deathsareitems hardcore reset [player]
+
+/deathsareitems reset <type|all|hardcore>
+- Aynı ödülün yeniden açılabilmesi için ölüm keşif geçmişini sıfırlar veya
+  End Hardcore durumunu sıfırlar.
+- Parametreler:
+  <type>   : Belirli bir ölüm türü (aşağıdaki listeye bak)
+  all      : 14 ölüm türünün tamamına ait keşifleri sıfırlar
+             (parametre belirtilmezse varsayılan seçenek)
+  hardcore : End Hardcore durumunu sıfırlar ve seni Hayatta Kalma moduna döndürür
+
+/deathsareitems preview <type>
+- Ölmeden ödül sandıklarının açılışını önizlemeni sağlar.
+- Parametreler:
+  <type> : Belirli bir ölüm türü (belirtilmezse 'fall' kullanılır)
+
+/deathsareitems die <type>
+- Seni belirtilen ölüm türüyle öldürür; bağışıklıkları yok sayar.
+- Parametreler:
+  <type> : Belirli bir ölüm türü (aşağıdaki listeye bak)
+
+/give @s deathsareitems:<item_id>
+- Ödül eşyasını doğrudan envanterine verir.
+
+Geçerli ölüm türleri (komutta İngilizce kimliklerini kullan):
+fall, drown, suffocate, skeleton, golem, starve, anvil, cram, cactus, tnt, lava, bed, pearl, wither
+
+================================================================================
+END HARDCORE MÜCADELESİ
+================================================================================
+
+Bir oyuncu End boyutuna girdiğinde:
+- Kişisel "End Hardcore" modu etkinleşir; ekranda hardcore kalpleri gösterilir.
+- End Hardcore modu etkinken ödül sandıkları devre dışı kalır.
+- Oyuncu End'e girdikten sonra ölürse İzleyici moduna kalıcı olarak kilitlenir.
+  Bu durum boyut değiştirince, yeniden doğunca veya sunucu yeniden başlayınca
+  da devam eder.
+- Oyuncuyu hayata döndürmek ve Hayatta Kalma moduna geçirmek için:
+  `/deathsareitems revive <player>` komutunu kullan
+  (veya kendin için `/deathsareitems reset hardcore` komutunu çalıştır).
+
+================================================================================
+ÖLÜM ÖDÜLLERİ VE KULLANIMLARI
+================================================================================
+
+NOT: Ödül sandıklarının düzgün oluşabilmesi için geniş ve düz bir doğma noktası
+seç. Doğduğun yerde yeterince açık ve düz zemin yoksa mod açık bir alana geçmeni
+bekler. Sandıklar farklı yüksekliklerde de oluşabilir; biri yukarıda, diğeri
+aşağıda kalabilir, hatta kaybolabilirler.
+
+1. Düşme Hasarı - Düşüş Hasarı Botları
+   Ayak yuvasına giyilir. Tüm düşme hasarını engeller. Yere indiğinde su -> balçık
+   -> saman döngüsüyle değişen 3x3 boyutunda bir yastık oluşturur. Yere inerken
+   eğilirsen kırılabilir zemin bloklarını havaya fırlatıp uçan enkaza dönüştürür.
+
+2. Suda Boğulma - Boğulma Maskesi
+   Baş yuvasına takılır. Suda Nefes Alma, Yunusun Lütfu ve Kanal Gücü etkilerini
+   verir. İki elin de boşken sağ tıkı basılı tutup bırakarak hedef yaratıklara
+   boğulma saldırısı uygulayan bir üç dişli mızrak fırlatabilirsin.
+
+3. Nefessiz Kalma - Boğucu Kaya
+   Bir bloğa sağ tıklayarak küre biçimindeki bir alanı 3 saniye sonra kuma veya
+   çakıla dönüştürürsün. Bir yaratığa sağ tıklayarak ya da vurarak onu kum veya
+   çakıldan bir kafese hapsedip nefessiz bırakabilirsin.
+
+4. İskelet Oku - İskelet Yayı
+   Sağ tıkı basılı tutarak sonsuz sayıda oku hızla ateşlersin.
+   Her 2 oyun tikinde bir ok atar ve cephane tüketmez.
+
+5. Demir Golem - Yaratık Kazması
+   Sağ tıklayarak yaratık oluşturmayı açıp kapatabilirsin. Açıkken kazdığın
+   blokların yerinde rastgele bir yaratık oluşur. Tam dolu saldırılarda
+   40 yakın dövüş hasarı verir.
+
+6. Açlıktan Ölme - Açlık Asası
+   Bir yaratığa sağ tıklayarak onu 5 saniye boyunca tüketirsin; hedef küçülür,
+   sen de 10 açlık puanı kazanırsın. Fazlası, en çok 100 açlık puanı tutabilen
+   ek açlık rezervi çubuğunu doldurur.
+
+7. Düşen Örs - Örs Sürüsü
+   Bir bloğa veya yaratığa sağ tıklayarak 15 saniye boyunca örs yağdırırsın;
+   yaratıklar yerlerine sabitlenir. Süre sonunda hedef blok Sonsuzluk 255
+   büyüsüyle düşer; yaratıklardan düşen eşyalara rastgele 255. seviye büyüler
+   uygulanır.
+
+8. Yaratık Sıkışması - Yaratık Sıkıştırıcı
+   Bir yaratığa sağ tıklayarak onu cam bir kafese hapsedersin. Kafes, sıkışma
+   sınırı hepsini öldürene kadar yaratığı sürekli çoğaltır, ardından dışa doğru
+   parçalanır.
+
+9. Kaktüs - Kaktüs Göğüslüğü
+   Gövde yuvasına giyilir; 6 zırh puanı verir. Saldıran yaratıklara otomatik
+   olarak kaktüs dikenleriyle karşılık verir, onları yerlerine sabitler ve
+   her 0,5 saniyede bir hasar uygular.
+
+10. TNT Patlaması - TNT Topu
+    Sağ tıklayarak yay çizerek ilerleyen, fitili ateşlenmiş TNT fırlatırsın.
+    TNT çarptığında veya 3 saniye sonra patlar. Aşağıya ateş ederek kendi
+    atışının patlama hasarını almadan kendini havaya fırlatabilirsin.
+
+11. Lav - Ateş Pantolonu
+    Bacak yuvasına giyilir; 5 zırh puanı ve Ateş Direnci verir. Depar atarak
+    hareket hızını en fazla %150 artırabilirsin. En yüksek hızda altındaki
+    zemini obsidiyene dönüştürür; bu obsidiyen 1,5 saniye sonra eriyerek lava
+    dönüşür. Lavın üstünde güvenle koşmanı da sağlar.
+
+12. Yatak / Yeniden Doğma Çapası Patlaması - Katman Kayası
+    Yatak gibi yerleştirip sağ tıkla. Her 1,5 saniyede bir, kullanıcıya zarar
+    vermeyen ve bloğu yok etmeyen güçlü, alevli bir patlama oluşturur.
+
+13. Ender İncisi - Ender İncisi Kalkanı
+    Elinde tutarken sağ tıklayarak ışınlanma hasarı vermeyen güvenli ender
+    incileri fırlatabilirsin. Elinde tutarken bir yaratık sana vurursa
+    60 inci salarak karşılık verir; inciler saldırganı ölene kadar tekrar
+    tekrar ışınlayıp hasar verir.
+
+14. Wither Etkisi - Ruh Fırtınası
+    Eğilip sağ tıkı basılı tutarak yakındaki yaratıklardan ruh toplayabilirsin;
+    bu işlem onlara hasar verir ve onları küçültür. Eğilmeden sağ tıklayarak
+    patlayıcı bir ruh mermisi ateşlersin. Yüksek hasar verir ve obsidiyeni
+    kırabilir.
