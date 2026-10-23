@@ -1,12 +1,13 @@
 package co.blumeplugins.deathsareitems.ability;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
-import co.blumeplugins.deathsareitems.block.ModBlocks;
 import co.blumeplugins.deathsareitems.item.ModItems;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.*;
 import net.minecraft.sounds.*;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.level.ClipContext;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
@@ -28,9 +29,16 @@ public final class CactusAbility {
         Pin pin = new Pin(owner, mob); PINS.add(pin); MobRestraints.acquire(mob, pin.id); MobRestraints.freeze(mob, pin.anchor);
         for (int i = 0; i < 3; i++) {
             double angle = i * Math.PI * 2 / 3 + owner.getRandom().nextDouble() * .4;
-            Vec3 end = pin.anchor.add(Math.cos(angle) * .15, mob.getBbHeight() * (.35 + i * .12), Math.sin(angle) * .15);
-            Vec3 start = end.add(Math.cos(angle) * 2.7, 3.5 + i * .45, Math.sin(angle) * 2.7);
-            pin.visuals.add(AbilityVisuals.spike(owner.serverLevel(), start, end, 10, 220));
+            Vec3 body = pin.anchor.add(0, mob.getBbHeight() * (.35 + i * .12), 0);
+            Vec3 start = body.add(Math.cos(angle) * 1.8, 1.6 + i * .15, Math.sin(angle) * 1.8);
+            Vec3 direction = body.subtract(start).normalize();
+            // Continue through the body to the actual collision surface, including slabs and slopes.
+            var ground = owner.serverLevel().clip(new ClipContext(body, body.add(direction.scale(32)),
+                    ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, mob));
+            Vec3 end = ground.getType() == HitResult.Type.BLOCK
+                    ? ground.getLocation().add(direction.scale(.025))
+                    : body.add(direction.scale(mob.getBbHeight() / -direction.y));
+            pin.visuals.add(AbilityVisuals.spike(owner.serverLevel(), start, end, 4, 220));
         }
         owner.level().playSound(null, mob.blockPosition(), SoundEvents.TRIDENT_THROW, SoundSource.PLAYERS, .8F, .65F);
         return true;

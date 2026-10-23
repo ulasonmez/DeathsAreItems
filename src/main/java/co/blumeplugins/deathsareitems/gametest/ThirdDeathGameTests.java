@@ -232,12 +232,55 @@ public final class ThirdDeathGameTests {
             h.assertTrue(h.getLevel().getEntitiesOfClass(net.minecraft.world.entity.monster.Zombie.class,new AABB(wall).inflate(30),m->m.getPersistentData().getBoolean("deathsareitems.CramClone") && m.isAlive()).isEmpty(),"All copies also die"); h.succeed(); } finally { leave(p); }});
     }
     @GameTest(template="test_arena",timeoutTicks=55) public static void cactusPinsRetaliateAndRestoreOriginalFlags(GameTestHelper h) {
+        for (BlockPos pos : BlockPos.betweenClosed(new BlockPos(3,1,5), new BlockPos(7,1,9)))
+            h.setBlock(pos, Blocks.SANDSTONE_SLAB);
         var p=online(h); var mob=h.spawn(EntityType.COW,new BlockPos(5,2,7)); mob.setNoAi(false); mob.setHealth(5);
         p.setItemSlot(EquipmentSlot.CHEST,new ItemStack(ModItems.CACTUS_CHESTPLATE.get()));
         CactusAbility.retaliate(new LivingHurtEvent(p,p.damageSources().mobAttack(mob),2));
         h.assertTrue(mob.isNoAi() && mob.isNoGravity(),"Chestplate immobilizes the attacking mob");
         var visuals=h.getLevel().getEntitiesOfClass(Display.BlockDisplay.class,mob.getBoundingBox().inflate(8),e->e.saveWithoutId(new CompoundTag()).getCompound("block_state").getString("Name").equals("deathsareitems:cactus_spike"));
         h.assertTrue(visuals.size()==3,"Three angled cactus spikes launch from overhead");
+        for (var spike : visuals) {
+            var tag = spike.saveWithoutId(new CompoundTag());
+            h.assertTrue(tag.getInt("interpolation_duration") == 4,
+                    "Spike flight is smoothed by the client over four ticks");
+            var initial = com.mojang.math.Transformation.EXTENDED_CODEC.parse(net.minecraft.nbt.NbtOps.INSTANCE,
+                    tag.get("transformation")).result().orElseThrow();
+            var tip = new org.joml.Vector3f(.5F, 2F, .5F);
+            initial.getMatrix().transformPosition(tip);
+            h.assertTrue(tip.y > 1, "The initial rendered tip starts overhead rather than already in the floor");
+        }
+        h.runAfterDelay(6, () -> {
+            for (var spike : visuals) {
+                var tag = spike.saveWithoutId(new CompoundTag());
+                var target = com.mojang.math.Transformation.EXTENDED_CODEC.parse(net.minecraft.nbt.NbtOps.INSTANCE,
+                        tag.get("transformation")).result().orElseThrow();
+                var tip = new org.joml.Vector3f(.5F, 2F, .5F);
+                target.getMatrix().transformPosition(tip);
+                h.assertTrue(tip.length() < .0001F && tag.getInt("interpolation_duration") == 4,
+                        "The blade reaches its smooth landing target within six ticks");
+            }
+        });
+        h.runAfterDelay(15,()->{
+            double surface = h.absolutePos(new BlockPos(5,1,7)).getY() + .5;
+            for (var spike : visuals) {
+                var brightness = spike.saveWithoutId(new CompoundTag()).getCompound("brightness");
+                h.assertTrue(brightness.getInt("block") == 15 && brightness.getInt("sky") == 15,
+                        "Sand blades keep their color even when their light probe enters the floor");
+                h.assertTrue(spike.getY() <= surface && spike.getY() > surface - .04,
+                        "Spike tip must reach and slightly enter the actual slab surface");
+                var transform = com.mojang.math.Transformation.EXTENDED_CODEC.parse(net.minecraft.nbt.NbtOps.INSTANCE,
+                        spike.saveWithoutId(new CompoundTag()).get("transformation")).result().orElseThrow();
+                var tip = new org.joml.Vector3f(.5F, 2F, .5F);
+                transform.getMatrix().transformPosition(tip);
+                h.assertTrue(tip.length() < .0001F,"The visible tapered tip must coincide with the ground impact");
+                var base = new org.joml.Vector3f(.5F, 0F, .5F);
+                transform.getMatrix().transformPosition(base);
+                Vec3 back = spike.position().add(base.x,base.y,base.z);
+                h.assertTrue(mob.getBoundingBox().clip(back,spike.position()).isPresent(),
+                        "Each full-length blade must pass through the mob before reaching the ground");
+            }
+        });
         h.runAfterDelay(35,()->{try { h.assertTrue(!mob.isAlive(),"Impaled mob takes repeated real cactus damage");
             h.assertTrue(!mob.isNoAi() && !mob.isNoGravity(),"Cleanup restores original AI and gravity"); h.succeed(); } finally { leave(p); }});
     }

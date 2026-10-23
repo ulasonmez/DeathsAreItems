@@ -9,7 +9,7 @@ import java.util.List;
 
 public final class BedrockItem extends BedItem {
     public BedrockItem(Block block) { super(block, new Properties().stacksTo(1).fireResistant()); }
-    @Override public boolean isFoil(ItemStack stack) { return true; }
+    @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public void appendHoverText(ItemStack stack, Level level, List<Component> lines, TooltipFlag flag) {
         TooltipText.append(lines, "tooltip.deathsareitems.bedrock");
     }

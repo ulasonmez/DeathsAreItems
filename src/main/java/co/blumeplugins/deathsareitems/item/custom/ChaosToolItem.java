@@ -11,7 +11,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import java.util.List;
 
-public final class ChaosToolItem extends Item {
+public class ChaosToolItem extends Item {
     public enum Kind { CRAMMER, CANNON, SHIELD }
     private final Kind kind;
     public ChaosToolItem(Kind kind) { super(new Properties().stacksTo(1).fireResistant()); this.kind = kind; }
@@ -20,7 +20,7 @@ public final class ChaosToolItem extends Item {
         return kind == Kind.CANNON ? slotChanged || !ItemStack.isSameItemSameTags(oldStack, newStack)
                 : super.shouldCauseReequipAnimation(oldStack, newStack, slotChanged);
     }
-    @Override public boolean isFoil(ItemStack stack) { return true; }
+    @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         ItemStack stack = player.getItemInHand(hand);
         if (player.getCooldowns().isOnCooldown(this)) return InteractionResultHolder.fail(stack);

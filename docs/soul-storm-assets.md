@@ -7,7 +7,7 @@
 - Purple flames use the generated `src/main/resources/assets/deathsareitems/textures/particle/soul_flame.png`, framed and sampled to 16×16 with nearest-neighbor sampling. The pixel-flame render pass discards soft alpha below .8 and makes surviving sprite pixels opaque before lifetime fading.
 - Black smoke uses vanilla generic particle sprites tinted nearly black.
 
-The three dimensional Soul Storm item remains a JSON model using vanilla obsidian, netherite and amethyst textures. Shader assets are in `src/main/resources/assets/deathsareitems/shaders/core/`.
+The Soul Storm item follows page 2 of `DeathsAreItemsModels3.pdf`: a stepped head, four recessed face ridges and one inset purple eye. The head and eye are preserved exactly in the screenshot revision; six tapered, segmented octopus arms attach directly beneath the head (two front, two side, two back). The long neck and torso are removed; each arm dips slightly, then curls just above its attachment height. The front pair fans left/right, the rear pair sweeps backward, and the side pair curls forward. Built-in Forge composite/element models combine segment yaw with pitch without altering the head mesh or textures. The old staff shaft and extra amethyst block were removed. `tools/build_models3_assets.py` builds the JSON mesh and its restrained dark obsidian-derived skin and pixel eye textures; no image generation is used for this item model. Its built-in enchantment glint is disabled so the reference colors remain visible. Shader assets are in `src/main/resources/assets/deathsareitems/shaders/core/`.
 
 ## References inspected
 

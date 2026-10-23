@@ -58,17 +58,36 @@ public final class AbilityVisuals {
     public static Display.BlockDisplay spike(ServerLevel level, Vec3 start, Vec3 end, int flight, int life) {
         Display.BlockDisplay display = new Display.BlockDisplay(EntityType.BLOCK_DISPLAY, level);
         CompoundTag tag = base(1F, -1);
+        // The tip's light probe ends inside the floor; keep the sand blades' original color.
+        CompoundTag brightness = new CompoundTag();
+        brightness.putInt("block", 15); brightness.putInt("sky", 15);
+        tag.put("brightness", brightness);
         tag.put("block_state", NbtUtils.writeBlockState(co.blumeplugins.deathsareitems.block.ModBlocks.CACTUS_SPIKE.get().defaultBlockState()));
         org.joml.Quaternionf q = new org.joml.Quaternionf().rotationTo(new org.joml.Vector3f(0, 1, 0),
                 new org.joml.Vector3f((float)(end.x-start.x), (float)(end.y-start.y), (float)(end.z-start.z)).normalize());
         CompoundTag transform = tag.getCompound("transformation");
         ListTag rotation = new ListTag(); for (float f : new float[]{q.x,q.y,q.z,q.w}) rotation.add(FloatTag.valueOf(f));
         transform.put("left_rotation", rotation);
-        org.joml.Vector3f offset = q.transform(new org.joml.Vector3f(-.5F, -1.9F, -.5F));
+        // The two flat blades run from local Y=0 to Y=2. Anchor their tapered tip at end.
+        float length = (float)start.distanceTo(end);
+        ListTag scale = new ListTag();
+        for (float f : new float[]{1F, length / 2F, 1F}) scale.add(FloatTag.valueOf(f));
+        transform.put("scale", scale);
+        org.joml.Vector3f offset = q.transform(new org.joml.Vector3f(-.5F, -length, -.5F));
         ListTag translation = new ListTag(); for (float f : new float[]{offset.x,offset.y,offset.z}) translation.add(FloatTag.valueOf(f));
         transform.put("translation", translation);
-        display.load(tag); spawn(level, display, start, life);
-        Visual visual = ACTIVE.get(ACTIVE.size() - 1); visual.destination = end; visual.flight = flight;
+        CompoundTag arrival = transform.copy();
+        // Animate the transform rather than teleporting the display every server tick.
+        // The client interpolates this translation at its own frame rate.
+        translation = new ListTag();
+        for (float f : new float[]{offset.x + (float)(start.x-end.x),
+                offset.y + (float)(start.y-end.y), offset.z + (float)(start.z-end.z)})
+            translation.add(FloatTag.valueOf(f));
+        transform.put("translation", translation);
+        tag.putInt("interpolation_duration", flight);
+        display.load(tag); spawn(level, display, end, life);
+        Visual visual = ACTIVE.get(ACTIVE.size() - 1);
+        visual.arrivalTransform = arrival; visual.flight = flight;
         return display;
     }
     private static CompoundTag base(float scale, int color) {
@@ -96,6 +115,15 @@ public final class AbilityVisuals {
             Visual v = iterator.next();
             if (v.entity.level() != event.level) continue;
             if (v.entity.isRemoved() || ++v.age >= v.life) { v.entity.discard(); iterator.remove(); continue; }
+            if (v.arrivalTransform != null && v.age >= 2) {
+                // Allow the initial spawn state to reach clients before starting the flight.
+                CompoundTag tag = v.entity.saveWithoutId(new CompoundTag());
+                tag.put("transformation", v.arrivalTransform);
+                tag.putInt("interpolation_duration", v.flight);
+                tag.putInt("start_interpolation", 0);
+                v.entity.load(tag);
+                v.arrivalTransform = null;
+            }
             if (v.destination != null) {
                 double t = Math.min(1, (double)v.age / v.flight);
                 v.entity.setPos(v.start.lerp(v.destination, t));
@@ -108,6 +136,7 @@ public final class AbilityVisuals {
     @SubscribeEvent public static void stop(ServerStoppedEvent event) { ACTIVE.clear(); }
     private static final class Visual {
         final Entity entity; final Vec3 start; final int life; int age; int flight; Vec3 destination;
+        CompoundTag arrivalTransform;
         Visual(Entity entity, Vec3 start, int life) { this.entity = entity; this.start = start; this.life = life; this.flight = life; }
     }
 }

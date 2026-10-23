@@ -12,22 +12,11 @@ public class ModItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        for (String item : new String[]{"fall_damage_boots", "drowning_mask", "suffocation_boulder", "skeleton_bow", "mob_pickaxe"}) {
+        for (String item : new String[]{"fall_damage_boots", "drowning_mask", "suffocation_boulder", "skeleton_bow", "mob_pickaxe",
+                "hunger_staff", "swarm_of_anvils", "entity_crammer", "cactus_chestplate", "tnt_cannon",
+                "fire_pants", "bedrock", "ender_pearl_shield", "soul_storm"}) {
             withExistingParent(item, modLoc("item/" + item + "_base"));
         }
-        placeholder("hunger_staff", "blaze_rod", true);
-        withExistingParent("swarm_of_anvils", mcLoc("block/anvil"));
-        placeholder("entity_crammer", "slime_ball", false);
-        placeholder("cactus_chestplate", "iron_chestplate", false);
-        placeholder("fire_pants", "iron_leggings", false);
-        placeholder("tnt_cannon", "crossbow_standby", true);
-        placeholder("ender_pearl_shield", "ender_pearl", false);
-        withExistingParent("bedrock", mcLoc("item/red_bed"));
-        withExistingParent("soul_storm", modLoc("item/soul_storm_base"));
-    }
-
-    private void placeholder(String name, String texture, boolean handheld) {
-        withExistingParent(name, mcLoc(handheld ? "item/handheld" : "item/generated")).texture("layer0", mcLoc("item/" + texture));
     }
 
     // private ItemModelBuilder simpleItem(RegistryObject<Item> item) {

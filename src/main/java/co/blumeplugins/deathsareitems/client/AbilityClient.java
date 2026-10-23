@@ -19,7 +19,7 @@ import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = DeathsAreItems.MOD_ID, value = Dist.CLIENT)
 public final class AbilityClient {
-    private static final net.minecraft.resources.ResourceLocation ICONS = new net.minecraft.resources.ResourceLocation("minecraft", "textures/gui/icons.png");
+    private static final net.minecraft.resources.ResourceLocation ICONS = new net.minecraft.resources.ResourceLocation(DeathsAreItems.MOD_ID, "textures/gui/hunger_staff.png");
     private static boolean held;
     private static final MaskChargeInput CHARGE_INPUT = new MaskChargeInput();
     private static int reserve;
@@ -77,9 +77,8 @@ public final class AbilityClient {
         gui.leftHeight += ((icons + 9) / 10) * 10;
         for (int i = 0; i < icons; i++) {
             int iconX = x + (i % 10) * 8, iconY = y - (i / 10) * 10;
-            graphics.blit(ICONS, iconX, iconY, 16, 27, 9, 9);
-            int u = reserve >= (i + 1) * 2 ? 52 : 61;
-            graphics.blit(ICONS, iconX, iconY, u, 27, 9, 9);
+            int textureX = reserve >= (i + 1) * 2 ? 16 : 32;
+            graphics.blit(ICONS, iconX, iconY, 9, 9, textureX, 0, 16, 16, 48, 16);
         }
         com.mojang.blaze3d.systems.RenderSystem.disableBlend();
     }

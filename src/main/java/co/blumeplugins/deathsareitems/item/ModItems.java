@@ -22,11 +22,11 @@ public class ModItems {
     public static final RegistryObject<Item> SKELETON_BOW = ITEMS.register("skeleton_bow", co.blumeplugins.deathsareitems.item.custom.SkeletonBowItem::new);
     public static final RegistryObject<Item> MOB_PICKAXE = ITEMS.register("mob_pickaxe", MobPickaxeItem::new);
     public static final RegistryObject<Item> HUNGER_STAFF = ITEMS.register("hunger_staff", () -> new DeathToolItem(DeathToolItem.Kind.STAFF));
-    public static final RegistryObject<Item> SWARM_OF_ANVILS = ITEMS.register("swarm_of_anvils", () -> new DeathToolItem(DeathToolItem.Kind.ANVILS));
+    public static final RegistryObject<Item> SWARM_OF_ANVILS = ITEMS.register("swarm_of_anvils", co.blumeplugins.deathsareitems.item.custom.SwarmOfAnvilsItem::new);
     public static final RegistryObject<Item> SOUL_STORM = ITEMS.register("soul_storm", co.blumeplugins.deathsareitems.item.custom.SoulStormItem::new);
 
-    public static final RegistryObject<Item> ENTITY_CRAMMER = ITEMS.register("entity_crammer", () ->
-            new co.blumeplugins.deathsareitems.item.custom.ChaosToolItem(co.blumeplugins.deathsareitems.item.custom.ChaosToolItem.Kind.CRAMMER));
+    public static final RegistryObject<Item> ENTITY_CRAMMER = ITEMS.register("entity_crammer",
+            co.blumeplugins.deathsareitems.item.custom.EntityCrammerItem::new);
     public static final RegistryObject<Item> TNT_CANNON = ITEMS.register("tnt_cannon", () ->
             new co.blumeplugins.deathsareitems.item.custom.ChaosToolItem(co.blumeplugins.deathsareitems.item.custom.ChaosToolItem.Kind.CANNON));
     public static final RegistryObject<Item> ENDER_PEARL_SHIELD = ITEMS.register("ender_pearl_shield", () ->

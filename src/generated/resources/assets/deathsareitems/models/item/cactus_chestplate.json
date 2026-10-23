@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "minecraft:item/iron_chestplate"
-  }
+  "parent": "deathsareitems:item/cactus_chestplate_base"
 }

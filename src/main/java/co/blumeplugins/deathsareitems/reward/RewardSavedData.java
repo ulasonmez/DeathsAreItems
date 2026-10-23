@@ -33,6 +33,23 @@ public final class RewardSavedData extends SavedData {
     }
     public boolean hasDiscovered(UUID owner, ResourceLocation death) { return discovered.getOrDefault(owner, java.util.Set.of()).contains(death); }
 
+    /** Reopen a death without removing already earned offers or selected rewards. */
+    public void resetDiscovery(UUID owner, ResourceLocation death) {
+        var deaths = discovered.get(owner);
+        if (deaths != null) {
+            deaths.remove(death);
+            if (deaths.isEmpty()) discovered.remove(owner);
+        }
+        rejected.remove(owner);
+        setDirty();
+    }
+
+    public void resetDiscoveries(UUID owner) {
+        discovered.remove(owner);
+        rejected.remove(owner);
+        setDirty();
+    }
+
     public static RewardSavedData get(MinecraftServer server) {
         return server.overworld().getDataStorage().computeIfAbsent(RewardSavedData::load,
                 RewardSavedData::new, DeathsAreItems.MOD_ID + "_rewards");

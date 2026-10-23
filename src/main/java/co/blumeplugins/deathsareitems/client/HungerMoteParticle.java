@@ -5,7 +5,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.world.phys.Vec3;
 
-/** A vanilla hunger icon follows a smooth arc to the moving recipient. */
+/** The staff's hunger icon follows a smooth arc to the moving recipient. */
 public final class HungerMoteParticle extends TextureSheetParticle {
     private final Vec3 start;
     private final int recipient;

@@ -46,10 +46,13 @@ def build(client):
                 boots.putpixel((x,y),(*c,a))
         save(boots, 'item/fall_damage_boots')
 
+        # Keep the exact vanilla grip pixels, length and width; only replace the head.
         handle = vanilla('item/wooden_pickaxe')
         for y in range(16):
             for x in range(16):
-                if y < 6 or x > 9 or abs(x+y-15) > 1:
+                # The three-pixel diagonal includes its dark edge and the
+                # attachment at the head; clipping at x=9 shortened the shaft.
+                if y < 3 or not 15 <= x+y <= 17:
                     handle.putpixel((x,y),(0,0,0,0))
         save(handle, 'item/mob_pickaxe_handle')
 
@@ -66,15 +69,9 @@ def build(client):
                     armor.putpixel((x,y),(int(158*shade),int(113*shade),int(29*shade),old[3]))
         save(armor, 'models/armor/fall_damage_boots_layer_1')
 
-        # A charcoal pixel atlas for the mask, using the neutral vanilla black-concrete tones.
-        mask = vanilla('block/black_concrete').resize((64,64),Image.Resampling.NEAREST)
-        for y in range(64):
-            for x in range(64):
-                v = (30,32,34,31)[((x//4)+(y//3))%4]
-                mask.putpixel((x,y),(v,v,v,255))
-        save(mask, 'models/armor/drowning_mask')
-        glass = Image.new('RGBA',(16,16),(163,207,211,39))
-        save(glass, 'models/armor/drowning_mask_visor')
+        # The mask owns its UV layout and reference palette; keep regeneration consistent.
+        from build_drowning_mask_assets import build as build_mask
+        build_mask()
 
         # Sand is the continuous base; gravel occurs in irregular, coarse connected patches.
         sand, gravel = vanilla('block/sand'), vanilla('block/gravel')
@@ -96,19 +93,31 @@ def build(client):
         path=ASSETS/'models/item'/f'{name}.json';path.parent.mkdir(parents=True,exist_ok=True)
         path.write_text(json.dumps(data,indent=2)+'\n')
     model('fall_damage_boots_base',{'parent':'minecraft:item/generated','textures':{'layer0':'deathsareitems:item/fall_damage_boots'}})
-    model('mob_pickaxe_handle',{'parent':'minecraft:item/generated','textures':{'layer0':'deathsareitems:item/mob_pickaxe_handle'}})
+    model('mob_pickaxe_handle',{'parent':'minecraft:item/handheld','textures':{'layer0':'deathsareitems:item/mob_pickaxe_handle'}})
     # Built-in renderer composes the unmodified baked vanilla mob models.
     common={'gui':{'rotation':[0,0,0],'translation':[0,0,0],'scale':[1,1,1]},
             'ground':{'translation':[0,3,0],'scale':[.35,.35,.35]},
             'fixed':{'rotation':[0,180,0],'scale':[.6,.6,.6]}}
     for name in ['drowning_mask','skeleton_bow','mob_pickaxe']:
-        model(name+'_base',{'parent':'minecraft:builtin/entity','gui_light':'side','display':common})
+        display = dict(common)
+        if name == 'mob_pickaxe':
+            display['gui'] = {'rotation': [0, -12, 0], 'translation': [-1, -1, 0], 'scale': [.78]*3}
+            display.update({
+                'thirdperson_righthand': {'rotation': [0, -90, 55], 'translation': [0, 4, .5], 'scale': [.85]*3},
+                'thirdperson_lefthand': {'rotation': [0, 90, -55], 'translation': [0, 4, .5], 'scale': [.85]*3},
+                'firstperson_righthand': {'rotation': [0, -90, 25], 'translation': [1.13, 3.2, 1.13], 'scale': [.68]*3},
+                'firstperson_lefthand': {'rotation': [0, 90, -25], 'translation': [1.13, 3.2, 1.13], 'scale': [.68]*3},
+            })
+        model(name+'_base',{'parent':'minecraft:builtin/entity',
+                           'gui_light':'side' if name == 'drowning_mask' else 'front','display':display})
     textures={str(i):'deathsareitems:item/suffocation_boulder_'+str(i) for i in range(3)}
     textures['particle']=textures['0']
     pieces=[([2,3,2],[14,13,14],0,None),([3,2,3],[13,14,13],1,None),
             ([1.5,4,3],[14.5,12,13],2,('y',22.5)),
-            ([3,3,2],[13,13,14],0,('z',22.5)),
-            ([3,2.5,3],[13,13.5,13],1,('x',-22.5)),
+            # Inset only the faces left parallel by each rotation. Previously
+            # z=2/14 and x=3/13 shared planes with the unrotated cuboids.
+            ([3,3,2.02],[13,13,13.98],0,('z',22.5)),
+            ([3.02,2.5,3],[12.98,13.5,13],1,('x',-22.5)),
             ([2.5,5,1.5],[13.5,11,14.5],2,('y',-22.5))]
     elements=[]
     for lo,hi,tex,rot in pieces:

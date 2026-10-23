@@ -1,6 +1,3 @@
 {
-  "parent": "minecraft:item/generated",
-  "textures": {
-    "layer0": "minecraft:item/ender_pearl"
-  }
+  "parent": "deathsareitems:item/ender_pearl_shield_base"
 }

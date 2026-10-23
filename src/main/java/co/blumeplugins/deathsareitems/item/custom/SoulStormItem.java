@@ -14,7 +14,7 @@ import java.util.List;
 
 public final class SoulStormItem extends Item {
     public SoulStormItem() { super(new Properties().stacksTo(1).fireResistant()); }
-    @Override public boolean isFoil(ItemStack stack) { return true; }
+    @Override public boolean isFoil(ItemStack stack) { return false; }
     @Override public int getUseDuration(ItemStack stack) { return 72000; }
     @Override public UseAnim getUseAnimation(ItemStack stack) { return UseAnim.NONE; }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {

@@ -35,11 +35,31 @@ public final class ModCommands {
                 .then(Commands.literal("die").then(Commands.argument("type",StringArgumentType.word())
                         .suggests((c,b) -> SharedSuggestionProvider.suggest(DeathRewards.ids().stream().map(ResourceLocation::getPath),b))
                         .executes(c -> kill(c.getSource().getPlayerOrException(),StringArgumentType.getString(c,"type")))))
-                .then(Commands.literal("reset").executes(c -> {
-                    ServerPlayer p=c.getSource().getPlayerOrException(); var data=RewardSavedData.get(p.server);
-                    data.discovered.remove(p.getUUID()); data.rejected.remove(p.getUUID()); data.setDirty();
-                    p.sendSystemMessage(Component.literal("Death discoveries reset.")); return 1;
-                })));
+                .then(Commands.literal("reset")
+                        .executes(c -> reset(c.getSource(), "all"))
+                        .then(Commands.argument("type", StringArgumentType.word())
+                                .suggests((c, b) -> SharedSuggestionProvider.suggest(java.util.stream.Stream.concat(
+                                        java.util.stream.Stream.of("all"),
+                                        DeathRewards.ids().stream().map(ResourceLocation::getPath)), b))
+                                .executes(c -> reset(c.getSource(), StringArgumentType.getString(c, "type"))))));
+    }
+
+    private static int reset(CommandSourceStack source, String type) throws com.mojang.brigadier.exceptions.CommandSyntaxException {
+        ServerPlayer player = source.getPlayerOrException();
+        RewardSavedData data = RewardSavedData.get(player.server);
+        if (type.equals("all")) {
+            data.resetDiscoveries(player.getUUID());
+            source.sendSuccess(() -> Component.literal("All death discoveries reset. Each supported death can offer a reward again."), false);
+            return 1;
+        }
+        ResourceLocation id = ResourceLocation.tryParse(DeathsAreItems.MOD_ID + ":" + type);
+        if (id == null || DeathRewards.get(id) == null) {
+            source.sendFailure(Component.literal("Unknown death type '" + type + "'. Use a suggested death type or 'all'."));
+            return 0;
+        }
+        data.resetDiscovery(player.getUUID(), id);
+        source.sendSuccess(() -> Component.literal("Death discovery reset: " + type + ". Your next death of this type can offer a reward again."), false);
+        return 1;
     }
 
     private static int kill(ServerPlayer p,String type) {
