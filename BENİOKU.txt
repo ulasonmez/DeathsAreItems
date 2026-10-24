@@ -3,6 +3,22 @@ DEATHS ARE ITEMS - FORGE 1.20.1 MODU
 ================================================================================
 
 ================================================================================
+KURULUM VE DİLLER
+================================================================================
+
+Minecraft Java Edition 1.20.1, Minecraft Forge 47.x ve Java 17 gerekir.
+Bu build Forge 47.1.3 ile alınmıştır. ZIP içindeki deathsareitems-1.0.0.jar
+dosyasını çıkarıp Forge kurulumunun mods klasörüne koy. Çok oyunculu oyunda
+aynı JAR dosyasını hem sunucuya hem de her oyuncunun istemcisine kur.
+
+Dili Minecraft'ın dil ayarlarından seçebilirsin. Desteklenen dil seçenekleri:
+İngilizce (ABD), Türkçe, Almanca, Korece, Portekizce (Brezilya ve Portekiz).
+Ödül adları ve espriler, her dilde ölüm nedenine uygun şekilde uyarlanmıştır.
+Örneğin Bedrock, Türkçede "Taş Gibi Yatak" olarak görünür. Açlık ödülleri
+"Açlık Stajyeri / Açlık Müdürü / Açlığın Patronu" temasını kullanır.
+Her oyuncu kendi seçtiği dili görür. Komutlar ve eşya kimlikleri aynı kalır.
+
+================================================================================
 KOMUTLAR
 ================================================================================
 
@@ -92,12 +108,12 @@ aşağıda kalabilir, hatta kaybolabilirler.
    blokların yerinde rastgele bir yaratık oluşur. Tam dolu saldırılarda
    40 yakın dövüş hasarı verir.
 
-6. Açlıktan Ölme - Açlık Asası
+6. Açlıktan Ölme - Açlığın Patronu (asa)
    Bir yaratığa sağ tıklayarak onu 5 saniye boyunca tüketirsin; hedef küçülür,
    sen de 10 açlık puanı kazanırsın. Fazlası, en çok 100 açlık puanı tutabilen
    ek açlık rezervi çubuğunu doldurur.
 
-7. Düşen Örs - Örs Sürüsü
+7. Düşen Örs - Örs Yağmuru
    Bir bloğa veya yaratığa sağ tıklayarak 15 saniye boyunca örs yağdırırsın;
    yaratıklar yerlerine sabitlenir. Süre sonunda hedef blok Sonsuzluk 255
    büyüsüyle düşer; yaratıklardan düşen eşyalara rastgele 255. seviye büyüler
@@ -124,7 +140,7 @@ aşağıda kalabilir, hatta kaybolabilirler.
     zemini obsidiyene dönüştürür; bu obsidiyen 1,5 saniye sonra eriyerek lava
     dönüşür. Lavın üstünde güvenle koşmanı da sağlar.
 
-12. Yatak / Yeniden Doğma Çapası Patlaması - Katman Kayası
+12. Yatak / Yeniden Doğma Çapası Patlaması - Taş Gibi Yatak
     Yatak gibi yerleştirip sağ tıkla. Her 1,5 saniyede bir, kullanıcıya zarar
     vermeyen ve bloğu yok etmeyen güçlü, alevli bir patlama oluşturur.
 

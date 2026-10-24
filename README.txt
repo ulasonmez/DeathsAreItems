@@ -3,6 +3,21 @@ DEATHS ARE ITEMS - FORGE 1.20.1 MOD
 ================================================================================
 
 ================================================================================
+INSTALLATION & LANGUAGES
+================================================================================
+
+Requires Minecraft Java Edition 1.20.1, Minecraft Forge 47.x, and Java 17.
+This build uses Forge 47.1.3. Extract deathsareitems-1.0.0.jar from the ZIP and
+place it in the mods folder of your Forge installation. For multiplayer, install
+the same JAR on the server and on each player's client.
+
+Select your language in Minecraft's language settings. Included translations:
+English (US), Turkish, German, Korean, Portuguese (Brazil), Portuguese (Portugal).
+Reward names and jokes are adapted to each language and death theme. For example,
+Bedrock appears as "Taş Gibi Yatak" in Turkish and "Cama de Pedra" in Portuguese.
+Each player sees their own selected language. Commands and item IDs stay the same.
+
+================================================================================
 COMMANDS
 ================================================================================
 
