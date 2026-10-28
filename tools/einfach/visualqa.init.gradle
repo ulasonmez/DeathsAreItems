@@ -1,0 +1,20 @@
+// Opt-in client-only QA. This source set is never included in the release JAR.
+allprojects {
+    afterEvaluate { p ->
+        if (p.plugins.hasPlugin('net.minecraftforge.gradle')) {
+            p.sourceSets {
+                visualQa {
+                    java.setSrcDirs(['tools/einfach/visualqa'])
+                    compileClasspath += sourceSets.main.output + sourceSets.main.compileClasspath
+                    runtimeClasspath += sourceSets.main.output + sourceSets.main.runtimeClasspath
+                }
+            }
+            p.minecraft.runs.client {
+                workingDirectory p.file('build/visualqa-client')
+                args '--width', '1280', '--height', '800'
+                mods { deathsareitems { source p.sourceSets.visualQa } }
+                property 'deathsareitems.visualqa.output', p.file('art/models/einfach/previews').absolutePath
+            }
+        }
+    }
+}

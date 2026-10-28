@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_bottom_top",
+  "textures": {
+    "side": "deathsareitems:block/gustafs_jukebox_side",
+    "top": "deathsareitems:block/gustafs_jukebox_top",
+    "bottom": "minecraft:block/birch_planks"
+  }
+}

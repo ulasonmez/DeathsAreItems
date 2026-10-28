@@ -179,6 +179,7 @@ public final class SoulStormAbility {
             var entity = ProjectileUtil.getEntityHitResult(owner, bolt.pos, limit, new AABB(bolt.pos, limit).inflate(.5),
                     e -> e instanceof EndCrystal || e instanceof net.minecraft.world.entity.boss.EnderDragonPart part && part.parentMob.isAlive()
                             || e instanceof Mob mob && mob.isAlive() && !mob.isInvulnerable()
+                            && !co.blumeplugins.deathsareitems.einfach.Companions.isCompanion(mob)
                             && !(mob instanceof net.minecraft.world.entity.boss.wither.WitherBoss)
                             && !(mob instanceof TamableAnimal tame && tame.isTame()), bolt.pos.distanceToSqr(limit));
             Vec3 next = entity == null ? limit : entity.getLocation();

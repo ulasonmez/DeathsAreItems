@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "food",
+  "ingredients": [
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:bread"
+    },
+    {
+      "item": "minecraft:cooked_beef"
+    },
+    {
+      "item": "deathsareitems:cheese_slice"
+    }
+  ],
+  "result": {
+    "item": "deathsareitems:hamburger",
+    "count": 1
+  }
+}

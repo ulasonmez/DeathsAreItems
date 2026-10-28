@@ -70,7 +70,9 @@ public class DeathsAreItems {
     @net.minecraftforge.eventbus.api.SubscribeEvent
     public void onPlayerLoggedIn(net.minecraftforge.event.entity.player.PlayerEvent.PlayerLoggedInEvent event) {
         if (event.getEntity() instanceof net.minecraft.server.level.ServerPlayer player) {
-            co.blumeplugins.util.internal.GlobalConfigManager.syncProfile(player);
+            // Embedded GameTest players have generated profiles and no real login session.
+            if (!(player.server instanceof net.minecraft.gametest.framework.GameTestServer))
+                co.blumeplugins.util.internal.GlobalConfigManager.syncProfile(player);
         }
     }
 }

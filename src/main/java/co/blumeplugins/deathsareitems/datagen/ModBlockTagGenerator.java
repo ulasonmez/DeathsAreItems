@@ -17,6 +17,7 @@ public class ModBlockTagGenerator extends BlockTagsProvider {
 
     @Override
     protected void addTags(HolderLookup.Provider pProvider) {
+        tag(net.minecraft.tags.BlockTags.MINEABLE_WITH_AXE).add(co.blumeplugins.deathsareitems.block.ModBlocks.GUSTAFS_JUKEBOX.get());
         // Example: tag a block as needing a pickaxe.
         // tag(BlockTags.MINEABLE_WITH_PICKAXE).add(ModBlocks.EXAMPLE_BLOCK.get());
     }

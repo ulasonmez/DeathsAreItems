@@ -54,6 +54,7 @@ public final class RewardManager {
             RewardDefinition definition = DeathRewards.forDeath(player, event.getSource()).orElse(null);
             if (definition != null && data.discover(player.getUUID(), definition.id())) {
                 data.rejected.remove(player.getUUID()); offer(player, definition);
+                data.offers.get(player.getUUID()).natural = true; data.setDirty();
             } else {
                 data.rejected.add(player.getUUID()); data.setDirty();
                 clearOffer(player);
@@ -295,6 +296,8 @@ public final class RewardManager {
         // Remove the offer before sending effects; subsequent clicks cannot claim it again.
         data.offers.remove(player.getUUID());
         data.grants.add(new RewardSavedData.Grant(player.getUUID(), reward, player.server.overworld().getGameTime() + RewardTimings.REVEAL));
+        if (offer.natural) co.blumeplugins.deathsareitems.einfach.EinfachRewards.claim(player, offer.reward,
+                player.server.overworld().getGameTime() + RewardTimings.REVEAL);
         data.setDirty();
         removeChests(player.server, offer);
         ModNetwork.reveal(player, reward);

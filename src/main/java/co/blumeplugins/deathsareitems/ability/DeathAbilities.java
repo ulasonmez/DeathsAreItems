@@ -109,7 +109,7 @@ public final class DeathAbilities {
     }
     public static boolean eligible(Player owner, LivingEntity target) { return eligible(owner, target, 32); }
     public static boolean eligible(Player owner, LivingEntity target, double range) {
-        return target instanceof Mob && target.isAlive() && !target.isInvulnerable() && target.level() == owner.level()
+        return !co.blumeplugins.deathsareitems.einfach.Companions.isCompanion(target) && target instanceof Mob && target.isAlive() && !target.isInvulnerable() && target.level() == owner.level()
                 && target.distanceToSqr(owner) <= range * range && owner.hasLineOfSight(target)
                 && !(target instanceof net.minecraft.world.entity.boss.enderdragon.EnderDragon)
                 && !(target instanceof net.minecraft.world.entity.boss.wither.WitherBoss)

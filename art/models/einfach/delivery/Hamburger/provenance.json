@@ -1,0 +1,19 @@
+{
+  "repository": "EquipEnchantments",
+  "branch": "einfach",
+  "commit": "0f89ac26e86777d5002d2084c09f45529c911a0d",
+  "files": {
+    "hamburger.json": {
+      "path": "../EquipEnchantments/src/main/resources/assets/equipenchantments/models/item/hamburger.json",
+      "sha256": "02253a36ee89f92038ca46d51b23628cad25c3030092bcfb9df736ac95fce8df"
+    },
+    "hamburger.png": {
+      "path": "../EquipEnchantments/src/main/resources/assets/equipenchantments/textures/item/hamburger.png",
+      "sha256": "c159aa05884b3862f6da1ea93bd697eff9611cdfabae1aa0e5380104daae48c4"
+    },
+    "hamburger.bbmodel": {
+      "path": "../EquipEnchantments/art/models/einfach/projects/hamburger.bbmodel",
+      "sha256": "aabdbf53f613fc964e08f2e842a757b0381100cfd653ed6a4f4cb564c7213637"
+    }
+  }
+}

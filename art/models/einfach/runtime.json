@@ -1,0 +1,14 @@
+{
+  "hamburger": {
+    "parent": "minecraft:block/block",
+    "gui_light": "side"
+  },
+  "gustafs_new_book": {
+    "gui_light": "front",
+    "ambientocclusion": false
+  },
+  "jukys_whistle": {
+    "parent": "minecraft:block/block",
+    "gui_light": "side"
+  }
+}

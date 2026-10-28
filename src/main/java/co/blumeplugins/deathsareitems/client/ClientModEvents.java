@@ -26,6 +26,9 @@ public final class ClientModEvents {
 
     @SubscribeEvent
     public static void renderers(EntityRenderersEvent.RegisterRenderers event) {
+        event.registerEntityRenderer(ModEntities.JUKY.get(), net.minecraft.client.renderer.entity.WolfRenderer::new);
+        event.registerEntityRenderer(ModEntities.VINY.get(), net.minecraft.client.renderer.entity.AxolotlRenderer::new);
+        event.registerEntityRenderer(ModEntities.BUTTON_TNT.get(), net.minecraft.client.renderer.entity.TntRenderer::new);
         event.registerEntityRenderer(ModEntities.REWARD_CHEST.get(), RewardChestRenderer::new);
         event.registerEntityRenderer(ModEntities.CANNON_TNT.get(), net.minecraft.client.renderer.entity.TntRenderer::new);
         event.registerEntityRenderer(ModEntities.CHAOS_PEARL.get(), net.minecraft.client.renderer.entity.ThrownItemRenderer::new);

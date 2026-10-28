@@ -10,6 +10,10 @@ public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =
             DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, DeathsAreItems.MOD_ID);
 
+    public static final net.minecraftforge.registries.RegistryObject<BlockEntityType<co.blumeplugins.deathsareitems.block.entity.custom.GustafJukeboxBlockEntity>> GUSTAFS_JUKEBOX = BLOCK_ENTITIES.register("gustafs_jukebox", () ->
+            BlockEntityType.Builder.of(co.blumeplugins.deathsareitems.block.entity.custom.GustafJukeboxBlockEntity::new,
+                    co.blumeplugins.deathsareitems.block.ModBlocks.GUSTAFS_JUKEBOX.get()).build(null));
+
     // Example block entity registration:
     // public static final RegistryObject<BlockEntityType<MyBlockEntity>> MY_BLOCK_ENTITY =
     //         BLOCK_ENTITIES.register("my_block_entity", () ->

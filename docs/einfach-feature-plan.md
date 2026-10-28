@@ -1,11 +1,12 @@
 # EinfachGustaf feature plan
 
-These proposals were moved out of README.txt so the player guide describes only
-implemented gameplay. The current branch implements the same 14 base death rewards
-as main. The additions below are planning notes, not features in the current JAR.
+The starred EinfachGustaf gameplay additions below are implemented on the einfach
+branch alongside the original 14 death rewards. Custom models/textures and the supplied book title/cover are integrated.
+Editable assets and validation details are in art/models/einfach/README.md. See [einfach-content.md](einfach-content.md)
+for registered IDs, final visual assets, controls and implementation details.
 
-* EinfachGustaf additions: paragraphs marked with * are planned features for
-  this edition, not features implemented in the current JAR. The existing
+* EinfachGustaf additions: paragraphs marked with * describe implemented gameplay for
+  this edition. Custom art and the supplied reference assets are integrated. The existing
   instructions and 14 death rewards remain the foundation of the mod.
 
 * Discover different ways to die, then turn those deaths into an increasingly
@@ -74,8 +75,8 @@ as main. The additions below are planning notes, not features in the current JAR
   Multiple jukeboxes do not stack effects or multiply pulse damage on one mob.
 
 * After claiming rewards for 10 different death types, receive Gustaf's New Book
-  alongside the tenth reward. Use his actual new book's title and cover for the
-  final item; "Gustaf's New Book" is the working name until those are supplied.
+  alongside the tenth reward. The supplied model and unchanged cover are used; all six language files name
+  it EinfachGustaf_und_die_Wächter_der_Stille as requested in about.txt.
   The book turns your discovered deaths into an OP spell collection. Its five
   combat chapters unlock through the matching discoveries: fall slams a targeted
   mob into the ground, drowning traps it in a damaging water bubble, anvil calls

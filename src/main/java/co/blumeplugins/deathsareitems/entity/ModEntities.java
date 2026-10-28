@@ -33,6 +33,13 @@ public class ModEntities {
             () -> EntityType.Builder.<co.blumeplugins.deathsareitems.entity.custom.ChaosPearlEntity>of(co.blumeplugins.deathsareitems.entity.custom.ChaosPearlEntity::new, MobCategory.MISC)
                     .sized(.25F,.25F).clientTrackingRange(16).updateInterval(1).build("chaos_pearl"));
 
+    public static final RegistryObject<EntityType<co.blumeplugins.deathsareitems.entity.custom.JukyEntity>> JUKY = ENTITY_TYPES.register("juky",
+            () -> EntityType.Builder.of(co.blumeplugins.deathsareitems.entity.custom.JukyEntity::new, MobCategory.CREATURE).sized(.6F, .85F).clientTrackingRange(10).build("juky"));
+    public static final RegistryObject<EntityType<co.blumeplugins.deathsareitems.entity.custom.VinyEntity>> VINY = ENTITY_TYPES.register("viny",
+            () -> EntityType.Builder.of(co.blumeplugins.deathsareitems.entity.custom.VinyEntity::new, MobCategory.AXOLOTLS).sized(.75F, .42F).clientTrackingRange(10).build("viny"));
+    public static final RegistryObject<EntityType<co.blumeplugins.deathsareitems.entity.custom.ButtonTntEntity>> BUTTON_TNT = ENTITY_TYPES.register("button_tnt",
+            () -> EntityType.Builder.of(co.blumeplugins.deathsareitems.entity.custom.ButtonTntEntity::new, MobCategory.MISC).sized(.98F, .98F).clientTrackingRange(12).updateInterval(1).fireImmune().build("button_tnt"));
+
     public static void register(IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }

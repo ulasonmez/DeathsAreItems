@@ -15,7 +15,7 @@ import net.minecraft.server.level.ServerLevel;
 public final class DeathDamage {
     public static final ResourceKey<DamageType> ARROWS = key("all_the_arrows"), MOBS = key("all_the_mobs"),
             ANVILS = key("lots_of_anvils"), DROWN = key("forced_drown"), SUFFOCATE = key("forced_suffocate"),
-            CRAM = key("squished_too_much"), CACTUS = key("pricked_to_death"), PEARL = key("pearl_impact"), CHAOS = key("teleportation_chaos"), SOUL = key("soul_wither");
+            CRAM = key("squished_too_much"), CACTUS = key("pricked_to_death"), PEARL = key("pearl_impact"), CHAOS = key("teleportation_chaos"), SOUL = key("soul_wither"), SPLINTER = key("birch_splinter");
     private static ResourceKey<DamageType> key(String name) { return ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(DeathsAreItems.MOD_ID, name)); }
     public static DamageSource source(LivingEntity target, ResourceKey<DamageType> key, Entity owner) {
         return new DamageSource(target.level().registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(key), owner);

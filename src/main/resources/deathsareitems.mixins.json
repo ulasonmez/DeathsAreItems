@@ -4,6 +4,12 @@
   "package": "co.blumeplugins.deathsareitems.mixin",
   "compatibilityLevel": "JAVA_17",
   "refmap": "deathsareitems.refmap.json",
-  "mixins": ["LavaWalkMixin"],
-  "injectors": {"defaultRequire": 1}
+  "mixins": [
+    "LavaWalkMixin",
+    "BirchDropsMixin",
+    "CheeseFurnaceMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
 }

@@ -26,6 +26,8 @@ public class ModBlocks {
     public static final RegistryObject<Block> CACTUS_SPIKE = BLOCKS.register("cactus_spike", () -> new Block(
             BlockBehaviour.Properties.copy(net.minecraft.world.level.block.Blocks.CACTUS).noCollission().noLootTable()));
 
+    public static final RegistryObject<Block> GUSTAFS_JUKEBOX = BLOCKS.register("gustafs_jukebox", co.blumeplugins.deathsareitems.block.custom.GustafJukeboxBlock::new);
+
     // Example block registration. Use registerBlock so a BlockItem is created automatically.
     // public static final RegistryObject<Block> EXAMPLE_BLOCK = registerBlock("example_block",
     //         () -> new Block(BlockBehaviour.Properties.of().strength(2f)));

@@ -1,0 +1,36 @@
+{
+  "edition": "Java",
+  "minecraft": "1.20.1",
+  "forge": "47.1.3",
+  "namespace": "deathsareitems",
+  "hamburger": {
+    "repository": "EquipEnchantments",
+    "branch": "einfach",
+    "commit": "0f89ac26e86777d5002d2084c09f45529c911a0d",
+    "files": {
+      "hamburger.json": {
+        "path": "../EquipEnchantments/src/main/resources/assets/equipenchantments/models/item/hamburger.json",
+        "sha256": "02253a36ee89f92038ca46d51b23628cad25c3030092bcfb9df736ac95fce8df"
+      },
+      "hamburger.png": {
+        "path": "../EquipEnchantments/src/main/resources/assets/equipenchantments/textures/item/hamburger.png",
+        "sha256": "c159aa05884b3862f6da1ea93bd697eff9611cdfabae1aa0e5380104daae48c4"
+      },
+      "hamburger.bbmodel": {
+        "path": "../EquipEnchantments/art/models/einfach/projects/hamburger.bbmodel",
+        "sha256": "aabdbf53f613fc964e08f2e842a757b0381100cfd653ed6a4f4cb564c7213637"
+      }
+    }
+  },
+  "vanilla": {
+    "source": "Local ForgeGradle Mojang 1.20.1 downloadClient/client.jar",
+    "files": {
+      "axolotl_bucket.png": "520df80a2ed8160d828d8efab3411fefc6f1fdf60c10e4919aade04f32e1bca0",
+      "axolotl_blue.png": "952beee902b8db44f1ec7012b923d9bb0aa2c245ff48234de1124bcbf6f5dbdc",
+      "jukebox_side.png": "d9e860acfef760c2dc70027ea889f5a3bd5c9fdea88fa882cc051b2960ba9cc0",
+      "jukebox_top.png": "9f43b3887df21751502d25ca431c239a8c33a68de6d73a3d6b4d1057fc82b794",
+      "birch_planks.png": "276cd545da8d5d492a73927ab2a9c24463d223b29db15745eaad4dfa4fb61cda"
+    }
+  },
+  "input_zip_sha256": "d2c807374b42ca2a64301a07c3f2cd84dc77ca74df6f224e08c58d5081eac617"
+}

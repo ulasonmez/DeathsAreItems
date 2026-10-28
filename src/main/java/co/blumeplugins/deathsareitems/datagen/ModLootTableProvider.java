@@ -25,6 +25,7 @@ public class ModLootTableProvider {
 
         @Override
         protected void generate() {
+            dropSelf(ModBlocks.GUSTAFS_JUKEBOX.get());
             dropOther(ModBlocks.FRAGILE_SAND.get(), net.minecraft.world.item.Items.SAND);
             dropOther(ModBlocks.FRAGILE_GRAVEL.get(), net.minecraft.world.item.Items.GRAVEL);
             add(ModBlocks.BEDROCK.get(), createSinglePropConditionTable(ModBlocks.BEDROCK.get(),

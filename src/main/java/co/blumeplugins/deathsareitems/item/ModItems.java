@@ -38,6 +38,14 @@ public class ModItems {
     public static final RegistryObject<Item> BEDROCK = ITEMS.register("bedrock", () ->
             new co.blumeplugins.deathsareitems.item.custom.BedrockItem(co.blumeplugins.deathsareitems.block.ModBlocks.BEDROCK.get()));
 
+    public static final RegistryObject<Item> BIRCH_SPLINTERS = ITEMS.register("birch_splinters", () -> new co.blumeplugins.deathsareitems.item.custom.EinfachItem(new Item.Properties()));
+    public static final RegistryObject<Item> VINYS_BUCKET = ITEMS.register("vinys_bucket", () -> new co.blumeplugins.deathsareitems.item.custom.CompanionItem(true));
+    public static final RegistryObject<Item> JUKYS_WHISTLE = ITEMS.register("jukys_whistle", () -> new co.blumeplugins.deathsareitems.item.custom.CompanionItem(false));
+    public static final RegistryObject<Item> CHEESE_SLICE = ITEMS.register("cheese_slice", () -> new co.blumeplugins.deathsareitems.item.custom.GustafFoodItem(false));
+    public static final RegistryObject<Item> HAMBURGER = ITEMS.register("hamburger", () -> new co.blumeplugins.deathsareitems.item.custom.GustafFoodItem(true));
+    public static final RegistryObject<Item> GUSTAFS_JUKEBOX = ITEMS.register("gustafs_jukebox", co.blumeplugins.deathsareitems.item.custom.GustafJukeboxItem::new);
+    public static final RegistryObject<Item> GUSTAFS_NEW_BOOK = ITEMS.register("gustafs_new_book", co.blumeplugins.deathsareitems.item.custom.GustafBookItem::new);
+
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);
     }

@@ -76,6 +76,7 @@ public final class RewardSavedData extends SavedData {
             Offer offer = new Offer(value.getUUID("Owner"), reward);
             // Keep the old block markers until login cleans them up; restart the animation afterwards.
             if (value.hasUUID("Generation")) offer.generation = value.getUUID("Generation");
+            offer.natural = value.getBoolean("Natural");
             offer.dimension = ResourceLocation.tryParse(value.getString("Dimension"));
             for (Tag placedEntry : value.getList("PlacedChests", Tag.TAG_COMPOUND)) {
                 CompoundTag placed = (CompoundTag) placedEntry;
@@ -110,6 +111,7 @@ public final class RewardSavedData extends SavedData {
             value.putUUID("Owner", offer.owner);
             value.putString("Reward", offer.reward.toString());
             value.putUUID("Generation", offer.generation);
+            value.putBoolean("Natural", offer.natural);
             if (offer.dimension != null) value.putString("Dimension", offer.dimension.toString());
             ListTag placedChests = new ListTag();
             offer.placedChests.forEach(chest -> {
@@ -142,6 +144,7 @@ public final class RewardSavedData extends SavedData {
         public long spawnedAt;
         public int delay = RewardTimings.RESPAWN_DELAY;
         public boolean spawned;
+        public boolean natural;
         public boolean announced;
         public final List<UUID> chests = new ArrayList<>();
         public final List<PlacedChest> placedChests = new ArrayList<>();

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "food",
+  "ingredient": {
+    "item": "minecraft:milk_bucket"
+  },
+  "result": {
+    "item": "deathsareitems:cheese_slice",
+    "count": 4
+  },
+  "experience": 0.35,
+  "cookingtime": 200
+}
