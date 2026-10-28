@@ -2,14 +2,14 @@
 
 `einfach` branchindeki işlevsel ekler ve tamamlanmış görseller. Model/texture
 kaynakları ve aktarım komutları: [art/models/einfach/README.md](../art/models/einfach/README.md).
-Sesler mevcut vanilla kaynaklarından kullanılır.
+Düdük iki özgün mono OGG ıslık kullanır; diğer sesler vanilla kaynaklarındandır.
 Bütün kimliklerde namespace `deathsareitems:`.
 
 | Ad | Kimlik | Kayıt türü | Görsel |
 |---|---|---|---|
 | Huş Kıymıkları | `birch_splinters` | Normal item, 64'lü yığın | 16×16 özel 2D huş kıymıkları |
 | Viny'nin Kovası | `vinys_bucket` | Yeniden kullanılabilir item, tekli | Vanilla kova üzerinde mavi aksolotl, 16×16 2D |
-| Juky'nin Düdüğü | `jukys_whistle` | Yeniden kullanılabilir item, tekli | 8 parçalı özel 3D metal düdük, 16×16 atlas |
+| Juky'nin Düdüğü | `jukys_whistle` | Yeniden kullanılabilir item, tekli | 27 parçalı özel 3D metal düdük, 16×16 atlas |
 | Peynir Dilimi | `cheese_slice` | Yenebilir item, 64'lü yığın | Gönderilen 32×32 peynir PNG, 2D |
 | Hamburger | `hamburger` | Yenebilir item, 64'lü yığın | EquipEnchantments einfach dalından 12 parçalı 3D model, 16×16 atlas |
 | Gustaf'ın Müzik Kutusu | `gustafs_jukebox` | Yerleştirilebilir blok + BlockItem + block entity | Vanilla küp geometrisi, 16×16 koyu mavi/pirinç yan ve üst yüzler |
@@ -59,11 +59,24 @@ kullanır. Viny yeni çağırmada ve eski kayıttan yüklemede BLUE varyantına 
   16 hasar ve geri itme uygular. Bosslar itilmez. Birden fazla kutu hasarı
   çoğaltmaz. Diski çıkarmak/durdurmak etkiyi bitirir. Kutu kırılınca taşınabilir.
 - 10 farklı gerçek ölüm ödülünde kitap gelir. Eğilip sağ tık yalnız keşfedilmiş
-  bölümler arasında geçer; sağ tık 24 blok içinde görüş hattındaki düşmana
+  bölümler arasında geçer; sağ tık 24 blok içinde görüş hattındaki moba
   büyü yapar. Bölümler: düşme (yere çarpma), boğulma (su balonu), örs (yoğun
-  yağmur), kaktüs (diken halkası), wither (ruh patlaması). Bütün kitaplarda
-  ortak süre 15 saniyedir. Su/diken kafesleri blok değiştirmeden vanilla
+  yağmur), kaktüs (diken halkası), wither (ruh patlaması). Kitabın
+  bekleme süresi yoktur. Su/diken kafesleri blok değiştirmeden vanilla
   parçacıklarla gösterilir. Bosslar kafese alınmaz ve zorla hareket ettirilmez.
+  Kitabın adı `EinfachGustaf und die Wächter der Stille`; tooltip diğer ölüm eşyaları gibi
+  kısa ve esprili tek açıklama gösterir; kitabın açıklaması açık mordur. Bölüm geçişi ve büyü bildirimi bölüm rengindedir.
+  Kendi aktif büyüsünü yeni bölümle değiştirebilir; diğer oyuncunun/Viny'nin
+  hapsetmesini bozamaz. Her başarılı büyü 8 saniyelik bölüm desteği verir:
+  düşme → Yavaş Düşüş, boğulma → Suda Nefes, örs → Direnç, kaktüs → Hız,
+  wither → Yenilenme. Aynı hedefe 8 saniyede üç farklı bölüm Sessiz Final'i
+  tetikler: 6 blokta görüş hattındaki moblara 16 hasar ve boss olmayan moblara
+  3 saniye Yavaşlık IV. Tekrar edilen bölüm mısra sayısını artırmaz veya
+  süreyi uzatmaz; hedef değişimi/sürenin dolması birleşimi sıfırlar.
+  Kitap iki elden birindeyken 12 blok içindeki moblar Parlama ile görünür olur.
+  Kitabın tüm özellikleri pasif, nötr ve evcil moblarda da çalışır; Juky ve Viny
+  bu kapsama dahildir. Yoldaşların diğer ölüm eşyalarına karşı koruması sürer.
+  Müzik kutusunun tooltipi ve ilgili altı çeviri anahtarı kaldırılmıştır.
 
 Önizleme komutunun oluşturduğu sandığı almak, aynı ölümü tekrar etmek, `/give`,
 üretim ve yoldaş çağırmak milestone sayacını ilerletmez. Bonuslar ve milestone

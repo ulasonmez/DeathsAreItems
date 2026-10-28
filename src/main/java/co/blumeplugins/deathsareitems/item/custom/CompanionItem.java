@@ -1,8 +1,10 @@
 package co.blumeplugins.deathsareitems.item.custom;
 
 import co.blumeplugins.deathsareitems.einfach.Companions;
+import co.blumeplugins.deathsareitems.sound.ModSounds;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.player.Player;
@@ -16,6 +18,7 @@ public final class CompanionItem extends EinfachItem {
     public CompanionItem(boolean viny) { super(new Properties().stacksTo(1)); this.viny = viny; }
     @Override public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand hand) {
         if (player instanceof ServerPlayer owner) {
+            whistle(owner);
             if (owner.isShiftKeyDown()) Companions.recall(owner, viny);
             else if (viny) {
                 BlockHitResult hit = getPlayerPOVHitResult(level, player, ClipContext.Fluid.ANY);
@@ -29,6 +32,7 @@ public final class CompanionItem extends EinfachItem {
     @Override public InteractionResult useOn(UseOnContext context) {
         Player player = context.getPlayer(); if (player == null) return InteractionResult.PASS;
         if (player instanceof ServerPlayer owner) {
+            whistle(owner);
             if (owner.isShiftKeyDown()) Companions.recall(owner, viny);
             else {
                 BlockPos pos = context.getClickedPos();
@@ -38,5 +42,10 @@ public final class CompanionItem extends EinfachItem {
             }
         }
         return InteractionResult.sidedSuccess(context.getLevel().isClientSide);
+    }
+    private void whistle(ServerPlayer owner) {
+        if (!viny) owner.serverLevel().playSound(null, owner.blockPosition(),
+                (owner.isShiftKeyDown() ? ModSounds.JUKY_RECALL : ModSounds.JUKY_SUMMON).get(),
+                SoundSource.PLAYERS, .8F, 1F);
     }
 }

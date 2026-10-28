@@ -206,27 +206,162 @@ public final class EinfachGameTests {
                     && EinfachSavedData.get(p.server).player(p.getUUID()).getCompound("Claimed").getAllKeys().size() == 1, "Preview claims cannot add bonuses or milestone progress"); h.succeed();
         } finally { leave(p); }
     }
-    @GameTest(template="test_arena") public static void bookCopiesShareCooldownAndRespectChapterLocks(GameTestHelper h) {
+    @GameTest(template="test_arena") public static void bookCastsWithoutCooldownAndRespectsChapterLocks(GameTestHelper h) {
         var p = online(h);
         try {
             p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(7,2,7))));
-            var target = h.spawn(EntityType.HUSK, new BlockPos(7,2,3)); target.setNoAi(true);
+            var target = h.spawn(EntityType.COW, new BlockPos(7,2,3)); target.setNoAi(true);
             target.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(200); target.setHealth(200);
             p.lookAt(net.minecraft.commands.arguments.EntityAnchorArgument.Anchor.EYES, target.getEyePosition());
             var book = ModItems.GUSTAFS_NEW_BOOK.get(); p.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(book));
             book.use(p.level(), p, InteractionHand.MAIN_HAND);
             h.assertTrue(target.getHealth() == 200, "A given book cannot cast undiscovered chapters");
             RewardSavedData.get(p.server).discover(p.getUUID(), DeathRewards.FALL);
+            EinfachSavedData.get(p.server).player(p.getUUID()).putLong("BookReady", Long.MAX_VALUE);
             book.use(p.level(), p, InteractionHand.MAIN_HAND); float after = target.getHealth();
             h.assertTrue(after < 200, "Unlocked chapter casts through actual right-click input");
             target.invulnerableTime = 0; p.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(book));
             book.use(p.level(), p, InteractionHand.MAIN_HAND);
-            h.assertTrue(target.getHealth() == after, "A second book cannot bypass the fifteen-second cooldown");
+            h.assertTrue(target.getHealth() < after, "Another copy can cast immediately without a cooldown");
             var saved = EinfachSavedData.load(EinfachSavedData.get(p.server).save(new CompoundTag())).player(p.getUUID());
-            h.assertTrue(saved.getLong("BookReady") == Companions.now(p) + 300, "Book cooldown survives saving");
+            h.assertTrue(!saved.contains("BookReady"), "Book cooldown is not saved");
             RewardSavedData.get(p.server).discover(p.getUUID(), DeathRewards.DROWN);
             p.setShiftKeyDown(true); book.use(p.level(), p, InteractionHand.MAIN_HAND);
             h.assertTrue(EinfachSavedData.get(p.server).player(p.getUUID()).getString("Chapter").equals("drown"), "Sneaking cycles only unlocked chapters"); h.succeed();
+        } finally { leave(p); }
+    }
+    @GameTest(template="test_arena") public static void whistleSoundsForAirAndBlockCallsAndRecalls(GameTestHelper h) {
+        var p = online(h);
+        List<net.minecraft.sounds.SoundEvent> heard = new ArrayList<>();
+        java.util.function.Consumer<net.minecraftforge.event.PlayLevelSoundEvent.AtPosition> listener = event -> {
+            if (event.getLevel() == h.getLevel() && event.getSound() != null) heard.add(event.getSound().value());
+        };
+        net.minecraftforge.common.MinecraftForge.EVENT_BUS.addListener(listener);
+        try {
+            var whistle = ModItems.JUKYS_WHISTLE.get();
+            p.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(whistle));
+            p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(5,2,7))));
+            whistle.use(p.level(), p, InteractionHand.MAIN_HAND);
+            p.setShiftKeyDown(true); whistle.use(p.level(), p, InteractionHand.MAIN_HAND);
+            var pos = h.absolutePos(new BlockPos(5,1,5));
+            var hit = new BlockHitResult(Vec3.atCenterOf(pos), net.minecraft.core.Direction.UP, pos, false);
+            p.setShiftKeyDown(false); whistle.useOn(new net.minecraft.world.item.context.UseOnContext(p, InteractionHand.MAIN_HAND, hit));
+            p.setShiftKeyDown(true); whistle.useOn(new net.minecraft.world.item.context.UseOnContext(p, InteractionHand.MAIN_HAND, hit));
+            var summon = co.blumeplugins.deathsareitems.sound.ModSounds.JUKY_SUMMON.get();
+            var recall = co.blumeplugins.deathsareitems.sound.ModSounds.JUKY_RECALL.get();
+            h.assertTrue(heard.equals(List.of(summon, recall, summon, recall)), "Air and block inputs each play exactly one correct whistle sound");
+            h.succeed();
+        } finally {
+            net.minecraftforge.common.MinecraftForge.EVENT_BUS.unregister(listener);
+            Companions.recall(p, false); leave(p);
+        }
+    }
+    @GameTest(template="test_arena") public static void bookCastsBeforeTradingOrSittingInteractions(GameTestHelper h) {
+        var p = online(h);
+        try {
+            p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(5,2,7))));
+            p.setItemInHand(InteractionHand.MAIN_HAND, new ItemStack(ModItems.GUSTAFS_NEW_BOOK.get()));
+            var rewards = RewardSavedData.get(p.server);
+            rewards.discover(p.getUUID(), DeathRewards.FALL); rewards.discover(p.getUUID(), DeathRewards.DROWN);
+            var villager = h.spawn(EntityType.VILLAGER, new BlockPos(5,2,5)); villager.setNoAi(true);
+            villager.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(200); villager.setHealth(200);
+            h.assertTrue(p.interactOn(villager, InteractionHand.MAIN_HAND).consumesAction() && villager.getHealth() < 200,
+                    "Clicking a villager casts instead of trading");
+            h.assertTrue(p.containerMenu == p.inventoryMenu, "Book interactions never open the trading screen");
+            villager.invulnerableTime = 0; float hp = villager.getHealth();
+            var specific = net.minecraftforge.common.ForgeHooks.onInteractEntityAt(p, villager,
+                    new EntityHitResult(villager, villager.getEyePosition()), InteractionHand.MAIN_HAND);
+            h.assertTrue(specific != null && specific.consumesAction() && villager.getHealth() < hp, "The precise entity-click path also casts");
+            var wolf = h.spawn(EntityType.WOLF, new BlockPos(6,2,5)); wolf.setTame(true); wolf.setOwnerUUID(p.getUUID());
+            wolf.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(200); wolf.setHealth(200);
+            p.interactOn(wolf, InteractionHand.MAIN_HAND);
+            h.assertTrue(wolf.getHealth() < 200 && !wolf.isOrderedToSit(), "Clicking a tamed wolf casts instead of ordering it to sit");
+            hp = wolf.getHealth(); p.setShiftKeyDown(true); p.interactOn(wolf, InteractionHand.MAIN_HAND);
+            h.assertTrue(wolf.getHealth() == hp && !wolf.isOrderedToSit()
+                    && EinfachSavedData.get(p.server).player(p.getUUID()).getString("Chapter").equals("drown"),
+                    "Sneaking still changes chapters when pointing at a mob");
+            h.succeed();
+        } finally { leave(p); }
+    }
+    @GameTest(template="test_arena") public static void bookChaptersAffectPassiveNeutralTamedAndCompanionMobs(GameTestHelper h) {
+        var p = online(h);
+        try {
+            var pos = new BlockPos(5,2,5);
+            var wolf = h.spawn(EntityType.WOLF, pos); wolf.setTame(true); wolf.setOwnerUUID(p.getUUID());
+            List<Mob> targets = List.of(h.spawn(EntityType.COW, pos), h.spawn(EntityType.VILLAGER, pos),
+                    h.spawn(EntityType.IRON_GOLEM, pos), wolf, h.spawn(ModEntities.JUKY.get(), pos), h.spawn(ModEntities.VINY.get(), pos));
+            h.assertTrue(!BookSpells.canTarget(p), "Players are not mob targets");
+            for (Mob target : targets) {
+                target.setNoAi(true);
+                target.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(200); target.setHealth(200);
+                for (String chapter : List.of("fall", "drown", "anvil", "cactus", "wither")) {
+                    float hp = target.getHealth(); target.invulnerableTime = 0;
+                    h.assertTrue(BookSpells.cast(p, target, chapter), chapter + " accepts " + target.getType());
+                    h.assertTrue(target.getHealth() < hp, chapter + " damages " + target.getType());
+                }
+                if (Companions.isCompanion(target)) {
+                    float hp = target.getHealth(); target.invulnerableTime = 0;
+                    target.hurt(DeathDamage.source(target, DeathDamage.SOUL, p), 10);
+                    h.assertTrue(target.getHealth() == hp, "Companions still resist other death items");
+                }
+            }
+            h.succeed();
+        } finally { leave(p); }
+    }
+    @GameTest(template="test_arena") public static void bookPagesReplaceOwnSpellButRespectOtherReadersAndViny(GameTestHelper h) {
+        var p = online(h); var other = online(h);
+        try {
+            var target = h.spawn(EntityType.HUSK, new BlockPos(5,2,5)); target.setNoAi(true);
+            target.getAttribute(net.minecraft.world.entity.ai.attributes.Attributes.MAX_HEALTH).setBaseValue(200); target.setHealth(200);
+            h.assertTrue(BookSpells.cast(p, target, "drown"), "Water chapter can start a book spell");
+            h.assertTrue(!BookSpells.cast(other, target, "anvil"), "Another reader cannot steal a restraint");
+            h.assertTrue(BookSpells.cast(p, target, "anvil"), "Same reader can change chapters immediately");
+            h.assertTrue(BookSpells.cast(p, target, "fall") && !MobRestraints.busy(target), "Instant chapter releases the reader's old cage");
+            h.assertTrue(BookSpells.bubble(p, target, 80), "Viny can create a separate bubble");
+            h.assertTrue(!BookSpells.cast(p, target, "cactus") && MobRestraints.busy(target), "The book leaves Viny's active bubble alone");
+            h.succeed();
+        } finally { leave(p); leave(other); }
+    }
+    @GameTest(template="test_arena") public static void bookFinaleRequiresDistinctVersesAndAffectsAllMobs(GameTestHelper h) {
+        var p = online(h);
+        try {
+            p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(5,2,7))));
+            var target = h.spawn(EntityType.HUSK, new BlockPos(5,2,4)); target.setNoAi(true);
+            var nearby = h.spawn(EntityType.HUSK, new BlockPos(7,2,4)); nearby.setNoAi(true);
+            var cow = h.spawn(EntityType.COW, new BlockPos(6,2,4)); cow.setNoAi(true);
+            float hp = nearby.getHealth(), cowHp = cow.getHealth();
+            h.assertTrue(BookSpells.inscribe(p, target, "fall") == 1, "First verse starts the sequence");
+            h.assertTrue(p.hasEffect(net.minecraft.world.effect.MobEffects.SLOW_FALLING), "Ground Slam grants its blessing");
+            h.assertTrue(BookSpells.inscribe(p, target, "fall") == 1, "Repeating a chapter cannot fill the finale");
+            h.assertTrue(BookSpells.inscribe(p, target, "drown") == 2, "A different chapter adds a verse");
+            h.assertTrue(BookSpells.inscribe(p, target, "anvil") == 3, "Three different chapters trigger a finale");
+            h.assertTrue(nearby.getHealth() < hp && cow.getHealth() < cowHp && p.getHealth() == p.getMaxHealth(), "Finale hits hostile and passive mobs while sparing the reader");
+            h.assertTrue(nearby.hasEffect(net.minecraft.world.effect.MobEffects.MOVEMENT_SLOWDOWN), "Finale slows surviving normal enemies");
+            h.assertTrue(BookSpells.inscribe(p, target, "cactus") == 1, "A finale consumes the verses");
+            var progress = EinfachSavedData.get(p.server).player(p.getUUID());
+            progress.putLong("BookVerseUntil", Companions.now(p) - 1);
+            h.assertTrue(BookSpells.inscribe(p, target, "wither") == 1, "Expired verses restart the sequence");
+            h.assertTrue(BookSpells.inscribe(p, nearby, "drown") == 1, "Switching targets starts a new sequence");
+            h.succeed();
+        } finally { leave(p); }
+    }
+    @GameTest(template="test_arena") public static void bookSightWorksInEitherHandAndRevealsAllMobs(GameTestHelper h) {
+        var p = online(h);
+        try {
+            p.setPos(Vec3.atBottomCenterOf(h.absolutePos(new BlockPos(5,2,5))));
+            var foe = h.spawn(EntityType.HUSK, new BlockPos(6,2,5)); foe.setNoAi(true);
+            var cow = h.spawn(EntityType.COW, new BlockPos(4,2,5)); cow.setNoAi(true);
+            var book = ModItems.GUSTAFS_NEW_BOOK.get(); var stack = new ItemStack(book);
+            p.tickCount = 20;
+            book.inventoryTick(stack, p.level(), p, 0, false);
+            h.assertTrue(!foe.hasEffect(net.minecraft.world.effect.MobEffects.GLOWING), "Stored books do not reveal enemies");
+            book.inventoryTick(stack, p.level(), p, 0, true);
+            h.assertTrue(foe.hasEffect(net.minecraft.world.effect.MobEffects.GLOWING) && cow.hasEffect(net.minecraft.world.effect.MobEffects.GLOWING), "Main-hand sight reveals hostile and passive mobs");
+            foe.removeEffect(net.minecraft.world.effect.MobEffects.GLOWING);
+            p.setItemInHand(InteractionHand.OFF_HAND, stack);
+            book.inventoryTick(stack, p.level(), p, 40, false);
+            h.assertTrue(foe.hasEffect(net.minecraft.world.effect.MobEffects.GLOWING), "Off-hand sight works too");
+            h.succeed();
         } finally { leave(p); }
     }
     @GameTest(template="test_arena") public static void vinyBubblesOnlyWithMaskAndCannotResetCooldownByRecall(GameTestHelper h) {

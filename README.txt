@@ -19,6 +19,15 @@ install the same mod on the server and on every player's client.
 Start a Survival world. Choose a wide, flat, open respawn area with solid ground
 and space around you for three reward chests.
 
+* Birch Is Useless: birch logs and birch wood drop only Birch Splinters and
+  deal 1 heart of damage when mined. Splinters cannot be crafted, eaten or used
+  as fuel. Gather another wood type for usable wood.
+
+* Don't Press the Button: manually pressing a placed button spawns primed TNT
+  with a 3-second fuse and a loud ticking warning. The blast damages entities
+  but preserves terrain. The button cannot spawn another TNT until it explodes.
+  Redstone and projectiles do not trigger the extra TNT.
+
 IMPORTANT: Collect your rewards before your first trip to The End. Entering
 The End activates personal End Hardcore permanently until an operator resets
 it. From that point onward, death locks you into Spectator mode, even if you
@@ -59,6 +68,12 @@ With the mask equipped and both hands empty, hold and release right-click to
 throw a trident that inflicts a drowning attack on a target mob. Use the mask
 for underwater exploration and the trident for ranged attacks.
 
+* Your first Drowning Mask reward also includes Viny's Bucket. Right-click
+  water to summon Viny, your axolotl; sneak-right-click to recall him. While
+  you wear the mask, Viny traps a hostile mob within 8 blocks in a damaging
+  water bubble for 4 seconds, once every 15 seconds. Bosses take damage but
+  are not trapped. Viny follows in water and returns to his bucket on dry land.
+
 
 4. CONTROL BLOCKS AND MOBS - SUFFOCATION BOULDER
 ---------------------------------------------
@@ -87,6 +102,17 @@ random mob in its place. Keep enough room to react: the result may be hostile.
 Toggle spawning off when you want to mine normally. The pickaxe also deals
 40 melee damage with a fully charged hit.
 
+* Your first Mob Pickaxe reward also includes Juky's Whistle. Right-click to
+  summon Juky, your dog; sneak-right-click to recall him. Each call plays a
+  distinct whistle sound. Sneak-right-click
+  Juky with an empty hand to switch between guarding and following. He attacks
+  nearby hostile mobs and howls every 20 seconds to knock ordinary enemies back.
+
+* Each player can have one Juky and one Viny active. They avoid players,
+  passive animals and owned pets, and your death-item area attacks ignore them.
+  If defeated, they can be summoned again after 30 seconds. They return when
+  you change dimension; summon them again in a suitable place.
+
 
 7. BUILD A FOOD RESERVE - HUNGER STAFF
 -----------------------------------
@@ -102,6 +128,17 @@ and slowly decreases while that bar is full.
 
 Fill your reserve before longer exploration and dangerous encounters.
 
+* Your first starvation reward also includes 8 Cheese Slices and 2 Hamburgers.
+  Eat cheese even with a full hunger bar: each slice restores 4 food points,
+  and overflow fills the staff's reserve up to 100. Cheese heals 1 heart, with
+  a shared 10-second healing cooldown across slices.
+
+* Cook a milk bucket in a furnace to make 4 Cheese Slices; the empty bucket
+  remains in the input slot. Combine 2 bread, 1 cooked beef and 1 Cheese Slice
+  in any crafting arrangement to make a Hamburger. A hamburger restores 12 food
+  points, sends overflow to the same reserve and grants Regeneration II for
+  5 seconds. Eating another refreshes the effect.
+
 
 8. CALL DOWN ANVILS - SWARM OF ANVILS
 -----------------------------------
@@ -111,6 +148,13 @@ Hold it in your main hand and right-click a block or mob to rain anvils for
 15 seconds. Mobs are pinned during the attack. At the end, a targeted block
 drops with Infinity 255; mob drops receive random level-255 enchantments.
 Use it for powerful attacks and unusual enchanted loot.
+
+* After claiming 5 different death rewards, you also receive Gustaf's Jukebox
+  and a music disc. Place the jukebox and insert any music disc. While it plays,
+  its owner gains Strength II and Resistance II within 16 blocks. Every
+  5 seconds, a pulse deals 16 damage and knocks back nearby hostile mobs.
+  Bosses take damage without being knocked back. Terrain, players and pets are
+  safe. Remove the disc to stop the effects; multiple jukeboxes do not stack.
 
 
 9. OVERWHELM A MOB - ENTITY CRAMMER
@@ -184,6 +228,30 @@ Sneak and hold right-click to harvest souls from nearby mobs, damaging and
 shrinking them. Right-click without sneaking to fire an explosive soul
 projectile. It deals heavy damage and can break obsidian. Gather souls before
 using the projectile in a fight.
+
+* After claiming 10 different death rewards, you also receive
+  EinfachGustaf und die Wächter der Stille. Its chapters unlock through the
+  matching death discoveries: fall slams a mob down, drowning traps it
+  in a damaging water bubble, anvil calls a barrage, cactus pins it in a thorn
+  ring, and wither fires a soul burst. Sneak-right-click to cycle unlocked
+  chapters; right-click to cast at a mob within 24 blocks, without a
+  casting cooldown. Casting another chapter replaces your own active spell. Bosses
+  take damage without cages or forced movement.
+
+  Each cast also grants an 8-second blessing: Slow Falling from fall, Water
+  Breathing from drowning, Resistance from anvil, Speed from cactus, and
+  Regeneration from wither. Cast three different chapters on the same mob
+  within 8 seconds to trigger Silent Finale: a soul wave deals 16 damage to
+  mobs within 6 blocks of that target and slows non-boss mobs for
+  3 seconds. Holding the book in either hand reveals mobs within 12 blocks.
+
+  The book also works on passive, neutral and tamed mobs, including Juky and
+  Viny. Aim carefully when your companions are nearby.
+
+* The jukebox and book count different death rewards actually claimed from
+  their chests. Repeating a death, claiming a preview-command offer, crafting
+  or receiving items, and summoning pets do not advance these milestones.
+  Each milestone and companion bonus is granted once per player.
 
 
 16. TAKE YOUR FINISHED LOADOUT TO THE END

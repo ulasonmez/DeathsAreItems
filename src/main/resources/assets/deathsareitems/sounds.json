@@ -1,0 +1,20 @@
+{
+  "juky_summon": {
+    "subtitle": "subtitles.deathsareitems.juky_summon",
+    "sounds": [
+      {
+        "name": "deathsareitems:juky_summon",
+        "attenuation_distance": 24
+      }
+    ]
+  },
+  "juky_recall": {
+    "subtitle": "subtitles.deathsareitems.juky_recall",
+    "sounds": [
+      {
+        "name": "deathsareitems:juky_recall",
+        "attenuation_distance": 24
+      }
+    ]
+  }
+}

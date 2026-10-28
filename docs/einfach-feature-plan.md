@@ -76,17 +76,24 @@ for registered IDs, final visual assets, controls and implementation details.
 
 * After claiming rewards for 10 different death types, receive Gustaf's New Book
   alongside the tenth reward. The supplied model and unchanged cover are used; all six language files name
-  it EinfachGustaf_und_die_Wächter_der_Stille as requested in about.txt.
+  it EinfachGustaf und die Wächter der Stille, with spaces in the display name.
   The book turns your discovered deaths into an OP spell collection. Its five
   combat chapters unlock through the matching discoveries: fall slams a targeted
   mob into the ground, drowning traps it in a damaging water bubble, anvil calls
   a focused anvil barrage, cactus pins it in a damaging thorn ring, and wither
   fires a soul burst. Undiscovered chapters stay locked. Sneak-right-click to
-  cycle unlocked chapters; right-click to cast at a hostile mob within 24 blocks.
-  All chapters share a 15-second cooldown
-  across book copies. These are separate book spells, so casting never activates
+  cycle unlocked chapters; right-click to cast at a mob within 24 blocks.
+  The book has no casting cooldown and can replace the reader's own active spell.
+  Each chapter grants its own eight-second blessing. Three distinct chapters on
+  the same target within eight seconds unleash Silent Finale: a six-block soul
+  wave dealing 16 damage and slowing non-boss mobs for three seconds. Holding the
+  book in either hand reveals mobs within twelve blocks. These are separate
+  book spells, so casting never activates
   an equipped death item's ability a second time. Bosses take damage without
   forced movement or cages. The book remains reusable and cannot revive players.
+
+  All chapters, the finale and sight also affect passive, neutral and tamed
+  mobs, including Juky and Viny. Other death items still protect companions.
 
 * The jukebox and book milestones count distinct death rewards actually claimed
   by each player, in any order. Repeating a death, previewing a chest, summoning

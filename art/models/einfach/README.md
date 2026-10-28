@@ -6,7 +6,7 @@ Minecraft Java **1.20.1**, Forge **47.1.3**, namespace `deathsareitems`.
 |---|---|---|
 | Huş Kıymıkları | İki parçalı, kabuk lekeli 2D kıymık | 16×16 |
 | Viny'nin Kovası | Gerçek vanilla aksolotl kovası üzerinde BLUE paleti | 16×16 |
-| Juky'nin Düdüğü | Metal hazne, ağızlık, hava deliği ve açık arka halka; 8 cuboid | 16×16 |
+| Juky'nin Düdüğü | Girintili hava kanalı, içi boş ağızlık, J amblemleri ve pirinç halka; 27 cuboid | 16×16 |
 | Peynir Dilimi | Verilen PNG, byte düzeyinde korunmuş, `item/generated` 2D | 32×32 |
 | Hamburger | EquipEnchantments `einfach` dalındaki beğenilen 12 cuboid model | 16×16 |
 | Gustaf'ın Müzik Kutusu | Tam vanilla küp; koyu mavi gövde, pirinç ızgara; huş alt yüz | 16×16 yüzler |
@@ -15,7 +15,7 @@ Minecraft Java **1.20.1**, Forge **47.1.3**, namespace `deathsareitems`.
 | Viny | Vanilla AxolotlRenderer, BLUE varyantı ve animasyonları | Oyunun texture'ı |
 | Düğme TNT'si | Vanilla TNT; ayrı asset yok | Oyunun texture'ı |
 
-`references/about.txt` kullanıcı tarafından okunması istenen içerik notudur. Kitap adı bütün altı dilde nottaki yazımla `EinfachGustaf_und_die_Wächter_der_Stille` oldu. Oyuncu skini oyunda kullanılmadı.
+`references/about.txt` kullanıcı tarafından okunması istenen içerik notudur. Kitap adı son istek doğrultusunda bütün altı dilde alt çizgisiz `EinfachGustaf und die Wächter der Stille` oldu. Oyuncu skini oyunda kullanılmadı.
 
 `provenance.json` kaynak dal/commit ve dosya SHA-256 değerlerini içerir. Vanilla tabanları yerel ForgeGradle'ın Mojang 1.20.1 `downloadClient/client.jar` dosyasından alındı; oyun dosyaları değiştirilmedi. Yeni tasarımlar için harici referans verilmedi: kıymık silüeti, düdük geometrisi, kovanın mavi paleti ve kutunun renkleri tasarım kararlarıdır. Kitabın ve hamburgerin mevcut geometri, UV ve Display ayarları korundu; texture namespace'i uyarlandı, kitabın bozuk particle bağlantısı gövde texture'ına bağlandı. Kullanıcının büyük/asimetrik kapak resmi küçültülmedi; Minecraft bu boyut için mip seviyesini sınırlar.
 
@@ -56,3 +56,16 @@ Ayrı test istemcisi yedi modeli normal/enchanted geçişlerinde çizip resource
 ## İstenen hamburger paketi
 
 `delivery/Hamburger/model/` orijinal EquipEnchantments JSON + `.bbmodel`, `delivery/Hamburger/texture/` orijinal 16×16 PNG içerir. `delivery/Einfach_textures.zip`, kullanıcının zipindeki mevcut girdiler korunarak bu klasörün eklendiği sürümdür. Hamburger paketindeki kaynaklar EquipEnchantments namespace'ini korur; bu moddaki runtime sürümü `deathsareitems` kullanır.
+
+## Düdük revizyonu
+
+27 cuboid model mevcut Display ayarlarını korur; atlas hâlâ gerçek 16×16'dır.
+Gömülü PNG ve geometri için esas kaynak `projects/jukys_whistle.bbmodel` dosyasıdır.
+Çağırma ve geri çağırma sesleri özgün sentezlenmiş mono Vorbis OGG'dir (44,1 kHz).
+İki sesi yeniden üretmek için numpy ve soundfile kurulu Python ile:
+
+```sh
+python3 tools/einfach/build_whistle_sounds.py
+```
+
+Sesler `src/main/resources/assets/deathsareitems/sounds/` dizinine yazılır.

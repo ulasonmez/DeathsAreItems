@@ -93,9 +93,9 @@ public final class Companions {
     }
     @SubscribeEvent public static void dimension(PlayerEvent.PlayerChangedDimensionEvent event) { if (event.getEntity() instanceof ServerPlayer p) { recall(p, true); recall(p, false); } }
     @SubscribeEvent public static void logout(PlayerEvent.PlayerLoggedOutEvent event) { if (event.getEntity() instanceof ServerPlayer p) { recall(p, true); recall(p, false); } }
-    /** All death-item damage, including explosions and flying debris, leaves companions alone. */
+    /** Other death items protect companions; the book can deliberately target any mob. */
     @SubscribeEvent(priority = EventPriority.HIGHEST) public static void protect(LivingAttackEvent event) {
-        if (!isCompanion(event.getEntity())) return;
+        if (!isCompanion(event.getEntity()) || BookSpells.isBookDamage(event.getSource())) return;
         var source = event.getSource();
         if (source.typeHolder().unwrapKey().map(k -> k.location().getNamespace().equals(DeathsAreItems.MOD_ID)).orElse(false)
                 || source.getEntity() instanceof Player || source.getDirectEntity() instanceof LaunchedBlockEntity)

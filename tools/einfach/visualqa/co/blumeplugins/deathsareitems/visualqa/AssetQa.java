@@ -2,6 +2,7 @@ package co.blumeplugins.deathsareitems.visualqa;
 
 import co.blumeplugins.deathsareitems.DeathsAreItems;
 import co.blumeplugins.deathsareitems.item.ModItems;
+import co.blumeplugins.deathsareitems.sound.ModSounds;
 import com.mojang.blaze3d.platform.Lighting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.Screenshot;
@@ -56,13 +57,27 @@ public final class AssetQa {
             }
             g.drawString(font,"Top: normal pass. Bottom: actual enchanted mod stacks.",12,260,0xffffff);
             g.drawString(font,"GUI only; player motion and trade/recipe screens are outside this smoke test.",12,278,0xabc2cf);
+            if(frames > 60) g.renderTooltip(font, ModItems.GUSTAFS_NEW_BOOK.get().getDefaultInstance(), width / 2 - 60, 65);
             g.flush();
             frames++;
+            if(frames==1) {
+                for(var sound : new net.minecraft.sounds.SoundEvent[]{ModSounds.JUKY_SUMMON.get(), ModSounds.JUKY_RECALL.get()})
+                    if(minecraft.getSoundManager().getSoundEvent(sound.getLocation())==null)
+                        throw new IllegalStateException("Missing whistle sound: "+sound.getLocation());
+            }
+            if(frames==10 || frames==40) minecraft.getSoundManager().play(
+                    net.minecraft.client.resources.sounds.SimpleSoundInstance.forUI(
+                            (frames==10 ? ModSounds.JUKY_SUMMON : ModSounds.JUKY_RECALL).get(), 1F, .35F));
             if(frames==60) {
                 Path out=Path.of(System.getProperty("deathsareitems.visualqa.output"),reloaded?"minecraft-after-reload.png":"minecraft-before-reload.png");
                 try(var image=Screenshot.takeScreenshot(minecraft.getMainRenderTarget())) { image.writeToFile(out); }
                 catch(Exception e) { throw new RuntimeException(e); }
                 DeathsAreItems.LOGGER.info("EINFACH_VISUAL_QA seven models rendered with/without foil; reloaded={}",reloaded);
+            }
+            if(frames==70) {
+                Path out=Path.of(System.getProperty("deathsareitems.visualqa.output"),reloaded?"minecraft-book-tooltip-after.png":"minecraft-book-tooltip.png");
+                try(var image=Screenshot.takeScreenshot(minecraft.getMainRenderTarget())) { image.writeToFile(out); }
+                catch(Exception e) { throw new RuntimeException(e); }
             }
             if(frames==90) {
                 if(reloaded) minecraft.stop();

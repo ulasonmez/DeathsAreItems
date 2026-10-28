@@ -12,18 +12,18 @@
   },
   "elements": [
     {
-      "name": "chamber lower bevel",
+      "name": "lower rolled seam",
       "type": "cube",
-      "uuid": "1bbdcd47-d645-5835-9b1c-768c4bdd015b",
+      "uuid": "7afb1922-e5d8-5543-b293-79829d0fadb4",
       "from": [
         5,
-        5,
-        6
+        5.4,
+        6.1
       ],
       "to": [
         11,
-        6,
-        10
+        6.05,
+        9.9
       ],
       "origin": [
         8,
@@ -84,9 +84,9 @@
         },
         "down": {
           "uv": [
+            2,
             0,
-            0,
-            1,
+            3,
             1
           ],
           "texture": 0
@@ -94,9 +94,9 @@
       }
     },
     {
-      "name": "chamber",
+      "name": "resonance chamber",
       "type": "cube",
-      "uuid": "a35ad925-9075-5289-ad86-aed25913d3a6",
+      "uuid": "b7c3bcfc-8684-5254-aa62-daba0f79a021",
       "from": [
         4.5,
         6,
@@ -104,7 +104,7 @@
       ],
       "to": [
         11.5,
-        9,
+        8.9,
         10
       ],
       "origin": [
@@ -166,9 +166,9 @@
         },
         "down": {
           "uv": [
-            2,
+            4,
             0,
-            3,
+            5,
             1
           ],
           "texture": 0
@@ -176,17 +176,99 @@
       }
     },
     {
-      "name": "chamber upper bevel",
+      "name": "upper seam front",
       "type": "cube",
-      "uuid": "ea26f4db-9b03-5f1f-af2e-3de492a60b12",
+      "uuid": "34c2d68c-3eed-52ae-b3d1-b7ca5d55bc89",
       "from": [
         5,
-        9,
+        8.9,
         6
       ],
       "to": [
         11,
-        10,
+        9.45,
+        6.65
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            8,
+            0,
+            9,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "upper seam rear",
+      "type": "cube",
+      "uuid": "fb13b4c1-c71d-5bf4-9bd3-ceecc6219e5c",
+      "from": [
+        5,
+        8.9,
+        8.25
+      ],
+      "to": [
+        11,
+        9.45,
         10
       ],
       "origin": [
@@ -203,36 +285,364 @@
       "faces": {
         "north": {
           "uv": [
-            4,
+            6,
             0,
-            5,
+            7,
             1
           ],
           "texture": 0
         },
         "south": {
           "uv": [
-            4,
+            6,
             0,
-            5,
+            7,
             1
           ],
           "texture": 0
         },
         "east": {
           "uv": [
-            4,
+            6,
             0,
-            5,
+            7,
             1
           ],
           "texture": 0
         },
         "west": {
           "uv": [
-            4,
+            6,
             0,
-            5,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            8,
+            0,
+            9,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "upper seam left",
+      "type": "cube",
+      "uuid": "a094f2aa-cced-5cd6-a3c3-2904028c977f",
+      "from": [
+        5,
+        8.9,
+        6.65
+      ],
+      "to": [
+        6.45,
+        9.45,
+        8.25
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            8,
+            0,
+            9,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "upper seam right",
+      "type": "cube",
+      "uuid": "f03322d6-af8f-5500-8fcf-1b0426f8eabd",
+      "from": [
+        9.55,
+        8.9,
+        6.65
+      ],
+      "to": [
+        11,
+        9.45,
+        8.25
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            8,
+            0,
+            9,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "recessed windway",
+      "type": "cube",
+      "uuid": "be562a59-061b-58a0-9ba0-5f383599fc81",
+      "from": [
+        6.45,
+        8.9,
+        6.65
+      ],
+      "to": [
+        9.55,
+        9.0,
+        8.25
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "windway labium",
+      "type": "cube",
+      "uuid": "8cd80caf-01b3-5e98-9f95-8481cb53989b",
+      "from": [
+        6.45,
+        9.0,
+        8.02
+      ],
+      "to": [
+        9.55,
+        9.28,
+        8.25
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            2,
+            0,
+            3,
             1
           ],
           "texture": 0
@@ -258,9 +668,9 @@
       }
     },
     {
-      "name": "mouthpiece",
+      "name": "mouthpiece lower",
       "type": "cube",
-      "uuid": "714213d5-7b4d-5648-aadf-48c8245a6077",
+      "uuid": "0d43f2b9-81d1-5304-bbee-7b367fafedaf",
       "from": [
         6.5,
         7.25,
@@ -268,8 +678,8 @@
       ],
       "to": [
         9.5,
-        8.5,
-        6
+        7.52,
+        6.1
       ],
       "origin": [
         8,
@@ -285,24 +695,42 @@
       "faces": {
         "north": {
           "uv": [
-            10,
+            2,
             0,
-            11,
+            3,
             1
           ],
           "texture": 0
         },
         "south": {
           "uv": [
-            4,
+            2,
             0,
-            5,
+            3,
             1
           ],
           "texture": 0
         },
         "east": {
           "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
             4,
             0,
             5,
@@ -310,11 +738,75 @@
           ],
           "texture": 0
         },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "mouthpiece roof",
+      "type": "cube",
+      "uuid": "81b29b1f-1787-524d-9e0d-9f7ffc9ae3d5",
+      "from": [
+        6.5,
+        8.22,
+        2
+      ],
+      "to": [
+        9.5,
+        8.5,
+        6.1
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
         "west": {
           "uv": [
-            4,
+            6,
             0,
-            5,
+            7,
             1
           ],
           "texture": 0
@@ -330,9 +822,9 @@
         },
         "down": {
           "uv": [
-            2,
+            6,
             0,
-            3,
+            7,
             1
           ],
           "texture": 0
@@ -340,18 +832,182 @@
       }
     },
     {
-      "name": "sound hole",
+      "name": "mouthpiece left",
       "type": "cube",
-      "uuid": "8aa07bbf-8814-5c0c-a34b-7c08b1dc4e93",
+      "uuid": "5b28dcc6-63e5-5101-9da5-fb20bf6e7f3d",
       "from": [
         6.5,
-        9.01,
-        6.75
+        7.52,
+        2
+      ],
+      "to": [
+        6.85,
+        8.22,
+        6.1
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "mouthpiece right",
+      "type": "cube",
+      "uuid": "02c3dc55-8983-569d-8fac-9d49add4d4e6",
+      "from": [
+        9.15,
+        7.52,
+        2
       ],
       "to": [
         9.5,
-        10.01,
+        8.22,
+        6.1
+      ],
+      "origin": [
+        8,
+        8,
         8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "mouthpiece inner shadow",
+      "type": "cube",
+      "uuid": "32001d27-3c84-5169-a19c-8c0dd4d93f6a",
+      "from": [
+        6.85,
+        7.52,
+        2.65
+      ],
+      "to": [
+        9.15,
+        8.22,
+        2.85
       ],
       "origin": [
         8,
@@ -412,9 +1068,583 @@
         },
         "down": {
           "uv": [
+            10,
+            0,
+            11,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "mouthpiece collar",
+      "type": "cube",
+      "uuid": "1f83d045-9770-5a97-afcc-671bc1791d3e",
+      "from": [
+        6.25,
+        7.02,
+        5.15
+      ],
+      "to": [
+        9.75,
+        8.7,
+        5.65
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "ring lug",
+      "type": "cube",
+      "uuid": "a1b62f99-a722-551a-ac93-d021d830acaa",
+      "from": [
+        7.4,
+        6.8,
+        9.95
+      ],
+      "to": [
+        8.6,
+        8.45,
+        10.5
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            6,
+            0,
+            7,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "ring left",
+      "type": "cube",
+      "uuid": "66339d59-795b-5545-bd91-fa454284b13c",
+      "from": [
+        6.5,
+        7.1,
+        10.15
+      ],
+      "to": [
+        7,
+        7.65,
+        12.15
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "ring right",
+      "type": "cube",
+      "uuid": "6955e34c-8733-56d2-97e7-82b5db3206c0",
+      "from": [
+        9,
+        7.1,
+        10.15
+      ],
+      "to": [
+        9.5,
+        7.65,
+        12.15
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "ring bridge",
+      "type": "cube",
+      "uuid": "f1b5d0f1-9ff3-5723-9704-48ff051766f8",
+      "from": [
+        7,
+        7.1,
+        12.0
+      ],
+      "to": [
+        9,
+        7.65,
+        12.5
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "ring shoulders",
+      "type": "cube",
+      "uuid": "86910f22-37dc-5227-a161-0baab6ce1f79",
+      "from": [
+        7,
+        7.1,
+        10.15
+      ],
+      "to": [
+        9,
+        7.65,
+        10.6
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "left J medallion",
+      "type": "cube",
+      "uuid": "353707b3-2db1-50e2-a283-41193665e5c5",
+      "from": [
+        4.35,
+        6.5,
+        6.9
+      ],
+      "to": [
+        4.55,
+        8.5,
+        8.9
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            0,
             8,
+            8,
+            16
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            2,
             0,
-            9,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
             1
           ],
           "texture": 0
@@ -422,18 +1652,264 @@
       }
     },
     {
-      "name": "eyelet left",
+      "name": "left rivet 6.35",
       "type": "cube",
-      "uuid": "20fa7abd-e33b-5dca-9ff6-f12afb7971e9",
+      "uuid": "dc722161-951a-545f-ab05-3c04bab22c6e",
       "from": [
+        4.33,
+        7.35,
+        6.35
+      ],
+      "to": [
+        4.569999999999999,
+        7.7,
+        6.6499999999999995
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "left rivet 9.35",
+      "type": "cube",
+      "uuid": "328e6e82-82a9-5785-b286-f88bd9baa3f3",
+      "from": [
+        4.33,
+        7.35,
+        9.35
+      ],
+      "to": [
+        4.569999999999999,
+        7.7,
+        9.65
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "left lower joint",
+      "type": "cube",
+      "uuid": "18e1cc58-a753-59ab-9e90-9d0638d3ce03",
+      "from": [
+        4.35,
+        6.12,
+        6.2
+      ],
+      "to": [
+        4.55,
+        6.32,
+        9.8
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            4,
+            0,
+            5,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            2,
+            0,
+            3,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "right J medallion",
+      "type": "cube",
+      "uuid": "29b1caa3-1aaa-54d6-843e-b0873057594e",
+      "from": [
+        11.45,
         6.5,
-        6.75,
-        10
+        6.9
       ],
       "to": [
-        7,
+        11.65,
         8.5,
-        12.5
+        8.9
       ],
       "origin": [
         8,
@@ -467,10 +1943,10 @@
         },
         "east": {
           "uv": [
-            2,
             0,
-            3,
-            1
+            8,
+            8,
+            16
           ],
           "texture": 0
         },
@@ -485,18 +1961,18 @@
         },
         "up": {
           "uv": [
-            6,
+            2,
             0,
-            7,
+            3,
             1
           ],
           "texture": 0
         },
         "down": {
           "uv": [
+            2,
             0,
-            0,
-            1,
+            3,
             1
           ],
           "texture": 0
@@ -504,18 +1980,18 @@
       }
     },
     {
-      "name": "eyelet right",
+      "name": "right rivet 6.35",
       "type": "cube",
-      "uuid": "a0dd48d5-c61a-5b2d-9d1c-d4dbe8554d1b",
+      "uuid": "72ec0a79-7c99-5d57-8a39-c3f6fa7c2785",
       "from": [
-        9,
-        6.75,
-        10
+        11.43,
+        7.35,
+        6.35
       ],
       "to": [
-        9.5,
-        8.5,
-        12.5
+        11.67,
+        7.7,
+        6.6499999999999995
       ],
       "origin": [
         8,
@@ -531,54 +2007,54 @@
       "faces": {
         "north": {
           "uv": [
-            2,
+            12,
             0,
-            3,
+            13,
             1
           ],
           "texture": 0
         },
         "south": {
           "uv": [
-            2,
+            12,
             0,
-            3,
+            13,
             1
           ],
           "texture": 0
         },
         "east": {
           "uv": [
-            2,
+            12,
             0,
-            3,
+            13,
             1
           ],
           "texture": 0
         },
         "west": {
           "uv": [
-            2,
+            12,
             0,
-            3,
+            13,
             1
           ],
           "texture": 0
         },
         "up": {
           "uv": [
-            6,
+            14,
             0,
-            7,
+            15,
             1
           ],
           "texture": 0
         },
         "down": {
           "uv": [
+            12,
             0,
-            0,
-            1,
+            13,
             1
           ],
           "texture": 0
@@ -586,18 +2062,100 @@
       }
     },
     {
-      "name": "eyelet bridge",
+      "name": "right rivet 9.35",
       "type": "cube",
-      "uuid": "aaa809bf-3cf8-5dbf-a640-b09b6d0a9c60",
+      "uuid": "bbf0483a-cdd1-5401-baab-b61a81f8869c",
       "from": [
-        7,
-        6.75,
-        12
+        11.43,
+        7.35,
+        9.35
       ],
       "to": [
-        9,
-        8.5,
-        12.5
+        11.67,
+        7.7,
+        9.65
+      ],
+      "origin": [
+        8,
+        8,
+        8
+      ],
+      "rotation": [
+        0,
+        0,
+        0
+      ],
+      "box_uv": false,
+      "faces": {
+        "north": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "south": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "east": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "west": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        },
+        "up": {
+          "uv": [
+            14,
+            0,
+            15,
+            1
+          ],
+          "texture": 0
+        },
+        "down": {
+          "uv": [
+            12,
+            0,
+            13,
+            1
+          ],
+          "texture": 0
+        }
+      }
+    },
+    {
+      "name": "right lower joint",
+      "type": "cube",
+      "uuid": "3bcda75c-c560-5bbd-ac51-5d5c2e80c5d3",
+      "from": [
+        11.45,
+        6.12,
+        6.2
+      ],
+      "to": [
+        11.65,
+        6.32,
+        9.8
       ],
       "origin": [
         8,
@@ -649,18 +2207,18 @@
         },
         "up": {
           "uv": [
-            6,
+            4,
             0,
-            7,
+            5,
             1
           ],
           "texture": 0
         },
         "down": {
           "uv": [
+            2,
             0,
-            0,
-            1,
+            3,
             1
           ],
           "texture": 0
@@ -669,14 +2227,33 @@
     }
   ],
   "outliner": [
-    "1bbdcd47-d645-5835-9b1c-768c4bdd015b",
-    "a35ad925-9075-5289-ad86-aed25913d3a6",
-    "ea26f4db-9b03-5f1f-af2e-3de492a60b12",
-    "714213d5-7b4d-5648-aadf-48c8245a6077",
-    "8aa07bbf-8814-5c0c-a34b-7c08b1dc4e93",
-    "20fa7abd-e33b-5dca-9ff6-f12afb7971e9",
-    "a0dd48d5-c61a-5b2d-9d1c-d4dbe8554d1b",
-    "aaa809bf-3cf8-5dbf-a640-b09b6d0a9c60"
+    "7afb1922-e5d8-5543-b293-79829d0fadb4",
+    "b7c3bcfc-8684-5254-aa62-daba0f79a021",
+    "34c2d68c-3eed-52ae-b3d1-b7ca5d55bc89",
+    "fb13b4c1-c71d-5bf4-9bd3-ceecc6219e5c",
+    "a094f2aa-cced-5cd6-a3c3-2904028c977f",
+    "f03322d6-af8f-5500-8fcf-1b0426f8eabd",
+    "be562a59-061b-58a0-9ba0-5f383599fc81",
+    "8cd80caf-01b3-5e98-9f95-8481cb53989b",
+    "0d43f2b9-81d1-5304-bbee-7b367fafedaf",
+    "81b29b1f-1787-524d-9e0d-9f7ffc9ae3d5",
+    "5b28dcc6-63e5-5101-9da5-fb20bf6e7f3d",
+    "02c3dc55-8983-569d-8fac-9d49add4d4e6",
+    "32001d27-3c84-5169-a19c-8c0dd4d93f6a",
+    "1f83d045-9770-5a97-afcc-671bc1791d3e",
+    "a1b62f99-a722-551a-ac93-d021d830acaa",
+    "66339d59-795b-5545-bd91-fa454284b13c",
+    "6955e34c-8733-56d2-97e7-82b5db3206c0",
+    "f1b5d0f1-9ff3-5723-9704-48ff051766f8",
+    "86910f22-37dc-5227-a161-0baab6ce1f79",
+    "353707b3-2db1-50e2-a283-41193665e5c5",
+    "dc722161-951a-545f-ab05-3c04bab22c6e",
+    "328e6e82-82a9-5785-b286-f88bd9baa3f3",
+    "18e1cc58-a753-59ab-9e90-9d0638d3ce03",
+    "29b1caa3-1aaa-54d6-843e-b0873057594e",
+    "72ec0a79-7c99-5d57-8a39-c3f6fa7c2785",
+    "bbf0483a-cdd1-5401-baab-b61a81f8869c",
+    "3bcda75c-c560-5bbd-ac51-5d5c2e80c5d3"
   ],
   "textures": [
     {
@@ -690,7 +2267,7 @@
       "uv_width": 16,
       "uv_height": 16,
       "mode": "bitmap",
-      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAASUlEQVR4nO3Muw1AQAAA0EdhAfVFI9H4FZfrNDQidjGSURlCo7g3wCviej6wbDuIcQZj14BQV2BIB7ivANqpB6WPcpCDHPwleAGSegZCC0+zywAAAABJRU5ErkJggg=="
+      "source": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAkUlEQVR4nMXRvwnCQACF8V/EAVwgKAiCoGA0EMTK2lZwFScQV3EZbRzATbS6YJT80yJfdcW97x7voslq+4RZsgRJloJ0PgbTeAAW2Q6c9kOw3sSg50+6F0Rhg84adC/oh/8v4367VguqLtXJc0Hgchzl58P5URvmY4MQahouCN5fb0OhwS+SfIM2tb8ETdYu4wXdyhjqGw55qgAAAABJRU5ErkJggg=="
     }
   ],
   "display": {

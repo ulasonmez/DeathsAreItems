@@ -64,7 +64,12 @@ def main():
         for name in ('birch_splinters','vinys_bucket','jukys_whistle','cheese_slice','hamburger','gustafs_new_book','gustafs_jukebox'):
             check('deathsareitems:item/'+name)
     for p in (ASSETS/'lang').glob('*.json'):
-        assert json.loads(p.read_text())['item.deathsareitems.gustafs_new_book']=='EinfachGustaf_und_die_Wächter_der_Stille'
+        lang=json.loads(p.read_text())
+        assert lang['item.deathsareitems.gustafs_new_book']=='EinfachGustaf und die Wächter der Stille'
+        assert 'tooltip.deathsareitems.gustafs_jukebox' not in lang
+        assert lang['item.deathsareitems.gustafs_new_book.desc']
+        assert 'message.deathsareitems.book_cooldown' not in lang
+        assert not any(key.startswith('tooltip.deathsareitems.book.') for key in lang)
     staged=ART/'delivery/Einfach_textures.zip'
     with zipfile.ZipFile(staged) as z:
         assert z.testzip() is None
